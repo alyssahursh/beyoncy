@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :find_order except: [:index, :new, :create]
-  before_action :not_found except: [:index, :new, :create]
+  before_action :find_order, except: [:index, :new, :create]
+  before_action :not_found, except: [:index, :new, :create]
 
 
   def index

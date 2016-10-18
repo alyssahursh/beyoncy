@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :find_review except: [:index, :new, :create]
-  before_action :not_found except: [:index, :new, :create]
+  before_action :find_review, except: [:index, :new, :create]
+  before_action :not_found, except: [:index, :new, :create]
 
 
   def index
