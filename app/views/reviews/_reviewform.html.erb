@@ -1,0 +1,16 @@
+<%= form_for @review,
+  url: action_name do |f| %>
+<ul>
+  <li><%= f.label :subject %></li>
+  <li><%= f.text_field :subject %></li>
+
+  <li><%= f.label :body %></li>
+  <li><%= f.text_area :body%></li>
+<!--will need to come back to change based on how we do ratings -->
+  <li><%= f.label :rating %></li>
+  <li><%= f.text_field :rating %></li>
+
+  <li><%= f.submit %> </li>
+</ul>
+
+<% end %>
