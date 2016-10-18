@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'awesome_print'
 gem 'meta_request'
-gem 'pry-rails'
+# gem 'pry-rails'
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 gem 'omniauth'

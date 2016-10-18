@@ -73,19 +73,6 @@ ActiveRecord::Schema.define(version: 20161018212224) do
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
 
-  create_table "reivews", force: :cascade do |t|
-    t.string   "subject"
-    t.string   "body"
-    t.integer  "rating"
-    t.integer  "user_id"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "reivews", ["product_id"], name: "index_reivews_on_product_id"
-  add_index "reivews", ["user_id"], name: "index_reivews_on_user_id"
-
   create_table "reviews", force: :cascade do |t|
     t.string   "subject"
     t.string   "body"
