@@ -1,0 +1,21 @@
+<%= form_for @review,
+  url: action_name do |f| %>
+<ul>
+  <li><%= f.label :name %></li>
+  <li><%= f.text_field :name %></li>
+
+  <li><%= f.label :description %></li>
+  <li><%= f.text_area :description %></li>
+
+  <li><%= f.label :price %></li>
+  <li><%= f.text_field :price %></li>
+
+  <li><%= f.label :inventory_qty %></li>
+  <li><%= f.text_field :inventory_qty%></li>
+<!-- will need to add gem and figure out how to upload photos -->
+  <li><%= f.file_field :picture%></li>
+
+  <li><%= f.submit %> </li>
+</ul>
+
+<% end %>
