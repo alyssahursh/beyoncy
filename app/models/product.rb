@@ -11,4 +11,7 @@ class Product < ActiveRecord::Base
   # product must either be active or inactive
   validates :active, inclusion: { in: [true, false] }
   validates :active, exclusion: { in: [nil] }
+
+  # product must be associated with a category. don't put this in the category validations or else we'll get an infinite loop!
+  validates_associated :category
 end
