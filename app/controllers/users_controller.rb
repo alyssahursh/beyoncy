@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user except: [:index, :new, :create]
-  before_action :not_found except: [:index, :new, :create]
+  before_action :find_user, except: [:index, :new, :create]
+  before_action :not_found, except: [:index, :new, :create]
 
 
   def index

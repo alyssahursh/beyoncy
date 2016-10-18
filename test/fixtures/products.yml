@@ -1,19 +1,42 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-  price: 1
-  picture: MyString
-  inventory_qty: 1
-  active: false
-  category_id: 
+nameless_product:
+  description: "this product has no name"
+  price: 1000
+  picture: "url"
+  inventory_qty: 100
+  active: true
+  category_id: 1
 
-two:
-  name: MyString
-  description: MyString
-  price: 1
-  picture: MyString
-  inventory_qty: 1
-  active: false
-  category_id: 
+product_with_negative_price:
+  name: "negative price"
+  description: "blah blah"
+  price: -10000
+  picture: "blah"
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
+product_with_no_price:
+  name: "no price"
+  description: "blah blah"
+  picture: "blah"
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
+inactive_product:
+  name: "not active"
+  description: "blah blah"
+  price: -10000
+  picture: "blah"
+  inventory_qty: 10
+  category_id: 1
+
+product_with_no_category:
+  name: "not active"
+  description: "blah blah"
+  price: 100
+  picture: "blah"
+  inventory_qty: 10
+  active: true
