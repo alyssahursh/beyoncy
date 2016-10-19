@@ -17,6 +17,16 @@ def to_bool(string)
   end
 end
 
+# seed Users
+CSV.foreach('seed_csvs/users.csv') do |line|
+  user = User.create(first_name: line[0], last_name: line[1], email: line[2], birthdate: line[3], phone: line[4], admin: to_bool(line[5]), active: to_bool(line[6]), uid: line[7].to_i, provider: line[8])
+  if user.valid?
+    puts "User #{user.first_name} created sucessfully."
+  else
+    puts "User #{user.first_name} failed. Errors: #{user.errors}"
+  end
+end
+
 # seed Reviews
 CSV.foreach('seed_csvs/reviews.csv') do |line|
   review = Review.create(subject: line[0], body: line[1], rating: line[2], user_id: line[3].to_i, product_id: line[4].to_i)
