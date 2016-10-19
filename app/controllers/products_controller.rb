@@ -35,9 +35,8 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.archive
-    redirect_to root_path
+    redirect_to controller: 'pages', action: "index"
   end
-
 
 
 
