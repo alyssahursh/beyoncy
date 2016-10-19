@@ -33,7 +33,7 @@ CSV.foreach('seed_csvs/products.csv') do |line|
  product = Product.create(name: line[0], description: line[1], price: line[2].to_i, picture: line[3], inventory_qty: line[4].to_i, active: to_bool(line[5]), category_id: line[6].to_i)
 
  if product.valid?
-   puts "Product #{prodcut.name} created sucessfully."
+   puts "Product #{product.name} created sucessfully."
  else
    puts "Product #{product.name} failed. Errors: #{product.errors}"
  end
