@@ -98,6 +98,8 @@ class ProductTest < ActiveSupport::TestCase
     # assert_not(product.valid?)
   end
 
+############# testing products relationship with categories
+
   test 'products must have a category' do
     assert(products(:normal_product).valid?)
     assert_not(products(:product_with_no_category).valid?)
