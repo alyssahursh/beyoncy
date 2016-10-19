@@ -1,7 +1,5 @@
 class ReviewsController < ApplicationController
   before_action :find_review, except: [:index, :new, :create]
-  before_action :not_found, except: [:index, :new, :create]
-
 
   def index
     @reviews = Review.all
@@ -45,7 +43,7 @@ class ReviewsController < ApplicationController
   private
   def find_review
     @review = Review.find(params[:id])
-    if !@review.nil?
+    if @review.nil?
       render :file => 'public/404.html', :status => :not_found
     end
   end
