@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
-  before_action :not_found, except: [:index, :new, :create]
 
 
   def index
@@ -45,7 +44,7 @@ class ProductsController < ApplicationController
   private
   def find_product
     @product = Product.find(params[:id])
-    if !@product.nil?
+    if @product.nil?
       render :file => 'public/404.html', :status => :not_found
     end
   end
