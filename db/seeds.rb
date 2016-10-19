@@ -19,7 +19,7 @@ end
 
 # seed Reviews
 CSV.foreach('seed_csvs/reviews.csv') do |line|
-  review = Review.create(subject: line[0], body: line[1], rating: line[2])
+  review = Review.create(subject: line[0], body: line[1], rating: line[2], user_id: line[3].to_i, product_id: line[4].to_i)
   if review.valid?
     puts "Review #{review.subject} created sucessfully."
   else
