@@ -1,7 +1,5 @@
 class OrdersController < ApplicationController
   before_action :find_order, except: [:index, :new, :create]
-  before_action :not_found, except: [:index, :new, :create]
-
 
   def index
     @orders = Order.all
@@ -45,7 +43,7 @@ class OrdersController < ApplicationController
   private
   def find_order
     @order = Order.find(params[:id])
-    if !@order.nil?
+    if @order.nil?
       render :file => 'public/404.html', :status => :not_found
     end
   end

@@ -1,7 +1,5 @@
 class CategoriesController < ApplicationController
   before_action :find_category, except: [:index, :new, :create]
-  before_action :not_found, except: [:index, :new, :create]
-
 
   def index
     @categories = Category.all
@@ -45,7 +43,7 @@ class CategoriesController < ApplicationController
   private
   def find_category
     @category = Category.find(params[:id])
-    if !@category.nil?
+    if @category.nil?
       render :file => 'public/404.html', :status => :not_found
     end
   end
