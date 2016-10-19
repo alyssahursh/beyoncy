@@ -16,4 +16,8 @@ class Product < ActiveRecord::Base
   # product must be associated with a category. don't put this in the category validations or else we'll get an infinite loop!
   validates :category_id, presence: true
   validates_associated :category
+
+  def archive
+    update_attribute(:active, false)
+  end
 end
