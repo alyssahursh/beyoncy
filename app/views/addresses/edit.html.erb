@@ -1,2 +1,3 @@
-<h1>Addresses#edit</h1>
-<p>Find me in app/views/addresses/edit.html.erb</p>
+<h1>Edit an Address</h1>
+
+<%= render partial: "addressform", method: :post, locals: { action_name: address_path, params: {id: @address.id }} %>
