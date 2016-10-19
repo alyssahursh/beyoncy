@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :find_user, except: [:index, :new, :create]
-  before_action :not_found, except: [:index, :new, :create]
-
 
   def index
     @users = User.all
@@ -45,7 +43,7 @@ class UsersController < ApplicationController
   private
   def find_user
     @user = User.find(params[:id])
-    if !@user.nil?
+    if @user.nil?
       render :file => 'public/404.html', :status => :not_found
     end
   end

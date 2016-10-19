@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :category
   has_and_belongs_to_many :orders
+  has_many :reviews
 
   # product must have a name
   validates :name, presence: true

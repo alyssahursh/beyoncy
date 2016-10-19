@@ -17,6 +17,16 @@ def to_bool(string)
   end
 end
 
+# seed Reviews
+CSV.foreach('seed_csvs/reviews.csv') do |line|
+  review = Review.create(subject: line[0], body: line[1], rating: line[2])
+  if review.valid?
+    puts "Review #{review.subject} created sucessfully."
+  else
+    puts "Review #{review.subject} failed. Errors: #{review.errors}"
+  end
+end
+
 # seed Categories
 CSV.foreach('seed_csvs/categories.csv') do |line|
   category = Category.create(name: line[0])
@@ -33,7 +43,7 @@ CSV.foreach('seed_csvs/products.csv') do |line|
  product = Product.create(name: line[0], description: line[1], price: line[2].to_i, picture: line[3], inventory_qty: line[4].to_i, active: to_bool(line[5]), category_id: line[6].to_i)
 
  if product.valid?
-   puts "Product #{prodcut.name} created sucessfully."
+   puts "Product #{product.name} created sucessfully."
  else
    puts "Product #{product.name} failed. Errors: #{product.errors}"
  end

@@ -1,7 +1,5 @@
 class AddressesController < ApplicationController
   before_action :find_address, except: [:index, :new, :create]
-  before_action :not_found, except: [:index, :new, :create]
-
 
   def index
     @addresses = Address.all
@@ -45,7 +43,7 @@ class AddressesController < ApplicationController
   private
   def find_address
     @address = Address.find(params[:id])
-    if !@address.nil?
+    if @address.nil?
       render :file => 'public/404.html', :status => :not_found
     end
   end
