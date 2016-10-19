@@ -3,8 +3,18 @@
 <section>
   <p><%=@product[:description]%></p>
   <p><%=@product[:price]%></p>
+<!-- need to change this once I figure out image gem -->
   <p><%=@product[:picture]%></p>
 </section>
+
+<section>
+  <% @product.reviews.each do |review| %>
+    <p><%= review.subject %></p>
+    <p><%= review.body %></p>
+    <p><%= review.ranking %></p>
+  <% end %>
+</section>
+
 <!-- need to add if statement here - only see these options if they are admin -->
 <ul>
   <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
