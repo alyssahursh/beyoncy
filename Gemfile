@@ -3,9 +3,12 @@ source 'https://rubygems.org'
 # .env stuff
 gem 'dotenv-rails'
 
-# oAuth 
+# oAuth
 gem "omniauth"
 gem "omniauth-github"
+
+# color for minitest
+gem 'minitest-reporters'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
@@ -20,11 +23,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'awesome_print'
 gem 'meta_request'
-# gem 'pry-rails'
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
-gem 'omniauth'
-gem 'omniauth-github'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
