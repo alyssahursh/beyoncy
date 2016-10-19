@@ -1,5 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+normal_product:
+  name: "everything about this product is good"
+  description: "blah blah"
+  price: 50000
+  picture: "blah"
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
 nameless_product:
   description: "this product has no name"
   price: 1000
@@ -25,10 +34,19 @@ product_with_no_price:
   active: true
   category_id: 1
 
-inactive_product:
+free_product:
+  name: "fo free"
+  description: "blah blah"
+  price: 0
+  picture: "blah"
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
+product_without_active_marker:
   name: "not active"
   description: "blah blah"
-  price: -10000
+  price: 10000
   picture: "blah"
   inventory_qty: 10
   category_id: 1
