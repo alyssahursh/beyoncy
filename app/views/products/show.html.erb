@@ -5,6 +5,8 @@
     <li><%=@product.description%></li>
     <li><%=number_to_currency((@product.price/100))%></li>
     <li><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></li>
+    <!-- uncomment this once we know path for adding items to a cart -->
+    <!-- <li><%= button_to 'Add to Cart', edit_product_path(params[:id]), :class => "button", method: :get %></li> -->
 </ul>
 </section>
 
