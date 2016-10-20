@@ -1,2 +1,12 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<h1>See Products by Category</h1>
+
+<% @categories.each do |category| %>
+<article>
+  <ul>
+    <li><%=image_tag(category.picture, :alt => "category photo", :title => category.name)%></li>
+    <li><%= link_to category.name, category_path(category.id) %></li>
+  </ul>
+
+</article>
+
+<% end %>

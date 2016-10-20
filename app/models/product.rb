@@ -20,4 +20,5 @@ class Product < ActiveRecord::Base
   def archive
     update_attribute(:active, false)
   end
+
 end
