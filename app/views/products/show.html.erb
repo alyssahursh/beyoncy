@@ -3,7 +3,7 @@
 <section>
   <p><%=@product.description%></p>
   <p><%=number_to_currency((@product.price/100))%></p>
-  <p><%=image_tag(@product.picture, :alt => "product photo", :title => "Product")%></p>
+  <p><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></p>
 </section>
 
 <h2> Product Reviews </h2>
