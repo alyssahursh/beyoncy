@@ -1,0 +1,11 @@
+<h1>See Products by Category</h1>
+
+<% @categories.each do |category| %>
+<article>
+  <ul>
+    <li><%= link_to category.name, category_path(category.id) %></li>
+  </ul>
+
+</article>
+
+<% end %>
