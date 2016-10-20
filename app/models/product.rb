@@ -10,8 +10,8 @@ class Product < ActiveRecord::Base
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   # product must either be active or inactive
-  validates :active, inclusion: { in: [true, false] }
-  validates :active, exclusion: { in: [nil] }
+  # validates :active, inclusion: { in: [true, false] }
+  # validates :active, exclusion: { in: [nil] }
 
   # product must be associated with a category. don't put this in the category validations or else we'll get an infinite loop!
   validates :category_id, presence: true
