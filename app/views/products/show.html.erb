@@ -1,17 +1,21 @@
 <h1><%= @product.name %></h1>
 
 <section>
-  <p><%=@product.description%></p>
-  <p><%=number_to_currency((@product.price/100))%></p>
-  <p><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></p>
+  <ul>
+    <li><%=@product.description%></li>
+    <li><%=number_to_currency((@product.price/100))%></li>
+    <li><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></li>
+</ul>
 </section>
 
 <h2> Product Reviews </h2>
 <section>
   <% @product.reviews.each do |review| %>
-    <p><%= review.subject %></p>
-    <p><%= show_lemons(review) %></p>
-    <p><%= review.body %></p>
+    <ul>
+      <li><%= review.subject %></li>
+      <li><%= show_lemons(review) %></li>
+      <li><%= review.body %></li>
+    </ul>
   <% end %>
 <!-- may want to add an option to edit reviews on this page (only available if user is logged in and it is their review) -->
 </section>
