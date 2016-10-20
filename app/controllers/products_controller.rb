@@ -25,14 +25,15 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    # @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   def update
+    @product.category_id = params[:category_id]
     if @product.update(product_params)
-      redirect_to # UNKNOWN
+      redirect_to action: "show"
     else
-      render # UNKNOWN
+      render :action => :new
     end
   end
 
