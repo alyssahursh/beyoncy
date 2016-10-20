@@ -3,6 +3,7 @@
 <% @categories.each do |category| %>
 <article>
   <ul>
+    <li><%=image_tag(@category.picture, :alt => "category photo", :title => @category.name)%></li>
     <li><%= link_to category.name, category_path(category.id) %></li>
   </ul>
 

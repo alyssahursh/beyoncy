@@ -39,7 +39,7 @@ end
 
 # seed Categories
 CSV.foreach('seed_csvs/categories.csv') do |line|
-  category = Category.create(name: line[0])
+  category = Category.create(name: line[0], picture: line[1])
   if category.valid?
     puts "Category #{category.name} created sucessfully."
   else
