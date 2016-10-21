@@ -12,13 +12,57 @@ normal_user:
   uid: 3494395
   provider: github
 
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  birthdate: 2016-10-18 13:28:07
-  phone: MyString
+user_without_extras:
+  email: edith@edith.com.gov.creedthoughts
+  uid: 3494395
+  provider: github
+
+user_without_email:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
   admin: false
-  active: false
-  uid: MyString
-  provider: MyString
+  active: true
+  uid: 3494395
+  provider: github
+
+user_without_uid:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  email: ooohlala@france.gov
+  provider: github
+
+user_without_provider:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  email: bob@twitter.com
+  uid: 12
+
+user_without_admin:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  uid: 1000000000
+  active: true
+  email: edith@wharton.com
+  provider: github
+
+user_without_active:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  uid: 1000000000
+  admin: true
+  email: cat@cat.com
+  provider: github
