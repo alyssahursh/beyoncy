@@ -31,7 +31,6 @@ review_without_rating:
   user_id: 1
   product_id: 1
 
-
 _100_review:
   subject: hello
   body: "here is some stuff that i think"
