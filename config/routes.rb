@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   root to: 'pages#index', as: '/'
 
-  resources :users, :reviews, :products, :categories, :orders, :addresses, :order_products
+  resources :users, :reviews, :products, :categories, :orders, :addresses, :order_products, :carts
 
 end

@@ -15,6 +15,12 @@
 <!-- may want to add an option to edit reviews on this page (only available if user is logged in and it is their review) -->
 </section>
 
+<ul>
+  <li>
+     <%= button_to 'Add to Cart', controller: :orders, :class => "button", method: :get  %>
+  </li>
+</ul>
+
 <!-- need to add if statement here later - only see these options if they are admin. -->
 <ul>
   <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
