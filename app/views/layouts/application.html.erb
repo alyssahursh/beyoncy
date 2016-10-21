@@ -10,8 +10,18 @@
   <header>
     <nav>
       <ul>
-        <li><a href='/products'>Shop</a></li>
-        <li><h1>BEYONCE</h1></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropdown-button">Shop</button>
+            <div class="dropdown-content">
+              <a href="/categories">Shop By Category</a>
+              <a href="/categories/1">Baseball Bats</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+        </li>
+
+        <li><h1><a href='/'>BEYONCY</a></h1></li>
         <!-- NOT SURE WHERE THESE SHOULD BE DIRECTED -->
         <li><a href='/login'>Login</a></li>
         <li><a href='/cart'><img src="/assets/shopping-cart.svg"></a></li>
