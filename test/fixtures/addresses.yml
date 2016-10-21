@@ -94,3 +94,15 @@ address_without_country:
   state: Russia
   phone: 3040404594923
   user_id: 1
+
+address_without_user:
+  kind: home
+  first_name: lauren
+  last_name: cat
+  street1: "blah blah"
+  street2: nil
+  city: seattle
+  state: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923

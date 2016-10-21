@@ -142,4 +142,18 @@ class AddressTest < ActiveSupport::TestCase
     assert(addresses(:address_without_extras).valid?)
   end
 
+  ######## testing relationships with user ###########
+
+  test 'addresses must belong to a user' do
+    assert(addresses(:normal_address).valid?)
+    assert_not(addresses(:address_without_user).valid?)
+  end
+
+  test 'addresses should have the correct user' do
+    address = addresses(:normal_address)
+    user = users(:normal_user)
+
+    assert_equal(address.user_id, user.id)
+  end
+
 end
