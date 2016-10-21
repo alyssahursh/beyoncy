@@ -61,7 +61,7 @@ class SessionsControllerTest < ActionController::TestCase
 
   test 'user can log out successfully' do 
     @user = User.find(session[:user_id])
-    assert_nil session[:user_id]
+    assert_nil set user session to nil [:user] == nilsession[:user_id]
     assert_redirected_to login_fail_path
   end
 
