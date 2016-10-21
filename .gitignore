@@ -16,8 +16,8 @@
 !/log/.keep
 /tmp
 
-# hide sekrets!
-.env
+# hide secrets!
+/.env
 
 # hide that one annoying file
-.ds_store
+/.DS_Store

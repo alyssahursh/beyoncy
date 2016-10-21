@@ -26,8 +26,8 @@ class OrderProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get udpate" do
-    get :udpate
+  test "should get update" do
+    get :update
     assert_response :success
   end
 

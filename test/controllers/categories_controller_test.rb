@@ -26,7 +26,7 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get udpate" do
+  test "should get update" do
     get :udpate
     assert_response :success
   end

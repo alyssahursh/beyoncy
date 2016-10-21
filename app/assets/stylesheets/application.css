@@ -11,9 +11,87 @@ ul {
 /************************************/
 /* NAVIGATION BAR AND HEADER SECTION */
 /************************************/
+html {
+  margin: 0;
+  padding: 0;
+}
+
+
+@media only screen and (orientation: landscape) {
+  .homepage-banner {
+    width: 100%;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  .homepage-banner {
+    height: 100%;
+    width: auto;
+  }
+}
+
+#slider {
+	width: 100vw;
+	height: auto;
+	overflow: hidden;
+  position: fixed;
+  top: 0vw;
+  left: 0vw;
+
+}
+
+.slide {
+  display: inline-block;
+	width: 100vw;
+	height: auto;
+	float: left;
+	position: relative;
+}
+
+#slide-holder {
+	width: 400vw;
+	position: relative;
+	left: 0;
+	will-change: transform;
+	animation: scroller 15s;
+  animation-delay: 2s;
+}
+
+@keyframes scroller {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-100vw); }
+  25% { transform: translateX(-100vw); }
+  35% { transform: translateX(-200vw); }
+  50% { transform: translateX(-200vw); }
+  60% { transform: translateX(-300vw); }
+  75% { transform: translateX(-300vw); }
+  100% { transform: translateX(0); }
+
+}
+
+nav {
+  background-color: #000;
+  color: #FFF;
+  height: 5vw;
+  margin: 0;
+  position: fixed;
+  opacity: .5;
+  text-align: center;
+  width: 100vw;
+  z-index: 100;
+}
+
 nav ul li{
   display: inline-block;
   list-style: none;
+  padding: 0 10vw;
+  text-transform: uppercase;
+}
+
+nav a:link,
+nav a:hover,
+nav a:visited {
+  color: #FFF;
 }
 
 /************************************/

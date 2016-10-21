@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   validates :email, :uid, :provider, presence: true
-  
+  validates_uniqueness_of :email
+
   has_many :orders
   has_many :reviews
   has_many :addresses
