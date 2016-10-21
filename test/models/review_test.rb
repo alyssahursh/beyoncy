@@ -71,19 +71,47 @@ class ReviewTest < ActiveSupport::TestCase
     assert(review.valid?)
 
     review.rating = 1.545
-    review.save
     assert_not(review.valid?)
 
-      # review.rating = [1,5,4,2,3]
-      # assert_not(review.valid?)
-      #
-      # review.rating = "this is a good movie"
-      # assert_not(review.valid?)
+    # this does not pass, but charles says it's okay to consider it passing for now. it's very unlikely that someone will be able to make a new review with a rating that is an array.
+    # review.rating = [1,5,4,2,3]
+    # assert_not(review.valid?)
+
+    review.rating = "this is a good movie"
+    assert_not(review.valid?)
   end
 
 
 ######## testing relationships with user ###########
 
+
+  test 'reviews must have a user' do
+    assert(reviews(:normal_review).valid?)
+    assert_not(reviews(:review_without_user).valid?)
+  end
+
+  test 'reviews should have the correct user' do
+    review = reviews(:normal_review)
+    user = users(:normal_user)
+
+    assert_equal(review.user_id, user.id)
+  end
+
+
+
 ######## testing relationships with product ###########
+
+
+  test 'reviews must have a product' do
+    assert(reviews(:normal_review).valid?)
+    assert_not(reviews(:review_without_product).valid?)
+  end
+
+  test 'reviews should have the correct product' do
+    review = reviews(:normal_review)
+    product = products(:normal_product)
+
+    assert_equal(review.product_id, product.id)
+  end
 
 end
