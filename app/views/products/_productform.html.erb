@@ -15,6 +15,9 @@
 <!-- move Category.all to controller once we get form working - right now I have it here for debugging purposes. For edit dropdown would be great if it prefilled with current category  -->
   <li><%= f.label :category_id %></li>
   <li><%= select_tag(:category_id, options_for_select(Category.all.map{|c| [ c.name, c.id ] }), :prompt => "Select one!") %></li>
+
+  <li><%= f.label :active %></li>
+  <li><%= f.select :active, [['Active', true], ['Inactive', false]] %></li>
 <!-- will need to add gem and figure out how to upload photos -->
   <li><%= f.file_field :picture%></li>
 

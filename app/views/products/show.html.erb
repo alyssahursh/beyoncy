@@ -1,29 +1,45 @@
-<h1><%= @product.name %></h1>
 
-<section>
-  <ul>
-    <li><%=@product.description%></li>
-    <li><%=number_to_currency((@product.price/100))%></li>
-    <li><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></li>
-</ul>
-</section>
 
-<h2> Product Reviews </h2>
-<section>
-  <% @product.reviews.each do |review| %>
+<div class="row">
+  <section class="small-5 columns">
     <ul>
-      <li><%= review.subject %></li>
+      <li><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></li>
+    </ul>
+  </section>
+  <section class="small-7 columns">
+    <ul>
+      <li><h1><%= @product.name %></h1></li>
+      <li><h3>Details</h3></li>
+      <%=@product.description%></li>
+      <li><%= number_to_currency((@product.price/100))%></li>
+      <li><%= @product.inventory_qty %> in stock</li>
+      <!-- uncomment this once we know path for adding items to a cart -->
+      <!-- <li><%= button_to 'Add to Cart', edit_product_path(params[:id]), :class => "button", method: :get %></li> -->
+      <!-- need to add if statement here later - only see these options if they are admin. -->
+      <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
+    <!-- what if product is inactive already - we should add if statement here so that button changes to be "Mark As Active" -->
+      <li><%= button_to 'Mark as Inactive', product_path(params[:id]), :class => "button", method: :delete, data: {confirm: 'Are you sure you want to make this product inactive?'} %>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<div class="row">
+  <section class="small-6 columns">
+    <ul>
+      <li><h2> Product Reviews </h2></li>
+   <% @product.reviews.each do |review| %>
+      <li><strong><%= review.subject %></strong></li>
       <li><%= show_lemons(review) %></li>
       <li><%= review.body %></li>
+      <!-- may want to add an option to edit reviews on this page (only available if user is logged in and it is their review) -->
     </ul>
-  <% end %>
-<!-- may want to add an option to edit reviews on this page (only available if user is logged in and it is their review) -->
-</section>
-
-<!-- need to add if statement here later - only see these options if they are admin. -->
-<ul>
-  <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
-<!-- what if product is inactive already - we should add if statement here so that button changes to be "Mark As Active" -->
-  <li><%= button_to 'Mark as Inactive', product_path(params[:id]), :class => "button", method: :delete, data: {confirm: 'Are you sure you want to make this product inactive?'} %>
-  </li>
-</ul>
+   <% end %>
+  </section>
+  <section class="small-6 columns">
+    <ul>
+      <li><h3>Leave your Review for <%= @product.name %></h3></li>
+    </ul>
+      <%= render partial: "reviews/reviewform", locals: { controller: 'reviews', action_name: reviews_path } %>
+  </section>
+</div>
