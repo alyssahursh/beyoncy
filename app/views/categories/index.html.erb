@@ -1,12 +1,10 @@
-<h1>See Products by Category</h1>
+<h1 class="center-text">See Products by Category</h1>
 
-<% @categories.each do |category| %>
-<article>
-  <ul>
-    <li><%=link_to image_tag(category.picture, :alt => "category photo", :title => category.name), category_path(category.id) %></li>
-    <li><%= link_to category.name, category_path(category.id) %></li>
-  </ul>
-
-</article>
-
-<% end %>
+<div class="row small-up-1 medium-up-2 large-up-3">
+  <% @categories.each do |category| %>
+  <article class="column">
+      <%=link_to image_tag(category.picture, :alt => "category photo", :title => category.name), category_path(category.id) %>
+      <p class="center-text"><%= link_to category.name, category_path(category.id) %></p>
+  </article>
+  <% end %>
+</div>

@@ -25,3 +25,18 @@ nav ul li{
 /********************/
 /*   BUTTONS        */
 /*******************/
+
+
+
+/********************/
+/*  GRID DISPLAYS  */
+/*******************/
+
+article.column {
+  margin: 3em 0 3em 0;
+  padding: 0 3em 0 3em;
+}
+
+.center-text {
+  text-align: center;
+}
