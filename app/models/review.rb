@@ -11,4 +11,9 @@ class Review < ActiveRecord::Base
 
   validates :product_id, presence: true
   validates_associated :product
+
+  # if a review has a rating (not required), that rating must be an integer, and the rating must be between 1 and 5 inclusive.
+  # there is probably a better way to write this validation but i just spent 20 minutes on this single line of code, so, moving on.
+  validates :rating, numericality: {only_integer: true}
+  validates_inclusion_of :rating, in: [1, 2, 3, 4, 5, nil], message: "rating must be between 1 and 5"
 end
