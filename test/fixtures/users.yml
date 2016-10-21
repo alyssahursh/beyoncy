@@ -66,3 +66,49 @@ user_without_active:
   admin: true
   email: cat@cat.com
   provider: github
+
+one:
+  first_name: 'Becky'
+  last_name: 'beckyGoodHair'
+  email: beckygoodhair@lockskey.com 
+  birthdate: 1997-10-18 13:28:07
+  phone: '555-867-5309'
+  admin: false
+  active: true
+  uid: 'whatisgood'
+  provider: 'github'
+
+two:
+  first_name: 'Oshun'
+  last_name: 'Irunmole'
+  email: lovelightwater@goldandhoney.com
+  birthdate: 1900-09-08 13:28:07
+  phone: MyString
+  admin: true
+  active: true
+  uid: '12345678'
+  provider: 'github'
+
+three:
+  first_name: 'Ganga'
+  last_name: 'Mai'
+  email: meetmeattheriver@takemetothewater.com
+  birthdate: 1900-10-09 13:28:07
+  phone: '214-867-5309'
+  admin: true
+  active: true
+  uid: '87654321'
+  provider: 'github'
+
+
+four:
+  first_name: 'Orunmila'
+  last_name: 'Olodumare'
+  email: books&bells@indiebookstore&coffee.com
+  birthdate: 1900-10-09 13:28:07
+  phone: '527-867-5309'
+  admin: true
+  active: true
+  uid: '09876543'
+  provider: 'github'
+

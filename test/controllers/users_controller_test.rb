@@ -6,8 +6,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get show" do
-    get :show
+  test "should load show with given user data" do
+    get :show, {:id, }
     assert_response :success
   end
 

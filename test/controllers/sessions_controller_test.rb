@@ -10,9 +10,9 @@ class SessionsControllerTest < ActionController::TestCase
         OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
             'provider' => 'github',
             'uid' => '12345678',
-            'info' => {'email' => 'tbecky@testmail.com', 'name' => 'test', 'image' => ''}
+            'info' => {'email' => 'beckygoodhair@beckygoodhair.com', 'name' => 'test', 'image' => ''}
         })
-        request.env['omniauth.env'] = OmniAuth.config.mock_auth[:facebook]
+        request.env['omniauth.env'] = OmniAuth.config.mock_auth[:github]
 
         get :auth
     end
@@ -57,6 +57,12 @@ class SessionsControllerTest < ActionController::TestCase
     user_id = @uid.dup
     @uid.save
     assert_not duplicate_uid.valid?
+  end
+
+  test 'user can log out successfully' do 
+    @user = User.find(session[:user_id])
+    assert_nil set user session to nil [:user] == nilsession[:user_id]
+    assert_redirected_to login_fail_path
   end
 
 end
