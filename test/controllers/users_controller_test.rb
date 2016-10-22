@@ -33,9 +33,10 @@ class UsersControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
+  test "should redirect on destroy" do
+    test_user_destroy = users(:user_without_extras)
+    get :destroy, id: test_user_destroy.id
+    assert_redirected_to '/'
+  end
 
 end
