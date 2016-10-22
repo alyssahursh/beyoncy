@@ -32,10 +32,12 @@ class AddressesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
+  test "should redirect on destroy" do
+    test_address_destroy = addresses(:normal_address)
+
+    get :destroy, id: test_address_destroy.id
+    assert_redirected_to '/'
+  end
 
   test "If a user is not logged in they cannot see their address(es)." do
     # session[:user_id] = nil  # ensure no one is logged in
