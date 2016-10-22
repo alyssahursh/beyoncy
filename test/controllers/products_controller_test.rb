@@ -6,10 +6,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should get show" do
-  #   get :show
-  #   assert_response :success
-  # end
+  test 'should load a specific product on show' do
+    test_product = products(:normal_product)
+    get :show, id: test_product.id
+    assert_response :success
+
+  end
 
   test "should get new" do
     get :new
