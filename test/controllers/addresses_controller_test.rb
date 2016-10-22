@@ -39,6 +39,14 @@ class AddressesControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
 
+  test 'address count should decrease by one' do
+    assert_difference('Address.count', -1) do
+      test_address_destroy = addresses(:normal_address)
+      get :destroy, id: test_address_destroy.id
+    end
+
+  end
+
   test "If a user is not logged in they cannot see their address(es)." do
     # session[:user_id] = nil  # ensure no one is logged in
 
