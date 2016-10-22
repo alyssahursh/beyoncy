@@ -32,9 +32,10 @@ class ProductsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
+  test "should redirect on products destroy" do
+    test_product_destroy = products(:normal_product) 
+    get :destroy, id: test_product_destroy.id
+    assert_redirected_to '/'
+  end
 
 end

@@ -32,7 +32,7 @@ class AddressesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  test "should redirect on destroy" do
+  test "should redirect on addresses destroy" do
     test_address_destroy = addresses(:normal_address)
 
     get :destroy, id: test_address_destroy.id
