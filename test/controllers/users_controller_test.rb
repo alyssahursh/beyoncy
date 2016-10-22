@@ -39,4 +39,10 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
 
+  test 'user count should decrease by one on destroy' do
+    assert_difference('User.count', -1) do
+      test_user_destroy = users(:user_without_extras)
+      get :destroy, id: test_user_destroy
+    end
+  end
 end

@@ -39,7 +39,7 @@ class AddressesControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
 
-  test 'address count should decrease by one' do
+  test 'address count should decrease by one on destroy' do
     assert_difference('Address.count', -1) do
       test_address_destroy = addresses(:normal_address)
       get :destroy, id: test_address_destroy.id
