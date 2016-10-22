@@ -33,10 +33,11 @@ class ReviewsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
+  test "should redirect get destroy review" do
+    test_review_destroy = reviews(:normal_review)
+    get :destroy, id: test_review_destroy.id
+    assert_redirected_to '/'
+  end
 
   test "If a user is not logged in they cannot see their review(s)." do
     # session[:user_id] = nil  # ensure no one is logged in
