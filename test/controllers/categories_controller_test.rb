@@ -6,10 +6,11 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should get show" do
-  #   get :show
-  #   assert_response :success
-  # end
+  test 'should load specific category on show' do
+    test_category = categories(:normal_category)
+    get :show, id: test_category.id
+    assert_response :success
+  end
 
   test "should get new" do
     get :new
