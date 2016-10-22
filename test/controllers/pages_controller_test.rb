@@ -3,11 +3,6 @@ require 'test_helper'
 class PagesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
-
-    # examples for future reference
-    # get :show, params: { id: 12 }
-    # patch update_url, params: { id: 12 }
-
     assert_response :success
   end
 

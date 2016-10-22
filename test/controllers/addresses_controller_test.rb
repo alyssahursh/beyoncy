@@ -6,10 +6,11 @@ class AddressesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should get show" do
-  #   get :show
-  #   assert_response :success
-  # end
+  test "should get show" do
+    test_address = addresses(:normal_address)
+    get :show, id: test_address.id
+    assert_response :success
+  end
 
   test "should get new" do
     get :new
