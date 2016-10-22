@@ -15,10 +15,10 @@ class SessionsController < ApplicationController
       # Save the user ID in the session
       session[:user_id] = @user.id
 
-      redirect_to sessions_path
+      redirect_to root_path
     end
 
     def index
       @user= User.find(session[:user_id])
-    end 
+    end
 end

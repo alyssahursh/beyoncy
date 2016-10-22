@@ -21,3 +21,6 @@
 
 # hide that one annoying file
 /.DS_Store
+
+# coverage
+/coverage
