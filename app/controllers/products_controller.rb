@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def new
@@ -18,7 +19,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.category_id = params[:category_id]
     if @product.save
-      redirect_to controller: 'pages', action: "index"
+      redirect_to action: "index"
     else
       render :action => :new
     end
