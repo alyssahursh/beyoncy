@@ -6,10 +6,11 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should load show with given user data" do
-  #   get :show
-  #   assert_response :success
-  # end
+  test 'should get users on show' do
+    test_user = users(:user_without_extras)
+    get :show, id: test_user.id
+    assert_response :success
+  end
 
   test "should get new" do
     get :new

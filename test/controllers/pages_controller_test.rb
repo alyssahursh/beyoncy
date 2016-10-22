@@ -6,9 +6,14 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'that the controller populates categories and products on get' do
+  test 'that the controller populates categories on get' do
     get :index
     assert(@controller.categories.length > 0)
+    
+  end
+
+  test 'that the controler populates products on get' do
+    get :index
     assert(@controller.products.length > 0)
   end
 
