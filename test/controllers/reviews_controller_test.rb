@@ -1,15 +1,17 @@
 require 'test_helper'
 
 class ReviewsControllerTest < ActionController::TestCase
+  # should load all review'
   test "should get index" do
     get :index
     assert_response :success
   end
 
-  # test "should get show" do
-  #   get :show
-  #   assert_response :success
-  # end
+  test 'should load specific review on show' do
+    test_review = reviews(:normal_review)
+    get :show, id: test_review.id
+    assert_response :success
+  end
 
   # test "should get create" do
   #   get :create
