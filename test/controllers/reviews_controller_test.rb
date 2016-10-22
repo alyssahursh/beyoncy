@@ -39,6 +39,14 @@ class ReviewsControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
 
+  test 'review count should decrease by one on destroy' do
+    assert_difference('Review.count', -1) do
+      test_review_destroy = reviews(:normal_review)
+      get :destroy, id: test_review_destroy.id
+    end
+
+  end
+
   test "If a user is not logged in they cannot see their review(s)." do
     # session[:user_id] = nil  # ensure no one is logged in
 
