@@ -10,7 +10,6 @@ class ProductsControllerTest < ActionController::TestCase
     test_product = products(:normal_product)
     get :show, id: test_product.id
     assert_response :success
-
   end
 
   test "should get new" do
