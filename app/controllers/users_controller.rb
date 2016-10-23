@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @addresses = Address.where(user_id: @user.id)
   end
 
   def new

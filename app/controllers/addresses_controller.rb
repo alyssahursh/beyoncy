@@ -14,10 +14,13 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+    @address.user_id = session[:user_id]
     if @address.save
-      redirect_to # UNKNOWN
+      flash[:notice] = "Address successfully saved."
+      redirect_to account_path
     else
-      render # UNKNOWN
+      flash[:notice] = "Address could not be saved."
+      redirect_to edit_address_path(@address.id)
     end
   end
 
@@ -26,18 +29,20 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      redirect_to # UNKNOWN
+      flash[:notice] = "Address updated."
+      redirect_to account_path
     else
-      render # UNKNOWN
+      flash[:notice] = "Address could not be updated."
+      redirect_to edit_address_path(@address.id)
     end
+
   end
 
   def destroy
     @address.destroy
-    redirect_to root_path
+    flash[:notice] = "Address deleted."
+    redirect_to account_path
   end
-
-
 
 
   private
