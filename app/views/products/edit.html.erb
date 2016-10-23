@@ -1,3 +1,4 @@
-<h1>Edit a Product</h1>
-
-<%= render partial: "productform", method: :post, locals: { action_name: product_path, params: {id: @product.id }} %>
+<div class="format-forms">
+  <h1>Edit a Product</h1>
+  <%= render partial: "productform", method: :post, locals: { action_name: product_path, params: {id: @product.id }} %>
+</div>

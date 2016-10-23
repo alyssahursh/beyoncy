@@ -1,3 +1,4 @@
-<h1>Edit a Category</h1>
-
-<%= render partial: "reviewform", method: :post, locals: { action_name: category_path, params: {id: @category.id }} %>
+<div class="format-forms">
+  <h1>Edit a Category</h1>
+  <%= render partial: "categoryform", method: :post, locals: { action_name: category_path, params: {id: @category.id }} %>
+</div>
