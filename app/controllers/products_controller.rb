@@ -38,6 +38,7 @@ class ProductsController < ApplicationController
     end
   end
 
+  #TODO why does this archive instead of destroy product, consider under puts/ post?
   def destroy
     @product.archive
     redirect_to controller: 'pages', action: "index"

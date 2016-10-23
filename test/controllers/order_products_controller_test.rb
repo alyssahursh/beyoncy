@@ -27,10 +27,19 @@ class OrderProductsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
+  test "should redirect on order products destroy" do
+    test_order_products = order_products(:one)
+    get :destroy, id: test_order_products.id
+    assert_redirected_to '/'
+  end
+  # TODO jm-rives stopped here 10/22/2016
+  test 'order_products should decrease by one one destroy' do
+    # assert_difference('order_products', -1) do
+    #   test_order_products = order_products(:one)
+    #   get :destroy, id: test_order_products.id
+    # end
+    # generates TypeError: no implicit conversion of Fixnum into Array
+  end
 
   test "If a user is not logged in they cannot see their product order(s)." do
     # session[:user_id] = nil  # ensure no one is logged in

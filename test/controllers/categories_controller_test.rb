@@ -32,9 +32,10 @@ class CategoriesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
+  test "should redirect on categories destroy" do
+    test_category_destroy = categories(:normal_category)
+    get :destroy, id: test_category_destroy.id
+    assert_redirected_to '/'
+  end
 
 end

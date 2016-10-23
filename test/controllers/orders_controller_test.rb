@@ -31,10 +31,12 @@ class OrdersControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get destroy" do
-  #   get :destroy
-  #   assert_response :success
-  # end
+  # broken by model
+  test "should redirect on orders controller destroy" do
+    test_order_destroy = orders(:normal_order)
+    get :destroy, id: test_order_destroy
+    assert_redirected_to '/'
+  end
 
   test "If a user is not logged in they cannot see their order(s)." do
     # session[:user_id] = nil  # ensure no one is logged in
