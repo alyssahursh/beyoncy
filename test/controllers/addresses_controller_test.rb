@@ -38,9 +38,6 @@ class AddressesControllerTest < ActionController::TestCase
     updated_address = Address.find(test_address_update.id)
     # verify the data change
     assert_equal 'Dez', updated_address.first_name
-
-
-
   end
 
   test "should redirect on addresses destroy" do
