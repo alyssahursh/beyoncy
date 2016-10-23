@@ -38,4 +38,12 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
 
+  #TODO jm-rives stopped here 10/22/16
+  test 'categories should decrease by one on destroy' do
+    # assert_difference('categories.count') do
+    #   test_category_destroy = categories(:normal_category)
+    #   get :destroy, id: test_category_destroy
+    # end
+  end
+
 end
