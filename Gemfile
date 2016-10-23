@@ -7,8 +7,11 @@ gem 'dotenv-rails'
 gem "omniauth"
 gem "omniauth-github"
 
-# color for minitest
+# color for minitest?
 gem 'minitest-reporters'
+
+# simplecov for testing coverage
+gem 'simplecov'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
