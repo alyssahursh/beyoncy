@@ -27,10 +27,13 @@ class AddressesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get update" do
-  #   get :update
-  #   assert_response :success
-  # end
+  test "should get update" do
+    test_address_update = addresses(:normal_address)
+    test_address_change = {first_name: 'Dez'}
+
+    patch :update, id: test_address_update.id, address: test_address_change
+  
+  end
 
   test "should redirect on addresses destroy" do
     test_address_destroy = addresses(:normal_address)
