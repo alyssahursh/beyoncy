@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   private
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     if @user.nil?
       render :file => 'public/404.html', :status => :not_found
     end

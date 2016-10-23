@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   resources :users, :reviews, :products, :categories, :orders, :addresses, :order_products
 
+  get 'account' => 'users#show', as: 'account'
+
 end

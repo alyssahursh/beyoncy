@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def index
     logged_in?
+    @user = User.find_by(id: session[:user_id])
     @categories = Category.all
     @products = Product.all
   end
