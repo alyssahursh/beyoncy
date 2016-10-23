@@ -27,12 +27,20 @@ class AddressesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  test "should get update" do
+  test "should update address on patch request" do
+    # get it from yml
     test_address_update = addresses(:normal_address)
+    # make a change hash
     test_address_change = {first_name: 'Dez'}
-
+    # send patch request
     patch :update, id: test_address_update.id, address: test_address_change
-  
+    # read  the changed address from the database
+    updated_address = Address.find(test_address_update.id)
+    # verify the data change
+    assert_equal 'Dez', updated_address.first_name
+
+
+
   end
 
   test "should redirect on addresses destroy" do
