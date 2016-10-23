@@ -1,5 +1,16 @@
 @import url('foundation.css');
 
+/************************************/
+/* OVERALL STYLING - BODY           */
+/************************************/
+
+ul {
+  list-style: none;
+}
+
+/************************************/
+/* NAVIGATION BAR AND HEADER SECTION */
+/************************************/
 html {
   margin: 0;
   padding: 0;
@@ -81,4 +92,29 @@ nav a:link,
 nav a:hover,
 nav a:visited {
   color: #FFF;
+}
+
+/************************************/
+/* LINKS                            */
+/************************************/
+
+
+
+/********************/
+/*   BUTTONS        */
+/*******************/
+
+
+
+/********************/
+/*  GRID DISPLAYS  */
+/*******************/
+
+article.column {
+  margin: 3em 0 3em 0;
+  padding: 0 3em 0 3em;
+}
+
+.center-text {
+  text-align: center;
 }
