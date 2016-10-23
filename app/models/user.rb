@@ -6,12 +6,14 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :addresses
 
+
+
   def self.build_from_github(auth_hash)
     user       = User.new
     user.uid   = auth_hash[:uid]
     user.provider = 'github'
 
-    name = split_name(auth_hash['info']['name'])
+    name = User.split_name(auth_hash['info']['name'])
     user.first_name = name.first
     user.last_name  = name.last
 
@@ -20,8 +22,7 @@ class User < ActiveRecord::Base
     return user
   end
 
-  private
-  def split_name(name)
+  def self.split_name(name)
     array = name.split(' ')
     last_name = array.pop
     first_name = array.join(' ')
