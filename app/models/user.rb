@@ -10,9 +10,21 @@ class User < ActiveRecord::Base
     user       = User.new
     user.uid   = auth_hash[:uid]
     user.provider = 'github'
-    user.last_name  = auth_hash['info']['name']
+
+    name = split_name(auth_hash['info']['name'])
+    user.first_name = name.first
+    user.last_name  = name.last
+
     user.email = auth_hash['info']['email']
 
     return user
+  end
+
+  private
+  def split_name(name)
+    array = name.split(' ')
+    last_name = array.pop
+    first_name = array.join(' ')
+    return first_name, last_name
   end
 end
