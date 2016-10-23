@@ -64,10 +64,10 @@ class ProductTest < ActiveSupport::TestCase
     assert_not(product.valid?)
   end
 
-  test 'product must be either active or inactive' do
-    assert(products(:normal_product).valid?)
-    assert_not(products(:product_without_active_marker).valid?)
-  end
+  # test 'product must be either active or inactive' do
+  #   assert(products(:normal_product).valid?)
+  #   assert_not(products(:product_without_active_marker).valid?)
+  # end
 
   test 'if a product is made inactive it is still valid' do
     product = products(:normal_product)

@@ -34,10 +34,11 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to action: "show"
     else
-      render :action => :new
+      render :action => :edit
     end
   end
 
+  #TODO why does this archive instead of destroy product, consider under puts/ post?
   def destroy
     @product.archive
     redirect_to controller: 'pages', action: "index"

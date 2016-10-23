@@ -8,6 +8,9 @@ ul {
   list-style: none;
 }
 
+.padding-top {
+  padding-top: 10%;
+}
 /************************************/
 /* NAVIGATION BAR AND HEADER SECTION */
 /************************************/
@@ -104,6 +107,9 @@ nav a:visited {
 /*   BUTTONS        */
 /*******************/
 
+#admin-button-location {
+  padding-top: 4%;
+}
 
 
 /********************/
@@ -117,4 +123,17 @@ article.column {
 
 .center-text {
   text-align: center;
+}
+
+/********************/
+/*  FORMAT FORMS */
+/*******************/
+.format-forms {
+  padding: 8% 8% 0 8%;
+  margin: 0 9% 0 9%;
+
+}
+.format-forms h1  {
+  text-align: center;
+  margin-bottom: 5%;
 }
