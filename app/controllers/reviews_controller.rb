@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.rating = params[:rating]
     @review.user_id = session[:user_id]
     @review.product_id = params[:product_id]
     if @review.save
@@ -27,6 +28,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @review.rating = params[:rating]
     if @review.update(review_params)
       redirect_to product_path(@review.product_id)
     else

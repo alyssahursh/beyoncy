@@ -32,7 +32,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-    # sets category_id to nil if you don't select one from dropdown
     @product.category_id = params[:category_id]
     if @product.update(product_params)
       flash[:notice] = "Product successfully saved!"
