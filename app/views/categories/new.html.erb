@@ -1,4 +1,5 @@
 <div class="format-forms">
   <h1>Add a Category</h1>
+  <%= render partial: 'shared/flash_notice' %>
   <%= render partial: "categoryform", locals: { action_name: categories_path } %>
 </div>

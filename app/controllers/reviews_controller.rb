@@ -18,8 +18,10 @@ class ReviewsController < ApplicationController
     @review.user_id = session[:user_id]
     @review.product_id = params[:product_id]
     if @review.save
+      flash[:notice] = "Review created successfully!"
       redirect_to product_path(@review.product_id)
     else
+      flash[:notice] = "Please be sure you have completed all fields."
       render :action => :new
     end
   end
@@ -30,8 +32,10 @@ class ReviewsController < ApplicationController
   def update
     @review.rating = params[:rating]
     if @review.update(review_params)
+      flash[:notice] = "Review successfully saved!"
       redirect_to product_path(@review.product_id)
     else
+      flash[:notice] = "Please be sure you have completed all fields."
       render :action => :edit
     end
   end

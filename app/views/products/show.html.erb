@@ -30,6 +30,7 @@
     </ul>
     <ul id="admin-button-location">
       <!-- need to add if statement here later - only see these options if they are admin. -->
+      <%= render partial: 'shared/flash_notice' %>
       <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
     <!-- what if product is inactive already - we should add if statement here so that button changes to be "Mark As Active" -->
       <li><%= button_to 'Mark as Inactive', product_path(params[:id]), :class => "button", method: :delete, data: {confirm: 'Are you sure you want to make this product inactive?'} %>
