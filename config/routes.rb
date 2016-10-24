@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :users, :categories, :orders, :addresses, :order_products
+  resources :users, :categories, :orders, :addresses, :order_products, :carts
 
   get 'account' => 'users#show', as: 'account'
 

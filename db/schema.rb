@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20161019232742) do
+=======
 ActiveRecord::Schema.define(version: 20161020164330) do
+>>>>>>> 7739adba65483e087e1b3143ff054e6a20f72a31
 
   create_table "addresses", force: :cascade do |t|
     t.string   "kind"
@@ -30,6 +34,11 @@ ActiveRecord::Schema.define(version: 20161020164330) do
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +82,19 @@ ActiveRecord::Schema.define(version: 20161020164330) do
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
+
+  create_table "reivews", force: :cascade do |t|
+    t.string   "subject"
+    t.string   "body"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reivews", ["product_id"], name: "index_reivews_on_product_id"
+  add_index "reivews", ["user_id"], name: "index_reivews_on_user_id"
 
   create_table "reviews", force: :cascade do |t|
     t.string   "subject"
