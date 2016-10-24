@@ -27,9 +27,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to # UNKNOWN
+      flash[:notice] = "Information updated successfully."
+      redirect_to account_path
     else
-      render # UNKNOWN
+      flash[:notice] = "Your information could not be saved. Please check and try again"
+      redirect_to account_edit_path
     end
   end
 
