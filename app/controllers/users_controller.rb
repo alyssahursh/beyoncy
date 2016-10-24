@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user
   before_action :check_active
   before_action :check_admin, only: [:new, :create, :index]
+  before_action :find_uiq, only: [:edit, :create, :update]
 
   def index ; end
 
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      redirect_to # UNKNOWN
+      flash[:notice] = "User successfully added."
+      redirect_to users_path
     else
       render # UNKNOWN
     end
@@ -25,9 +27,13 @@ class UsersController < ApplicationController
   def edit ;  end
 
   def update
-    if @user.update(user_params)
+    if @user_in_question.update(user_params)
       flash[:notice] = "Information updated successfully."
-      redirect_to account_path
+      if @user != @user_in_question
+        redirect_to users_path
+      else
+        redirect_to account_path
+      end
     else
       flash[:notice] = "Your information could not be saved. Please check and try again"
       redirect_to account_edit_path
@@ -76,5 +82,9 @@ class UsersController < ApplicationController
     else
       return true
     end
+  end
+
+  def find_uiq
+    @user_in_question = User.find_by(id: params[:id])
   end
 end

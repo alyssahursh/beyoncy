@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   attr_reader :categories, :products
 
   def index
-    logged_in?
     @user = User.find_by(id: session[:user_id])
     @categories = Category.all
     @products = Product.all
