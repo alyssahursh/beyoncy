@@ -14,10 +14,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+
     if @review.save!
-      redirect_to # UNKNOWN
+      redirect_to action: "show", controller: "products"
     else
-      render # UNKNOWN
+      render :action => :new
     end
   end
 
@@ -25,10 +26,11 @@ class ReviewsController < ApplicationController
   end
 
   def update
+
     if @review.update!(review_params)
-      redirect_to # UNKNOWN
+      redirect_to action: "show", controller: "products"
     else
-      render # UNKNOWN
+      render :action => :edit
     end
   end
 

@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     if @product.update!(product_params)
       redirect_to action: "show"
     else
-      render :action => :new
+      render :action => :edit
     end
   end
 

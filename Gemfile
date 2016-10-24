@@ -7,6 +7,8 @@ gem 'dotenv-rails'
 gem "omniauth"
 gem "omniauth-github"
 
+# simplecov for testing coverage
+gem 'simplecov'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'

@@ -1,3 +1,4 @@
-<h1>Edit a Review</h1>
-
-<%= render partial: "reviewform", method: :post, locals: { action_name: review_path, params: {id: @review.id }} %>
+<div class="format-forms">
+  <h1>Edit a Review</h1>
+  <%= render partial: "reviewform", method: :post, locals: { action_name: review_path, params: {id: @review.id }} %>
+</div>

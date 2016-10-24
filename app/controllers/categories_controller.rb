@@ -15,9 +15,9 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save!
-      redirect_to # UNKNOWN
+      redirect_to :action => "index"
     else
-      render # UNKNOWN
+      render :action => :new
     end
   end
 
@@ -26,9 +26,9 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update!(category_params)
-      redirect_to # UNKNOWN
+      redirect_to :action => "index"
     else
-      render # UNKNOWN
+      render :action => :edit
     end
   end
 

@@ -1,0 +1,28 @@
+<%= form_for @user, method: method, url: action_name do |f| %>
+
+<ul>
+  <li><%= f.label :first_name %></li>
+  <li><%= f.text_field :first_name %></li>
+
+  <li><%= f.label :last_name %></li>
+  <li><%= f.text_field :last_name %></li>
+
+  <li><%= f.label :birth_year %></li>
+  <li><%= f.text_field :birthdate %></li>
+
+  <li><%= f.label :birth_month %></li>
+  <li><%= f.text_field :birthdate %></li>
+
+  <li><%= f.label :birth_day %></li>
+  <li><%= f.text_field :birthdate %></li>
+
+  <li><%= f.label :email %></li>
+  <li><%= f.text_field :email %></li>
+
+  <li><%= f.label :phone_number %></li>
+  <li><%= f.text_field :phone %></li>
+
+  <li><%= f.submit %> </li>
+</ul>
+
+<% end %>
