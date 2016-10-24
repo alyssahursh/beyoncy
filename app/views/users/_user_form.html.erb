@@ -1,4 +1,4 @@
-<%= form_for @user, method: method, url: action_name do |f| %>
+<%= form_for @user_in_question, method: method, path: path do |f| %>
 
 <ul>
   <li><%= f.label :first_name %></li>
@@ -21,6 +21,12 @@
 
   <li><%= f.label :phone_number %></li>
   <li><%= f.text_field :phone %></li>
+
+  <li><%= f.label :active? %></li>
+  <li><%= f.check_box :active %></li>
+
+  <li><%= f.label :admin? %></li>
+  <li><%= f.check_box :admin %></li>
 
   <li><%= f.submit %> </li>
 </ul>

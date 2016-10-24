@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_action :find_user
   before_action :check_active
   before_action :check_admin, only: [:new, :create, :index]
+  before_action :find_uiq, only: [:edit, :create, :update]
 
-  def index
-  end
+  def index ; end
 
   def show
     @addresses = Address.where(user_id: @user.id)
@@ -15,21 +15,35 @@ class UsersController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
+    user = User.new(user_params)
+    if user.save
+      flash[:notice] = "User successfully added."
+      redirect_to users_path
+=======
     @user = User.new(user_params)
     if @user.save!
       redirect_to # UNKNOWN
+>>>>>>> master
     else
       render # UNKNOWN
     end
   end
 
-  def edit
-  end
+  def edit ;  end
 
   def update
+<<<<<<< HEAD
+    if @user_in_question.update(user_params)
+=======
     if @user.update!(user_params)
+>>>>>>> master
       flash[:notice] = "Information updated successfully."
-      redirect_to account_path
+      if @user != @user_in_question
+        redirect_to users_path
+      else
+        redirect_to account_path
+      end
     else
       flash[:notice] = "Your information could not be saved. Please check and try again"
       redirect_to account_edit_path
@@ -43,7 +57,7 @@ class UsersController < ApplicationController
 
   private
   def find_user
-    @user = User.find(session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     if @user.nil?
       render :file => 'public/404.html', :status => :not_found
     end
@@ -69,4 +83,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def logged_in?
+    if @user.id.nil?
+      return false
+    else
+      return true
+    end
+  end
+
+  def find_uiq
+    @user_in_question = User.find_by(id: params[:id])
+  end
 end
