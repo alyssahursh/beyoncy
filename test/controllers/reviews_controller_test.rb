@@ -30,10 +30,10 @@ class ReviewsControllerTest < ActionController::TestCase
 
   test "should update specific review on patch request" do
     test_review_update = reviews(:normal_review)
-    test_review_change = {body: 'This product is a fabulous dohicky that has solved all my consumer products problems'}
+    test_review_change = {body: 'This product is a fabulous dohicky that has solved all my consumer product problems'}
     patch :update, id: test_review_update.id, review: test_review_change
     updated_review = Review.find(test_review_update.id)
-    assert_equal 'This product is a fabulous dohicky that has solved all my consumer products problems', updated_review.body
+    assert_equal 'This product is a fabulous dohicky that has solved all my consumer product problems', updated_review.body
 
   end
 
