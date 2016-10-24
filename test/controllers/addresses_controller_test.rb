@@ -12,15 +12,28 @@ class AddressesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-  
-  test "should create a new address on post request" do
-    post :create,
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
+  # end
     
-    assert_equal :success
+  test "should create a new address on post request" do
+    assert_difference('Address.count') do
+      post :create,   
+      { address: 
+        {kind: nil, 
+          first_name: 'James', 
+          last_name: 'Howlet', 
+          street1: '1215 Harry Hines Blvd', 
+          city: 'Port Manteau', 
+          state: 'WA',
+          zip: '666666',
+          country: 'USA',
+          phone: '2146826000',
+          user_id: 'Logan'
+          } 
+        }
+    end
   end
 
   # test 'address count should increase by one on create' do
