@@ -16,10 +16,16 @@ class AddressesControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  # TODO jm-rives STOPPED HERE 10/23/2016
+  # test "should create a new address on post request" do
+  #   post :create
+  #   assert_equal :success
+  # end
 
-  # test "should get create" do
-  #   get :create
-  #   assert_response :success
+  # test 'address count should increase by one on create' do
+  #   assert_difference('Address.count', 1) do
+  #     test_address_create = addresses(:normal_address)
+  #     get :create, 
   # end
 
   # test "should get edit" do
