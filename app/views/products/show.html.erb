@@ -40,6 +40,6 @@
     <ul>
       <li><h3>Leave your Review for <%= @product.name %></h3></li>
     </ul>
-      <%= render partial: "reviews/reviewform", locals: { controller: 'reviews', action_name: reviews_path } %>
+      <%= render partial: "reviews/reviewform", locals: {  action_name: product_reviews_path(@product.id)} %>
   </section>
 </div>

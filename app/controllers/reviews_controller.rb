@@ -14,8 +14,10 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.user_id = session[:user_id]
+    @review.product_id = params[:product_id]
     if @review.save
-      redirect_to action: "show", controller: "products"
+      redirect_to product_path(@review.product_id)
     else
       render :action => :new
     end
@@ -26,7 +28,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to action: "show", controller: "products"
+      redirect_to product_path(@review.product_id)
     else
       render :action => :edit
     end

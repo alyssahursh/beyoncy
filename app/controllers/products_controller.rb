@@ -19,8 +19,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.category_id = params[:category_id]
     if @product.save
+      flash[:notice] = "Product created successfully!"
       redirect_to action: "index"
     else
+      flash[:notice] = "Please be sure you have completed all fields."
       render :action => :new
     end
   end
@@ -28,22 +30,22 @@ class ProductsController < ApplicationController
   def edit
     # @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
-  
-  # TODO jm-rives discuss category id and why it sets thing to nil
+
   def update
-    # sets category_id to nil? 
-    # @product.category_id = params[:category_id]
+    # sets category_id to nil if you don't select one from dropdown
+    @product.category_id = params[:category_id]
     if @product.update(product_params)
+      flash[:notice] = "Product successfully saved!"
       redirect_to action: "show"
     else
+      flash[:notice] = "Please be sure you have completed all fields."
       render :action => :edit
     end
   end
 
-  #TODO why does this archive instead of destroy product, consider under puts/ post?
   def destroy
-    @product.archive
-    redirect_to controller: 'pages', action: "index"
+    @product.destroy
+    redirect_to root_path
   end
 
 

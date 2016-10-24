@@ -1,4 +1,4 @@
 <div class="format-forms">
   <h1>Add a Review</h1>
-  <%= render partial: "reviewform", locals: { action_name: reviews_path } %>
+  <%= render partial: "reviewform", method: :post, locals: { action_name: product_reviews_path, params: {product_id: params[:product_id] } } %>
 </div>
