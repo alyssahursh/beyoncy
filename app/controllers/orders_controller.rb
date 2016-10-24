@@ -38,8 +38,6 @@ class OrdersController < ApplicationController
   end
 
 
-
-
   private
   def find_order
     @order = Order.find(params[:id])
@@ -47,9 +45,9 @@ class OrdersController < ApplicationController
       render :file => 'public/404.html', :status => :not_found
     end
   end
-
+  # added
   def order_params
-    params.require(:order).permit(:order_status, :shipping_cost)
+    params.require(:order).permit(:order_status, :shipping_cost, :user_id) #changed from user to match model
   end
 
 end

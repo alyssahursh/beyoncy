@@ -2,10 +2,10 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   #should get all users
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  # end
 
   test 'should get specific user on show' do
     test_user = users(:user_without_extras)
