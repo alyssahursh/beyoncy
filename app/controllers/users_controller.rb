@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :find_user, except: [:index, :new, :create]
+  before_action :find_user
+  before_action :check_admin, only: [:new, :create, :index]
 
   def index
-    @users = User.all
   end
 
   def show
@@ -10,12 +10,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    user = User.new
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
+    user = User.new(user_params)
+    if user.save
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -53,6 +53,15 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :birthdate, :phone, :admin, :active, :uid, :provider)
+  end
+
+  def check_admin
+    if @user.admin?
+      @users = User.all
+    else
+      flash[:notice] = "You do not have access to this page."
+      redirect_to(:back)
+    end
   end
 
 end
