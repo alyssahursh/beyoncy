@@ -7,8 +7,8 @@ gem 'dotenv-rails'
 gem "omniauth"
 gem "omniauth-github"
 
-# color for minitest
-gem 'minitest-reporters'
+# simplecov for testing coverage
+gem 'simplecov'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rails-erd'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'minitest-reporters'
 end
 
 group :development do

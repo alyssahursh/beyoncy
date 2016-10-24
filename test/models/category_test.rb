@@ -18,6 +18,16 @@ class CategoryTest < ActiveSupport::TestCase
     assert_not(category.valid?)
   end
 
+  test 'if a name is added to a category it should become valid' do
+    category = categories(:nameless_category)
+    assert_not(category.valid?)
+
+    category.name = "now it has a name!"
+    category.save
+
+    assert(category.valid?)
+  end
+
   test 'if a category\'s name is removed it is no longer valid' do
     category = categories(:normal_category)
     assert(category.valid?)

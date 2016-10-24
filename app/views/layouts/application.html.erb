@@ -13,7 +13,8 @@
         <li><a href='/products'>Shop</a></li>
         <li><h1>BEYONCE</h1></li>
         <!-- NOT SURE WHERE THESE SHOULD BE DIRECTED -->
-        <li><a href='/login'>Login</a></li>
+        <li><%= link_to("My Account", account_path) %></li>
+        <li><%= link_to("Logout", logout_path) %></li>
         <li><a href='/cart'><img src="/assets/shopping-cart.svg"></a></li>
       </ul>
     </nav>

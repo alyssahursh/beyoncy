@@ -17,6 +17,16 @@ def to_bool(string)
   end
 end
 
+# seed Addresses
+CSV.foreach('seed_csvs/addresses.csv') do |line|
+  address = Address.create(kind: line[0], first_name: line[1], last_name: line[2], street1: line[3], street2: line[4], city: line[5], state: line[6], zip: line[7], country: line[8], phone: line[9], user_id: line[10].to_i)
+  if address.valid?
+    puts "Address #{address.first_name} created sucessfully."
+  else
+    puts "Address #{address.first_name} failed. Errors: #{address.errors}"
+  end
+end
+
 # seed Users
 CSV.foreach('seed_csvs/users.csv') do |line|
   user = User.create(first_name: line[0], last_name: line[1], email: line[2], birthdate: line[3], phone: line[4], admin: to_bool(line[5]), active: to_bool(line[6]), uid: line[7].to_i, provider: line[8])
@@ -39,7 +49,7 @@ end
 
 # seed Categories
 CSV.foreach('seed_csvs/categories.csv') do |line|
-  category = Category.create(name: line[0])
+  category = Category.create(name: line[0], picture: line[1])
   if category.valid?
     puts "Category #{category.name} created sucessfully."
   else
