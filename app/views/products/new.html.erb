@@ -1,4 +1,5 @@
 <div class="format-forms">
   <h1>Add a Product</h1>
+  <%= render partial: 'shared/flash_notice' %>
   <%= render partial: "productform", locals: { action_name: products_path } %>
 </div>

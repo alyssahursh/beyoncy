@@ -2,10 +2,10 @@ require 'test_helper'
 
 class ReviewsControllerTest < ActionController::TestCase
   # should load all review'
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  # end
 
   test 'should load specific review on show' do
     test_review = reviews(:normal_review)
@@ -18,20 +18,24 @@ class ReviewsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
+  # end
 
   # test "should get edit" do
   #   get :edit
   #   assert_response :success
   # end
 
-  # test "should get update" do
-  #   get :update
-  #   assert_response :success
-  # end
+  test "should update specific review on patch request" do
+    test_review_update = reviews(:normal_review)
+    test_review_change = {body: 'This product is a fabulous dohicky that has solved all my consumer product problems'}
+    patch :update, id: test_review_update.id, review: test_review_change
+    updated_review = Review.find(test_review_update.id)
+    assert_equal 'This product is a fabulous dohicky that has solved all my consumer product problems', updated_review.body
+
+  end
 
   test "should redirect get destroy review" do
     test_review_destroy = reviews(:normal_review)

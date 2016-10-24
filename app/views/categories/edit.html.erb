@@ -1,4 +1,5 @@
 <div class="format-forms">
   <h1>Edit a Category</h1>
+  <%= render partial: 'shared/flash_notice' %>
   <%= render partial: "categoryform", method: :post, locals: { action_name: category_path, params: {id: @category.id }} %>
 </div>

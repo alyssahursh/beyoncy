@@ -14,9 +14,15 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    if @review.save
-      redirect_to action: "show", controller: "products"
+    @review.rating = params[:rating]
+    @review.user_id = session[:user_id]
+    @review.product_id = params[:product_id]
+    if @review.save!
+      flash[:notice] = "Review created successfully!"
+      redirect_to product_path(@review.product_id)
+
     else
+      flash[:notice] = "Please be sure you have completed all fields."
       render :action => :new
     end
   end
@@ -25,15 +31,18 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update(review_params)
-      redirect_to action: "show", controller: "products"
+    @review.rating = params[:rating]
+    if @review.update!(review_params)
+      flash[:notice] = "Review successfully saved!"
+      redirect_to product_path(@review.product_id)
     else
+      flash[:notice] = "Please be sure you have completed all fields."
       render :action => :edit
     end
   end
 
   def destroy
-    @review.destroy
+    @review.destroy!
     redirect_to root_path
   end
 

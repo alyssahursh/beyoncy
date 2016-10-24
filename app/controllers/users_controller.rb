@@ -15,10 +15,16 @@ class UsersController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     user = User.new(user_params)
     if user.save
       flash[:notice] = "User successfully added."
       redirect_to users_path
+=======
+    @user = User.new(user_params)
+    if @user.save!
+      redirect_to # UNKNOWN
+>>>>>>> master
     else
       render # UNKNOWN
     end
@@ -27,7 +33,11 @@ class UsersController < ApplicationController
   def edit ;  end
 
   def update
+<<<<<<< HEAD
     if @user_in_question.update(user_params)
+=======
+    if @user.update!(user_params)
+>>>>>>> master
       flash[:notice] = "Information updated successfully."
       if @user != @user_in_question
         redirect_to users_path
@@ -41,12 +51,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    @user.destroy!
     redirect_to root_path
   end
-
-
-
 
   private
   def find_user

@@ -12,25 +12,47 @@ class AddressesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  # test "should get create" do
-  #   get :create
+  # test "should get new" do
+  #   get :new
   #   assert_response :success
   # end
+    
+  test "should create a new address on post request" do
+    assert_difference('Address.count', 1) do
+      post :create,   
+      { address: 
+        {kind: 'home', 
+          first_name: 'James', 
+          last_name: 'Howlet', 
+          street1: '1215 Harry Hines Blvd', 
+          city: 'Port Manteau', 
+          state: 'WA',
+          zip: '66666',
+          country: 'USA',
+          phone: '2146826000',
+          user_id: 12
+          } 
+        }
+    end
+  end
 
   # test "should get edit" do
   #   get :edit
   #   assert_response :success
   # end
 
-  # test "should get update" do
-  #   get :update
-  #   assert_response :success
-  # end
+  test "should update address on patch request" do
+    # get it from yml
+    test_address_update = addresses(:normal_address)
+    # make a change hash
+    test_address_change = {first_name: 'Dez'}
+    # send patch request
+    patch :update, id: test_address_update.id, address: test_address_change
+    # read  the changed address from the database
+    updated_address = Address.find(test_address_update.id)
+    # verify the data change
+    assert_equal 'Dez', updated_address.first_name
+  end
 
   test "should redirect on addresses destroy" do
     test_address_destroy = addresses(:normal_address)
