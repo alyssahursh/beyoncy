@@ -15,8 +15,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
+    @user = User.new(user_params)
+    if @user.save!
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update!(user_params)
       flash[:notice] = "Information updated successfully."
       redirect_to account_path
     else
@@ -37,12 +37,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    @user.destroy!
     redirect_to root_path
   end
-
-
-
 
   private
   def find_user

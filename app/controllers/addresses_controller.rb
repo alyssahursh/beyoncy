@@ -14,8 +14,16 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+
+    # puts @address.valid?
+    # if ! @address.valid?
+    #   @address.errors.each  do |attr, msg|
+    #     puts "#{attr}: #{msg}"
+    #   end
+    # end
+
     @address.user_id = session[:user_id]
-    if @address.save
+    if @address.save!
       flash[:notice] = "Address successfully saved."
       redirect_to account_path
     else
@@ -27,9 +35,9 @@ class AddressesController < ApplicationController
   def edit
   end
 
-  
+
   def update
-    if @address.update(address_params)
+    if @address.update!(address_params)
       flash[:notice] = "Address updated."
       redirect_to account_path
     else
@@ -40,7 +48,7 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    @address.destroy
+    @address.destroy!
     flash[:notice] = "Address deleted."
     redirect_to account_path
   end
@@ -55,7 +63,7 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:kind, :first_name, :last_name, :street1, :street2, :city, :state, :zip, :country, :phone)
+    params.require(:address).permit(:kind, :first_name, :last_name, :street1, :street2, :city, :state, :zip, :country, :phone, :user_id)
   end
 
 end

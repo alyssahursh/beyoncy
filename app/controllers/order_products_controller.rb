@@ -14,7 +14,7 @@ class OrderProductsController < ApplicationController
 
   def create
     @order_product = OrderProduct.new(order_product_params)
-    if @order_product.save
+    if @order_product.save!
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -25,7 +25,7 @@ class OrderProductsController < ApplicationController
   end
 
   def update
-    if @order_product.update(order_product_params)
+    if @order_product.update!(order_product_params)
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -33,7 +33,7 @@ class OrderProductsController < ApplicationController
   end
 
   def destroy
-    @order_product.destroy
+    @order_product.destroy!
     redirect_to root_path
   end
 

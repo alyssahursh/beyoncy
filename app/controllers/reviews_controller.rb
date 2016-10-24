@@ -14,7 +14,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    if @review.save
+
+    if @review.save!
       redirect_to action: "show", controller: "products"
     else
       render :action => :new
@@ -25,7 +26,8 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update(review_params)
+
+    if @review.update!(review_params)
       redirect_to action: "show", controller: "products"
     else
       render :action => :edit
@@ -33,7 +35,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review.destroy
+    @review.destroy!
     redirect_to root_path
   end
 
