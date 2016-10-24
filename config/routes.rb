@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   root to: 'pages#index'
 
-  resources :users, :reviews, :products, :categories, :orders, :addresses, :order_products
+  resources :products do
+    resources :reviews
+  end
+
+  resources :users, :categories, :orders, :addresses, :order_products
 
   get 'account' => 'users#show', as: 'account'
 

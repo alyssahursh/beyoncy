@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :orders
   has_many :reviews
 
+  default_scope { where(active: true) }
+
   # product must have a name
   validates :name, presence: true
 
