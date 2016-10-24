@@ -34,7 +34,7 @@ class AddressesController < ApplicationController
 
   
   def update
-    if @address.update(address_params)
+    if @address.update!(address_params)
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -42,7 +42,7 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    @address.destroy
+    @address.destroy!
     redirect_to root_path
   end
 

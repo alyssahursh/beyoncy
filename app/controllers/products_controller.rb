@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.category_id = params[:category_id]
-    if @product.save
+    if @product.save!
       redirect_to action: "index"
     else
       render :action => :new
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
   def update
     # sets category_id to nil? 
     # @product.category_id = params[:category_id]
-    if @product.update(product_params)
+    if @product.update!(product_params)
       redirect_to action: "show"
     else
       render :action => :new
@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
   end
 
   #TODO why does this archive instead of destroy product, consider under puts/ post?
-  def destroy
+  def destroy!
     @product.archive
     redirect_to controller: 'pages', action: "index"
   end

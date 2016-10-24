@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @category.save
+    if @category.save!
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update(category_params)
+    if @category.update!(category_params)
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
+    @category.destroy!
     redirect_to root_path
   end
 
