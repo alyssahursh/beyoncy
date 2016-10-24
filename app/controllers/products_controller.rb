@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.category_id = params[:category_id]
-    if @product.save
+    if @product.save!
       flash[:notice] = "Product created successfully!"
       redirect_to action: "index"
     else
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
 
   def update
     @product.category_id = params[:category_id]
-    if @product.update(product_params)
+    if @product.update!(product_params)
       flash[:notice] = "Product successfully saved!"
       redirect_to action: "show"
     else
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy!
     @product.destroy
     redirect_to root_path
   end

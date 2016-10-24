@@ -14,8 +14,12 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+<<<<<<< HEAD
     if @category.save
       flash[:notice] = "Category created successfully!"
+=======
+    if @category.save!
+>>>>>>> master
       redirect_to :action => "index"
     else
       flash[:notice] = "Please be sure you have completed all fields."
@@ -27,7 +31,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update(category_params)
+    if @category.update!(category_params)
       flash[:notice] = "Category successfully saved!"
       redirect_to :action => "index"
     else
@@ -37,7 +41,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
+    @category.destroy!
     redirect_to root_path
   end
 

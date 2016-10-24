@@ -11,14 +11,23 @@ class OrdersControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  # test "should get create" do
-    
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
   # end
+
+  test "should get create a new order on post request" do
+    assert_difference('Order.count', 1) do
+      post :create,
+      { order: 
+        { 
+          order_status: 'shipping soon',
+          shipping_cost: 1234,
+          user_id: 9
+        }
+      }
+    end
+  end
 
   # test "should get edit" do
   #   get :edit
@@ -46,5 +55,4 @@ class OrdersControllerTest < ActionController::TestCase
     # assert_redirected session_path
     # assert_equal "You must be logged in first", flash[:notice]
   end
-
 end
