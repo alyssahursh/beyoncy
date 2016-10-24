@@ -12,15 +12,20 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  # test "should get create" do
-  #   get :create
+  # test "should get new" do
+  #   get :new
   #   assert_response :success
   # end
+
+  test "should get create a new category on post request" do
+    assert_difference('Category.count', 1) do
+      post :create,
+      { category:
+        {name:'blunt objects', 
+          image:'blunt force trauma'}
+      }
+    end
+  end
 
   # test "should get edit" do
   #   get :edit

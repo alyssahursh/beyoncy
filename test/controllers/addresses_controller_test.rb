@@ -33,8 +33,6 @@ class AddressesControllerTest < ActionController::TestCase
           user_id: 12
           } 
         }
-
-
     end
   end
 
