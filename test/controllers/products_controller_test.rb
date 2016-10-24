@@ -12,10 +12,10 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
+  # end
 
   # test "should get create" do
   #   get :create
@@ -27,10 +27,14 @@ class ProductsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get update" do
-  #   get :update
-  #   assert_response :success
-  # end
+  test "should update a specific product on patch request" do
+    test_product_update = products(:normal_product)
+    test_product_change = {name: 'Crispy Teddy Bears'}
+    patch :update, id: test_product_update.id, product: test_product_change
+    updated_product = Product.find(test_product_update.id)
+    assert_equal 'Crispy Teddy Bears', updated_product.name 
+   
+  end
 
   # should this be done with puts/post?
   test "should redirect on products destroy" do

@@ -28,9 +28,11 @@ class ProductsController < ApplicationController
   def edit
     # @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
-
+  
+  # TODO jm-rives discuss category id and why it sets thing to nil
   def update
-    @product.category_id = params[:category_id]
+    # sets category_id to nil? 
+    # @product.category_id = params[:category_id]
     if @product.update(product_params)
       redirect_to action: "show"
     else
