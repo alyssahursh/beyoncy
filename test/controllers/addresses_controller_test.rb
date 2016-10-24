@@ -18,29 +18,25 @@ class AddressesControllerTest < ActionController::TestCase
   # end
     
   test "should create a new address on post request" do
-    assert_difference('Address.count') do
+    assert_difference('Address.count', 1) do
       post :create,   
       { address: 
-        {kind: nil, 
+        {kind: 'home', 
           first_name: 'James', 
           last_name: 'Howlet', 
           street1: '1215 Harry Hines Blvd', 
           city: 'Port Manteau', 
           state: 'WA',
-          zip: '666666',
+          zip: '66666',
           country: 'USA',
           phone: '2146826000',
-          user_id: 'Logan'
+          user_id: 12
           } 
         }
+
+
     end
   end
-
-  # test 'address count should increase by one on create' do
-  #   assert_difference('Address.count', 1) do
-  #     test_address_create = addresses(:normal_address)
-  #     get :create, 
-  # end
 
   # test "should get edit" do
   #   get :edit

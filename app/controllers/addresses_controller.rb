@@ -14,7 +14,15 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    if @address.save
+    
+    # puts @address.valid?
+    # if ! @address.valid?
+    #   @address.errors.each  do |attr, msg|
+    #     puts "#{attr}: #{msg}"
+    #   end
+    # end
+
+    if @address.save!
       redirect_to # UNKNOWN
     else
       render # UNKNOWN
@@ -50,7 +58,7 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:kind, :first_name, :last_name, :street1, :street2, :city, :state, :zip, :country, :phone)
+    params.require(:address).permit(:kind, :first_name, :last_name, :street1, :street2, :city, :state, :zip, :country, :phone, :user_id)
   end
 
 end
