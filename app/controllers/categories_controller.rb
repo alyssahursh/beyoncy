@@ -14,12 +14,8 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-<<<<<<< HEAD
-    if @category.save
-      flash[:notice] = "Category created successfully!"
-=======
     if @category.save!
->>>>>>> master
+      flash[:notice] = "Category created successfully!"
       redirect_to :action => "index"
     else
       flash[:notice] = "Please be sure you have completed all fields."
