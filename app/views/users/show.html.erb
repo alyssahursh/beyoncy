@@ -1,2 +1,22 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render partial: 'shared/flash_notice' %>
+
+<h3><%= "Welcome, #{@user.first_name}" %></h3>
+
+<h4>Your Account Information</h4>
+
+<p><%= "First name: #{@user.first_name}" %></p>
+<p><%= "Last name: #{@user.last_name}" %></p>
+
+<p><%= link_to("Edit account information", account_edit_path) %></p>
+
+<h5>Addresses</h5>
+
+<%= link_to("Add a new address", new_address_path) %>
+
+  <% @addresses.each do |address|%>
+    <ul>
+      <li><%= address.kind.capitalize %></li>
+      <li><%= link_to("Edit this address", edit_address_path(address.id)) %></li>
+      <li><%= link_to("Delete this address", address_path(address.id), {method: :delete, data: {confirm: "Are you sure? Deleting an address is permanent."}}) %></li>
+    </ul>
+  <% end %>

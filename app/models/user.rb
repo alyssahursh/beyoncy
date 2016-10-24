@@ -7,12 +7,31 @@ class User < ActiveRecord::Base
   has_many :addresses
 
   def self.build_from_github(auth_hash)
-    user       = User.new
-    user.uid   = auth_hash[:uid]
+    user = User.new
+    user.uid = auth_hash[:uid]
     user.provider = 'github'
-    user.last_name  = auth_hash['info']['name']
+
+    name = User.split_name(auth_hash['info']['name'])
+    user.first_name = name.first
+    user.last_name  = name.last
+
     user.email = auth_hash['info']['email']
 
+    user.admin = false
+    user.active = true
+
     return user
+  end
+
+  def self.split_name(name)
+    unless name == nil
+      array = name.split(' ')
+      last_name = array.pop
+      first_name = array.join(' ')
+      return first_name, last_name
+    else
+      return nil, "last name"
+    end
+
   end
 end

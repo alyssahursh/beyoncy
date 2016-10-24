@@ -1,8 +1,8 @@
 <%= form_for @address,
   url: action_name do |f| %>
 <ul>
-  <li><%= f.label :kind %></li>
-  <li><%= f.text_field :kind %></li>
+  <li><%= f.label :type_of_address %></li>
+  <li><%= f.text_field :kind, placeholder: "Home, Work, etc." %></li>
 
   <li><%= f.label :first_name %></li>
   <li><%= f.text_field :first_name %></li>
