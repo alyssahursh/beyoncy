@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   before_action :check_active
   before_action :check_admin, only: [:new, :create, :index]
 
-  def index
-  end
+  def index ; end
 
   def show
     @addresses = Address.where(user_id: @user.id)
@@ -23,8 +22,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit ;  end
 
   def update
     if @user.update(user_params)
@@ -46,7 +44,7 @@ class UsersController < ApplicationController
 
   private
   def find_user
-    @user = User.find(session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     if @user.nil?
       render :file => 'public/404.html', :status => :not_found
     end
@@ -72,4 +70,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logged_in?
+    if @user.id.nil?
+      return false
+    else
+      return true
+    end
+  end
 end

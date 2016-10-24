@@ -11,12 +11,4 @@ class PagesController < ApplicationController
     @products = Product.all
   end
 
-  private
-  def logged_in?
-    if session[:user_id].nil?
-      render layout: 'not_logged_in'
-    else
-      render layout: 'application'
-    end
-  end
 end
