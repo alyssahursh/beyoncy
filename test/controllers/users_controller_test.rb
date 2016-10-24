@@ -28,10 +28,13 @@ class UsersControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get update" do
-  #   get :update
-  #   assert_response :success
-  # end
+  test "should update user on patch request" do
+    test_user_update = users(:normal_user)
+    test_user_change = {first_name: 'Eddie'}
+    patch :update, id: test_user_update.id, user: test_user_change
+    updated_user = User.find(test_user_update.id)
+    assert_equal 'Eddie', updated_user.first_name
+  end
 
   test "should redirect on destroy" do
     test_user_destroy = users(:user_without_extras)

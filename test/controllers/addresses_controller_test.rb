@@ -16,10 +16,16 @@ class AddressesControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  # TODO jm-rives STOPPED HERE 10/23/2016
+  # test "should create a new address on post request" do
+  #   post :create
+  #   assert_equal :success
+  # end
 
-  # test "should get create" do
-  #   get :create
-  #   assert_response :success
+  # test 'address count should increase by one on create' do
+  #   assert_difference('Address.count', 1) do
+  #     test_address_create = addresses(:normal_address)
+  #     get :create, 
   # end
 
   # test "should get edit" do
@@ -27,10 +33,18 @@ class AddressesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get update" do
-  #   get :update
-  #   assert_response :success
-  # end
+  test "should update address on patch request" do
+    # get it from yml
+    test_address_update = addresses(:normal_address)
+    # make a change hash
+    test_address_change = {first_name: 'Dez'}
+    # send patch request
+    patch :update, id: test_address_update.id, address: test_address_change
+    # read  the changed address from the database
+    updated_address = Address.find(test_address_update.id)
+    # verify the data change
+    assert_equal 'Dez', updated_address.first_name
+  end
 
   test "should redirect on addresses destroy" do
     test_address_destroy = addresses(:normal_address)

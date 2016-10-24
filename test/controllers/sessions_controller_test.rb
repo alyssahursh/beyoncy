@@ -6,16 +6,20 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test 'user can log in successfully' do
-        # OmniAuth.config.test_mode = true
-        # OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-        #     'provider' => 'github',
-        #     'uid' => '12345678',
-        #     'info' => {'email' => 'beckygoodhair@beckygoodhair.com', 'name' => 'test', 'image' => ''}
-        # })
-        # request.env['omniauth.env'] = OmniAuth.config.mock_auth[:github]
+    # OmniAuth.config.test_mode = true
+    # OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    #     'provider' => 'github',
+    #     'uid' => '12345678',
+    #     'info' => {
+    #       'email' => 'beckygoodhair@beckygoodhair.com',
+    #       'name' => 'test',
+    #       'image' => ''
+    #     }
+    # })
+    # request.env['omniauth.env'] = OmniAuth.config.mock_auth[:github]
 
-        # get :auth
-    end
+    # get :auth
+  end 
 
   test 'can create a new user' do     
     # assert_difference('User.count', 1) do

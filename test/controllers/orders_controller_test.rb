@@ -17,8 +17,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   # test "should get create" do
-  #   get :create
-  #   assert_response :success
+    
   # end
 
   # test "should get edit" do
@@ -26,12 +25,13 @@ class OrdersControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get update" do
-  #   get :update
-  #   assert_response :success
-  # end
-
-  # broken by model
+  test "should update orders on patch request" do
+    test_order_update = orders(:normal_order)
+    test_order_change = {order_status: 'bigWombat'}
+    patch :update, id: test_order_update.id, order: test_order_change
+    updated_order = Order.find(test_order_update.id)
+  end
+ 
   test "should redirect on orders controller destroy" do
     test_order_destroy = orders(:normal_order)
     get :destroy, id: test_order_destroy

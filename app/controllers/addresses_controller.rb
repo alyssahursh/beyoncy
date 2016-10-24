@@ -27,6 +27,7 @@ class AddressesController < ApplicationController
   def edit
   end
 
+  
   def update
     if @address.update(address_params)
       flash[:notice] = "Address updated."
