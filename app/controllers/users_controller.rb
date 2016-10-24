@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user
+  before_action :check_active
   before_action :check_admin, only: [:new, :create, :index]
 
   def index
@@ -56,11 +57,18 @@ class UsersController < ApplicationController
   end
 
   def check_admin
-    if @user.admin?
+    if @user.admin
       @users = User.all
     else
-      flash[:notice] = "You do not have access to this page."
-      redirect_to(:back)
+      flash[:notice] = "You do not have access to the requested page. Instead, here's your account page."
+      redirect_to account_path
+    end
+  end
+
+  def check_active
+    if !@user.active
+      flash[:notice] = "Your account is not active. Please contact support to be activated."
+      redirect_to root_path
     end
   end
 

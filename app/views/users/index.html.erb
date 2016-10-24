@@ -1,2 +1,12 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h3>All Users</h3>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= "#{user.first_name} #{user.last_name} - id: #{user.id}"  %>
+      <!-- These don't work yet! they're just for show -->
+      <%= link_to("edit this user", edit_user_path(user.id)) %>
+      <%= link_to("delete this user", user_path(user.id), method: :destroy, data: {confirm: "Are you sure? Deleting a user is permanent."}) %>
+    </li>
+  <% end %>
+</ul>
