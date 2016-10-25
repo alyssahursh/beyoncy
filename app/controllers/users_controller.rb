@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user
   before_action :check_active
   before_action :check_admin, only: [:new, :create, :index]
-  before_action :find_uiq, only: [:edit, :create, :update]
+  before_action :find_uiq, only: [:edit, :create, :update, :destroy]
 
   def index ; end
 
@@ -41,8 +41,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy!
-    redirect_to root_path
+    @user_in_question.destroy!
+    redirect_to users_path
+  end
+
+  def switch_active
+    user = User.find_by(id: params[:id])
+    user.toggle_active
+    user.save
+    redirect_to users_path
   end
 
   private
@@ -56,6 +63,7 @@ class UsersController < ApplicationController
     else
       @order = Order.create(order_status: 'cart')
     end
+    return @user
   end
 
   def user_params
@@ -87,6 +95,13 @@ class UsersController < ApplicationController
   end
 
   def find_uiq
-    @user_in_question = User.find_by(id: params[:id])
+    if params[:id]
+      @user_in_question = User.find_by(id: params[:id])
+    else
+      @user_in_question = @user
+    end
   end
+
+
+
 end
