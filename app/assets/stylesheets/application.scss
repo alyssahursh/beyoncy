@@ -13,8 +13,21 @@ ul {
 }
 
 .padding-top {
-  padding-top: 10%;
+  padding-top: 13%;
 }
+
+table{
+    color: #E7AD3F;
+    table-layout: fixed;
+    width: 70%;
+}
+
+th, td {
+    overflow: hidden;
+    width: 10%;
+}
+
+
 /************************************/
 /* NAVIGATION BAR AND HEADER SECTION */
 /************************************/
@@ -107,6 +120,16 @@ nav a:link,
 nav a:hover,
 nav a:visited {
   color: #FFF;
+}
+
+.style-dropdown {
+  color: #333333
+}
+.style-dropdown li a {
+  color: #333333
+}
+.style-dropdown li a:hover {
+  color: #E7AD3F
 }
 
 /************************************/
