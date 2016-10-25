@@ -15,7 +15,7 @@
     <header>
       <nav>
         <ul>
-          <li><h1>BEYONCE</h1></li>
+          <li><h1>BEYONCY</h1></li>
           <li><a href='/products'>Shop</a></li>
           <% if session[:user_id].nil? %>
             <li><a href='/auth/github'>Login</a></li>
@@ -23,7 +23,7 @@
             <li><%= link_to "My Account", account_path %></li>
             <li><%= link_to "Log Out", logout_path %></li>
           <% end %>
-            <li><a href='/cart'>Cart</a></li>
+            <li><%= link_to "Cart", cart_path %></li>
 
         </ul>
       </nav>

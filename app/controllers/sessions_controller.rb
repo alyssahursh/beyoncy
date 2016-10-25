@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
       redirect_to login_failure_path unless auth_hash['uid']
 
       @user = User.find_by(uid: auth_hash[:uid], provider: 'github')
+      @order = Order.find_by user_id: @user.id, order_status: 'cart'
+      if @order.nil? && !@user.nil?
+        @order = Order.create user_id: @user.id, order_status: 'cart'
+      end
+
       if @user.nil?
         # User doesn't match anything in the DB.
         # create a new user.

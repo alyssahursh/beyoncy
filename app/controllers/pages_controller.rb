@@ -10,4 +10,10 @@ class PagesController < ApplicationController
     @products = Product.all
   end
 
+  def cart
+    @user = User.find_by(id: session[:user_id])
+    @order = Order.find_by user_id: @user.id, order_status: 'cart'
+    @order_products = OrderProduct.where order_id: @order.id
+  end
+
 end

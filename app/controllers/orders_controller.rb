@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :find_order, except: [:index, :new, :create]
+  before_action :find_user
+  # before_action :find_order, except: [:index, :new, :create]
 
   def index
-    @orders = Order.all
+    @orders = @user.orders
   end
 
   def show
@@ -22,6 +23,12 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    if @user.nil?
+      # This should be session?
+      @order = Order.where(order_status: 'cart')
+    else
+      @order = Order.find_by user_id: @user.id, order_status: 'cart'
+    end
   end
 
   def update
@@ -39,12 +46,13 @@ class OrdersController < ApplicationController
 
 
   private
-  def find_order
-    @order = Order.find(params[:id])
-    if @order.nil?
-      render :file => 'public/404.html', :status => :not_found
-    end
+  def find_user
+    @user = User.find_by(id: session[:user_id])
+    # if @user.nil?
+    #   @user = nil
+    # end
   end
+
   # added
   def order_params
     params.require(:order).permit(:order_status, :shipping_cost, :user_id) #changed from user to match model

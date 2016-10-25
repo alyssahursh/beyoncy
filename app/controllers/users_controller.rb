@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    user = User.new
+    @user = User.new
   end
 
   def create
@@ -48,8 +48,10 @@ class UsersController < ApplicationController
   private
   def find_user
     @user = User.find_by(id: session[:user_id])
-    if @user.nil?
-      render :file => 'public/404.html', :status => :not_found
+    if !@user.nil?
+      @order = Order.create(user_id: @user.id, order_status: 'cart')
+    else
+      @order = Order.create(order_status: 'cart')
     end
   end
 

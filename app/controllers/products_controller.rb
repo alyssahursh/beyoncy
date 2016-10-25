@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :find_user
   before_action :find_product, except: [:index, :new, :create]
 
 
@@ -49,6 +50,15 @@ class ProductsController < ApplicationController
 
 
   private
+  def find_user
+    @user = User.find_by(id: session[:user_id])
+    if !@user.nil?
+      @order = Order.new(user_id: @user.id, order_status: 'cart')
+    else
+      @order = Order.new(order_status: 'cart')
+    end
+  end
+
   def find_product
     @product = Product.find(params[:id])
     if @product.nil?
