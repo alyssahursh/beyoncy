@@ -7,8 +7,8 @@
   <% @users.each do |user| %>
     <li>
       <%= "#{user.first_name} #{user.last_name} - id: #{user.id}"  %>
-      <%= link_to("edit this user", edit_user_path(user.id)) %> 
-      <%= link_to("mark this user #{user.active_for_button}", users_path) %>
+      <%= link_to("edit this user", edit_user_path(user.id)) %>
+      <%= link_to("mark this user #{active_for_button(user)}", toggle_path(user.id), method: :patch) %>
       <%= link_to("delete this user", user_path(user.id), method: :delete, data: {confirm: "Are you sure? Deleting a user is permanent."}) %>
     </li>
   <% end %>

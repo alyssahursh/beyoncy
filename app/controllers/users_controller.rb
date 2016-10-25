@@ -45,6 +45,13 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def switch_active
+    user = User.find_by(id: params[:id])
+    user.toggle_active
+    user.save
+    redirect_to users_path
+  end
+
   private
   def find_user
     @user = User.find_by(id: session[:user_id])
