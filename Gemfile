@@ -1,15 +1,13 @@
 source 'https://rubygems.org'
 
 # .env stuff
-gem 'byebug'
 gem 'dotenv-rails'
 
 # oAuth
 gem "omniauth"
 gem "omniauth-github"
 
-# simplecov for testing coverage
-gem 'simplecov'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
@@ -54,6 +52,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'minitest-reporters'
+  # simplecov for testing coverage
+  gem 'simplecov'
 end
 
 group :development do
