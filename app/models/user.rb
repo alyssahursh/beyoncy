@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
     else
       return nil, "last name"
     end
-
   end
+
+  def toggle_active
+    # toggles active between true and false
+    self.active = !self.active
+  end
+
+
 end
