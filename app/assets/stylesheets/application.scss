@@ -13,8 +13,30 @@ ul {
 }
 
 .padding-top {
-  padding-top: 10%;
+  padding-top: 13%;
 }
+
+// table {
+//   color: #E7AD3F;
+//
+// }
+//
+// table tr {
+//   width: auto;
+// }
+
+table{
+    color: #E7AD3F;
+    table-layout: fixed;
+    width: 70%;
+}
+
+th, td {
+    overflow: hidden;
+    width: 10%;
+}
+
+
 /************************************/
 /* NAVIGATION BAR AND HEADER SECTION */
 /************************************/
