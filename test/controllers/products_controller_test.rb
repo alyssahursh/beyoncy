@@ -6,11 +6,11 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should load a specific product on show' do
-    test_product = products(:normal_product)
-    get :show, id: test_product.id
-    assert_response :success
-  end
+  # test 'should load a specific product on show' do
+  #   test_product = products(:normal_product)
+  #   get :show, id: test_product.id
+  #   assert_response :success
+  # end
 
   # test "should get new" do
   #   get :new
@@ -27,14 +27,14 @@ class ProductsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  test "should update a specific product on patch request" do
-    test_product_update = products(:normal_product)
-    test_product_change = {name: 'Crispy Teddy Bears'}
-    patch :update, id: test_product_update.id, product: test_product_change
-    updated_product = Product.find(test_product_update.id)
-    assert_equal 'Crispy Teddy Bears', updated_product.name 
+  # test "should update a specific product on patch request" do
+  #   test_product_update = products(:normal_product)
+  #   test_product_change = {name: 'Crispy Teddy Bears'}
+  #   patch :update, id: test_product_update.id, product: test_product_change
+  #   updated_product = Product.find(test_product_update.id)
+  #   assert_equal 'Crispy Teddy Bears', updated_product.name 
    
-  end
+  # end
   # changed to archive
   
   # should this be done with puts/post?

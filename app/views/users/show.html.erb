@@ -1,22 +1,29 @@
-<%= render partial: 'shared/flash_notice' %>
+<%= render partial: "shared/flash_notice" %>
 
-<h3><%= "Welcome, #{@user.first_name}" %></h3>
+<h3 class="padding-top"><%= "Welcome, #{@user.first_name}" %></h3>
 
-<h4>Your Account Information</h4>
+<div class="row">
+  <section class="small-6 columns">
+    <h4><strong>Your Account Information</strong></h4>
+    <p><%= "First name: #{@user.first_name}" %></p>
+    <p><%= "Last name: #{@user.last_name}" %></p>
+    <p><%= button_to 'Edit Account Information', account_edit_path, :class => "button"%></p>
+  </section>
 
-<p><%= "First name: #{@user.first_name}" %></p>
-<p><%= "Last name: #{@user.last_name}" %></p>
+  <section class="small-6 columns">
+    <h5><strong>Addresses</strong></h5>
 
-<p><%= link_to("Edit account information", account_edit_path) %></p>
+    <% @addresses.each do |address|%>
+      <table class="display-inline">
+        <tr>
+          <td><strong><%= address.kind.capitalize %></strong></td>
+          <td><%= link_to("Edit", edit_address_path(address.id)) %></td>
+          <td><%= link_to("Delete", address_path(address.id), {method: :delete, data: {confirm: "Are you sure? Deleting an address is permanent."}}) %></td>
+        </tr>
+    <% end %>
+    </table>
 
-<h5>Addresses</h5>
+    <p><%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%></p>
 
-<%= link_to("Add a new address", new_address_path) %>
-
-  <% @addresses.each do |address|%>
-    <ul>
-      <li><%= address.kind.capitalize %></li>
-      <li><%= link_to("Edit this address", edit_address_path(address.id)) %></li>
-      <li><%= link_to("Delete this address", address_path(address.id), {method: :delete, data: {confirm: "Are you sure? Deleting an address is permanent."}}) %></li>
-    </ul>
-  <% end %>
+  </section>
+</div>
