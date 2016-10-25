@@ -84,6 +84,11 @@ class UsersController < ApplicationController
   end
 
   def find_uiq
-    @user_in_question = User.find_by(id: params[:id])
+    if params[:id]
+      @user_in_question = User.find_by(id: params[:id])
+    else
+      @user_in_question = @user
+    end
   end
+
 end
