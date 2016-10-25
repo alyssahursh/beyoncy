@@ -16,15 +16,6 @@ ul {
   padding-top: 13%;
 }
 
-// table {
-//   color: #E7AD3F;
-//
-// }
-//
-// table tr {
-//   width: auto;
-// }
-
 table{
     color: #E7AD3F;
     table-layout: fixed;
@@ -129,6 +120,16 @@ nav a:link,
 nav a:hover,
 nav a:visited {
   color: #FFF;
+}
+
+.style-dropdown {
+  color: #333333
+}
+.style-dropdown li a {
+  color: #333333
+}
+.style-dropdown li a:hover {
+  color: #E7AD3F
 }
 
 /************************************/
