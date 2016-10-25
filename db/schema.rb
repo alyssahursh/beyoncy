@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20161020164330) do
 
-
   create_table "addresses", force: :cascade do |t|
     t.string   "kind"
     t.string   "first_name"

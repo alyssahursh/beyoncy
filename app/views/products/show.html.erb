@@ -11,7 +11,7 @@
       <%=@product.description%></li>
       <li><%= number_to_currency((@product.price/100))%></li>
       <li><%= @product.inventory_qty %> in stock</li>
-      <li><%= button_to 'Add to Cart', { controller: 'order_products', action: 'create', params: {order_product: { product_id: @product.id, user_id: @user.id}}}, :class => "button", method: :post %></li>
+      <li><%= button_to 'Add to Cart', { controller: 'order_products', id: @product.id} , :class => "button", method: :post %></li>
     </ul>
   </section>
 </div>
