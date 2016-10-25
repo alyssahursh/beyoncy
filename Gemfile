@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # .env stuff
+gem 'byebug'
 gem 'dotenv-rails'
 
 # oAuth
