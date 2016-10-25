@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   get 'account/edit' => 'users#edit', as: 'account_edit'
 
   put 'account/update' => 'users#update', as: 'account_update'
+
+  patch 'toggle/:id' => 'users#switch_active', as: 'toggle'
 end
