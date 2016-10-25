@@ -6,10 +6,31 @@
   <%= @user.first_name %>
   <h2>Order ID:</h2>
   <%= @order.id %>
-  <h2>Numer of products in order:</h2>
-  <%= @order.order_products.count %>
-  <% @order.order_products.each do |product| %>
-    <%= hi! %>
-  <% end %>
+  <h2>Products in your cart:</h2>
+    <table>
+      <tr>
+        <h3>
+          <th>Product Name:</th>
+          <th>Category:</th>
+          <th>Qty:</th>
+          <th>Price:</th>
+          <th></th>
+          <!-- <th>Edit:</th> -->
+        </h3>
+      </tr>
 
+
+  <% @order_products.each do |order_product| %>
+    <tr>
+      <td><%= Product.find(order_product.product_id).name %></td>
+      <td><%= Product.find(order_product.product_id).category.name %></td>
+      <td><%= button_to "-" %><%= order_product.qty %><%= button_to "+" %></td>
+      <td><%= number_to_currency(order_product.price_per/100) %></td>
+
+      <td><%= button_to "Remove", {controller: :order_products, action: :destroy, id: order_product.id}, method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <%= button_to "Checkout", { controller: 'orders', action: 'update', id: @order, order: {order_status: 'ordered'} }, method: :patch%>
 </section>

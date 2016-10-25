@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_user
-  # before_action :find_order, except: [:index, :new, :create]
+  before_action :find_order, except: [:index, :new, :create]
 
   def index
     @orders = @user.orders
@@ -46,6 +46,10 @@ class OrdersController < ApplicationController
 
 
   private
+  def find_order
+    @order = Order.find(params[:id])
+  end
+
   def find_user
     @user = User.find_by(id: session[:user_id])
     # if @user.nil?

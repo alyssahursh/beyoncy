@@ -56,7 +56,10 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find_by(id: session[:user_id])
     if !@user.nil?
-      @order = Order.create(user_id: @user.id, order_status: 'cart')
+      @order = Order.find_by(user_id: @user.id, order_status: 'cart')
+      if @order.nil?
+        @order = Order.create(user_id: @user.id, order_status: 'cart')
+      end
     else
       @order = Order.create(order_status: 'cart')
     end
