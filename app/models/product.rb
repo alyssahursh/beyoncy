@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   belongs_to :category
   has_and_belongs_to_many :orders
   has_many :reviews
+  # uploading images
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
@@ -19,6 +20,12 @@ class Product < ActiveRecord::Base
   validates :category_id, presence: true
   validates_associated :category
 
+  # search bar
+  def self.search(search)
+    where('description LIKE ? OR name LIKE ?', "%#{search}%", "%#{search}%")
+  end
+
+  # archive method changes active to false
   def archive
     update_attribute(:active, false)
   end

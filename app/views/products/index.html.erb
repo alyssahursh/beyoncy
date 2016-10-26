@@ -9,3 +9,10 @@
   </article>
   <% end %>
 </div>
+
+<!-- if search form in nav bar returns nothing -->
+<section>
+  <% if @products.blank? %>
+    <h4>There are no products containing the search term <em><%= params[:search] %></em>.</h4>
+  <% end %>
+</section>

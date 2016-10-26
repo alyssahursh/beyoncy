@@ -5,6 +5,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.where(active: true)
+
+    if params[:search]
+      @products = Product.search(params[:search]).order("name DESC")
+    else
+      @products = Product.all.order('name DESC')
+    end
   end
 
   def show
