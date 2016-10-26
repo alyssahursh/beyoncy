@@ -20,7 +20,7 @@
   <section class="small-6 columns">
     <ul class="line-height">
       <li><h2> Product Reviews </h2></li>
-      <% if @product.reviews.nil? %>
+      <% if @product.reviews.empty? %>
         <%= "No reviews yet." %>
       <% else %>
       <% @product.reviews.each do |review| %>
@@ -31,30 +31,26 @@
         <% end %>
     </ul>
 
-    <% if @user.admin %>
-      <%= render partial: 'shared/flash_notice' %>
+    <% if !session[:user_id].nil? %>
+      <% if @user.admin %>
+        <ul id="admin-button-location">
 
+          <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
+          <li><%= button_to("Mark #{active_for_button(@product)}", toggle_product_path(@product.id), method: :patch, data: {confirm: 'Are you sure you want to make this product inactive?'}) %></li>
 
-    <ul id="admin-button-location">
-
-      <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
-
-
-      <!-- this button does not currently work, but it will display the correct "mark as inactive" or "mark as active" status, so at least there's that. just need to make the methods for users accessible to products, should be quick. -->
-      <li>
-        <%= button_to("Mark #{active_for_button(@product)}", toggle_product_path(@product.id), method: :patch, data: {confirm: 'Are you sure you want to make this product inactive?'}) %>
-      </li>
-
-    </ul>
+        </ul>
+      <% end  %>
     <% end  %>
   </section>
 
 
 
   <section class="small-6 columns">
+    <% if session[:user_id] != nil %>
     <ul>
       <li><h3>Leave your Review for <%= @product.name %></h3></li>
     </ul>
       <%= render partial: "reviews/reviewform", locals: {  action_name: product_reviews_path(@product.id)} %>
+    <% end %>
   </section>
 </div>
