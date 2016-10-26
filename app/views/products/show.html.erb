@@ -5,7 +5,7 @@
     </ul>
   </section>
   <section class="small-6 columns padding-top">
-    <ul>
+    <ul class="line-height">
       <li><h1><%= @product.name %></h1></li>
       <li><h3>Details</h3></li>
       <%=@product.description%></li>
@@ -16,9 +16,9 @@
   </section>
 </div>
 
-<div class="row">
+<div class="row reviews-show">
   <section class="small-6 columns">
-    <ul>
+    <ul class="line-height">
       <li><h2> Product Reviews </h2></li>
     <% @product.reviews.each do |review| %>
       <li><strong><%= review.subject %></strong></li>
