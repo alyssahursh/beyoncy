@@ -38,8 +38,23 @@
           <% if session[:user_id].nil? %>
             <li><a href='/auth/github'>Login</a></li>
           <% else %>
-            <li><%= link_to "My Account", account_path %></li>
-            <li><%= link_to "Log Out", logout_path %></li>
+            <% if !@user.admin  %>
+              <li>Manage Account
+                <ul class="menu vertical style-dropdown">
+                  <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
+                  <li class="style-dropdown-2">><%= link_to "Log Out", logout_path %></li>
+                </ul>
+              </li>
+            <% elsif @user.admin %>
+                <li>Admin Manager
+                  <ul class ="menu vertical style-dropdown">
+                    <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
+                    <li class="style-dropdown-2"><%= link_to "View All Orders", orders_path %></li>
+                    <li class="style-dropdown-2"><%= link_to "View All Users", users_path %></li>
+                    <li><%= link_to "Log Out", logout_path %></li>
+                  </ul>
+                </li>
+            <% end %>
           <% end %>
             <li><%= link_to "Cart", cart_path %></li>
 
