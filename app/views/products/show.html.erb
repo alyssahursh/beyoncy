@@ -1,7 +1,7 @@
 <div class="row">
   <section class="small-6 columns padding-top">
     <ul>
-      <li><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></li>
+      <li><%=image_tag(@product.image.url(:medium), :alt => "product photo", :title => @product.name)%></li>
     </ul>
   </section>
   <section class="small-6 columns padding-top">
