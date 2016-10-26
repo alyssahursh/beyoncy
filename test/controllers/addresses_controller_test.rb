@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class AddressesControllerTest < ActionController::TestCase
+  #this should probably be ALL addresses for a specific user
   # test "should get index" do
+  #   test_addressess = Addresses.find
+
   #   get :index
   #   assert_response :success
   # end
@@ -17,24 +20,25 @@ class AddressesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
     
-  # test "should create a new address on post request" do
-  #   assert_difference('Address.count', 1) do
-  #     post :create,   
-  #     { address: 
-  #       {kind: 'home', 
-  #         first_name: 'James', 
-  #         last_name: 'Howlet', 
-  #         street1: '1215 Harry Hines Blvd', 
-  #         city: 'Port Manteau', 
-  #         state: 'WA',
-  #         zip: '66666',
-  #         country: 'USA',
-  #         phone: '2146826000',
-  #         user_id: 12
-  #         } 
-  #       }
-  #   end
-  # end
+  test "should create a new address on post request" do
+    assert_difference('Address.count', 1) do
+      session[:user_id] = 12
+      post :create,   
+      { address: 
+        {kind: 'home', 
+          first_name: 'James', 
+          last_name: 'Howlet', 
+          street1: '1215 Harry Hines Blvd', 
+          city: 'Port Manteau', 
+          state: 'WA',
+          zip: '66666',
+          country: 'USA',
+          phone: '2146826000',
+          # user_id: 12
+          } 
+        }
+    end
+  end
 
   test "should update address on patch request" do
     # get it from yml
@@ -63,7 +67,6 @@ class AddressesControllerTest < ActionController::TestCase
       test_address_destroy = addresses(:normal_address)
       get :destroy, id: test_address_destroy.id
     end
-
   end
 
   # test "If a user is not logged in they cannot see their address(es)." do
