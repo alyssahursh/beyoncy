@@ -68,13 +68,14 @@ class AddressesControllerTest < ActionController::TestCase
     end
   end
 
+  
   # test "If a user is not logged in they cannot see their address(es)." do
-  #   # session[:user_id] = nil  # ensure no one is logged in
+  #   session[:user_id] = nil  # ensure no one is logged in
 
-  #   # get :show, id: addresses(:address).id
-  #   # # if they are not logged in they cannot see the resource and are redirected to login.  
-  #   # assert_redirected session_path
-  #   # assert_equal "You must be logged in first", flash[:notice]
+  #   get :show, id: addresses(:normal_address).id
+  #   # if they are not logged in they cannot see the resource and are redirected to login.  
+  #   assert_redirected_to '/'
+  #   assert_equal "You must be logged in first", flash[:notice]
   # end
 
 end

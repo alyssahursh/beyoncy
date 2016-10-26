@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
   before_action :find_address, except: [:index, :new, :create]
 
-  # will this return every address in db?
+  
   def index
     @addresses = Address.all
     
