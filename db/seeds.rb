@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-require 'CSV'
+require 'csv'
 
 def to_bool(string)
   if string.downcase == "true"
@@ -17,15 +17,7 @@ def to_bool(string)
   end
 end
 
-# seed Addresses
-CSV.foreach('seed_csvs/addresses.csv') do |line|
-  address = Address.create(kind: line[0], first_name: line[1], last_name: line[2], street1: line[3], street2: line[4], city: line[5], state: line[6], zip: line[7], country: line[8], phone: line[9], user_id: line[10].to_i)
-  if address.valid?
-    puts "Address #{address.first_name} created sucessfully."
-  else
-    puts "Address #{address.first_name} failed. Errors: #{address.errors}"
-  end
-end
+puts "In DB Seedfile"
 
 # seed Users
 CSV.foreach('seed_csvs/users.csv') do |line|
@@ -37,15 +29,18 @@ CSV.foreach('seed_csvs/users.csv') do |line|
   end
 end
 
-# seed Reviews
-CSV.foreach('seed_csvs/reviews.csv') do |line|
-  review = Review.create(subject: line[0], body: line[1], rating: line[2], user_id: line[3].to_i, product_id: line[4].to_i)
-  if review.valid?
-    puts "Review #{review.subject} created sucessfully."
+puts "In Read in Users"
+# seed Addresses
+CSV.foreach('seed_csvs/addresses.csv') do |line|
+  address = Address.create(kind: line[0], first_name: line[1], last_name: line[2], street1: line[3], street2: line[4], city: line[5], state: line[6], zip: line[7], country: line[8], phone: line[9], user_id: line[10].to_i)
+  if address.valid?
+    puts "Address #{address.first_name} created sucessfully."
   else
-    puts "Review #{review.subject} failed. Errors: #{review.errors}"
+    puts "Address #{address.first_name} failed. Errors: #{address.errors}"
   end
 end
+
+puts "In Read in Addresses"
 
 # seed Categories
 CSV.foreach('seed_csvs/categories.csv') do |line|
@@ -57,14 +52,25 @@ CSV.foreach('seed_csvs/categories.csv') do |line|
   end
 end
 
+puts "In Read in categories"
 # seed Products
-
 CSV.foreach('seed_csvs/products.csv') do |line|
- product = Product.create(name: line[0], description: line[1], price: line[2].to_i, inventory_qty: line[3].to_i, active: to_bool(line[4]), category_id: line[5].to_i)
+  product = Product.create(name: line[0], description: line[1], price: line[2].to_i, inventory_qty: line[3].to_i, active: to_bool(line[4]), category_id: line[5].to_i)
 
- if product.valid?
-   puts "Product #{product.name} created sucessfully."
- else
-   puts "Product #{product.name} failed. Errors: #{product.errors}"
- end
+  if product.valid?
+    puts "Product #{product.name} created sucessfully."
+  else
+    puts "Product #{product.name} failed. Errors: #{product.errors}"
+  end
+end
+
+puts "In Read in products"
+# seed Reviews
+CSV.foreach('seed_csvs/reviews.csv') do |line|
+  review = Review.create(subject: line[0], body: line[1], rating: line[2], user_id: line[3].to_i, product_id: line[4].to_i)
+  if review.valid?
+    puts "Review #{review.subject} created sucessfully."
+  else
+    puts "Review #{review.subject} failed. Errors: #{review.errors}"
+  end
 end
