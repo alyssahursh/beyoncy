@@ -21,8 +21,7 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_difference('Category.count', 1) do
       post :create,
       { category:
-        {name:'blunt objects', 
-          image:'blunt force trauma'}
+        {name:'blunt objects'}
       }
     end
   end
