@@ -2,11 +2,13 @@ require 'test_helper'
 
 class AddressesControllerTest < ActionController::TestCase
   #this should probably be ALL addresses for a specific user
-  # test "should get index" do
-  #   test_addressess = Addresses.find
 
-  #   get :index
-  #   assert_response :success
+  # test "should get index of specific users addresses" do
+  #   test_return_addressess_by_user = Address.where.user_id
+  #   puts test_return_addressess_by_user
+
+  #   get :show, user_id: test_return_addressess_by_user(1)
+    
   # end
 
   test "should get specific address on show" do
@@ -52,9 +54,6 @@ class AddressesControllerTest < ActionController::TestCase
     # verify the data change
     assert_equal 'Dez', updated_address.first_name
   end
-
-#********** Failing Test ******************* #
-# Expected response to be a redirect to <http://test.host/> but was a redirect to <http://test.host/account>. #
 
   test "should redirect on addresses destroy" do
     test_address_destroy = addresses(:normal_address)
