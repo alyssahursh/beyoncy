@@ -15,12 +15,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    # this should never happen since we are only creating users from github?
     @user = User.new(user_params)
     if @user.save!
       flash[:notice] = "User successfully added."
       redirect_to users_path
     else
-      render # UNKNOWN
+      flash[:notice] = "User not created."
+      rendirect_to users_path
     end
   end
 
@@ -94,6 +96,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # when the current user is an admin, find the user's profile that the admin would like to interact with
   def find_uiq
     if params[:id]
       @user_in_question = User.find_by(id: params[:id])

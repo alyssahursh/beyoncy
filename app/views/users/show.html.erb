@@ -6,7 +6,7 @@
     <h4><strong>Your Account Information</strong></h4>
     <p><%= "First name: #{@user.first_name}" %></p>
     <p><%= "Last name: #{@user.last_name}" %></p>
-    <p><%= button_to 'Edit Account Information', account_edit_path, :class => "button"%></p>
+    <p><%= button_to 'Edit Account Information', account_edit_path, :class => "button", method: :get%></p>
   </section>
 
   <section class="small-6 columns">
