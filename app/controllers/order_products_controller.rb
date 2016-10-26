@@ -1,5 +1,5 @@
 class OrderProductsController < ApplicationController
-  # before_action :find_order_product, except: [:index, :new, :create]
+  before_action :find_order_product, except: [:index, :new, :create]
 
   def index
     @order_products = OrderProduct.all
@@ -13,7 +13,15 @@ class OrderProductsController < ApplicationController
   end
 
   def create
-    @order_product = OrderProduct.create(order_product_params)
+    @params = params
+    puts "************************"
+    puts @params
+    puts "************************"
+    @order_product = OrderProduct.new
+    @order_product.product_id = params[:id]
+    @order_product.order_id = session[:cart_id]
+    @order_product.qty = 1
+    @order_product.price_per = Product.find(params[:id]).price * @order_product.qty
     if @order_product.save!
       redirect_to '/cart'
     else
@@ -26,7 +34,7 @@ class OrderProductsController < ApplicationController
 
   def update
     if @order_product.update!(order_product_params)
-      redirect_to # UNKNOWN
+      redirect_to '/cart'
     else
       render # UNKNOWN
     end
@@ -34,7 +42,7 @@ class OrderProductsController < ApplicationController
 
   def destroy
     @order_product.destroy!
-    redirect_to root_path
+    redirect_to '/cart'
   end
 
 
@@ -49,7 +57,7 @@ class OrderProductsController < ApplicationController
   end
 
   def order_product_params
-    params.require(:order_product).permit(:order_id, :product_id, :qty, :price_per)
+    # params.require(:order_product).permit(:qty, :price_per)
   end
 
 end
