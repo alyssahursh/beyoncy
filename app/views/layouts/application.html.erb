@@ -42,7 +42,8 @@
               <li>Manage Account
                 <ul class="menu vertical style-dropdown">
                   <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
-                  <li class="style-dropdown-2">><%= link_to "Log Out", logout_path %></li>
+                  <li class="style-dropdown-2"><%= link_to "View My Orders", orders_path %></li>
+                  <li class="style-dropdown-2"><%= link_to "Log Out", logout_path %></li>
                 </ul>
               </li>
             <% elsif @user.admin %>
