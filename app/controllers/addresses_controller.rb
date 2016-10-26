@@ -1,8 +1,10 @@
 class AddressesController < ApplicationController
   before_action :find_address, except: [:index, :new, :create]
 
+  
   def index
     @addresses = Address.all
+    
   end
 
   def show
@@ -63,7 +65,7 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:kind, :first_name, :last_name, :street1, :street2, :city, :state, :zip, :country, :phone, :user_id)
+    params.require(:address).permit(:kind, :first_name, :last_name, :street1, :street2, :city, :state, :zip, :country, :phone)
   end
 
 end

@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
       @products = Product.all.order('name DESC')
     end
   end
-
+  # why is review in products controller, do we have a review controller?
   def show
     @review = Review.new
   end
