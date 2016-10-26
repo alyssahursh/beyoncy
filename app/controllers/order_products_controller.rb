@@ -13,13 +13,10 @@ class OrderProductsController < ApplicationController
   end
 
   def create
-    @params = params
-    puts "************************"
-    puts @params
-    puts "************************"
+    find_cart
     @order_product = OrderProduct.new
     @order_product.product_id = params[:id]
-    @order_product.order_id = session[:cart_id]
+    @order_product.order_id = @order.id
     @order_product.qty = 1
     @order_product.price_per = Product.find(params[:id]).price * @order_product.qty
     if @order_product.save!
@@ -56,8 +53,13 @@ class OrderProductsController < ApplicationController
     end
   end
 
+  def find_cart
+    @user = User.find_by(id: session[:user_id])
+    @order = Order.find_by(user_id: @user.id, order_status: 'cart')
+  end
+
   def order_product_params
-    # params.require(:order_product).permit(:qty, :price_per)
+  #  params.require(:order_product).permit(:qty, :price_per)
   end
 
 end
