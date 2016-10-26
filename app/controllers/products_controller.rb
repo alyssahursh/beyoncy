@@ -54,6 +54,12 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
+  def switch_active
+    product = Product.find_by(id: params[:id])
+    product.toggle_active
+    product.save
+    redirect_to product_path
+  end
 
   private
   def find_user
@@ -79,5 +85,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :price, :inventory_qty, :category_id, :image)
   end
+
+
 
 end

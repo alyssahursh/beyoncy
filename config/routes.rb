@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   put 'account/update' => 'users#update', as: 'account_update'
 
   patch 'toggle/:id' => 'users#switch_active', as: 'toggle'
+
+  patch 'toggle_product/:id' => 'products#switch_active', as: 'toggle_product'
 end
