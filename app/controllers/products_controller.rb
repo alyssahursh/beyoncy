@@ -5,6 +5,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.where(active: true)
+
+    if params[:search]
+      @products = Product.search(params[:search]).order("name DESC")
+    else
+      @products = Product.all.order('name DESC')
+    end
   end
 
   def show
@@ -71,7 +77,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :inventory_qty, :picture, :category_id)
+    params.require(:product).permit(:name, :description, :price, :inventory_qty, :category_id, :image)
   end
 
 end

@@ -15,15 +15,19 @@
     <header>
       <nav>
         <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
-          <li><h1>BEYONCY</h1></li>
-          <li><a href='/products'>Shop</a>
+          <li><h1><%= link_to "BEYONCY", root_path %></h1></li>
+          <li>
+            <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+            <%= submit_tag "Search", :name => nil  %>
+            <% end %>
+          </li>
+           <li><a href='/products'>Shop</a>
             <ul class="menu vertical style-dropdown">
-              <li>
-                <%= link_to "All Products", products_path %>
-              </li>
-              <li>
-                By Category
-              </li>
+              <li class="style-dropdown-2"><%= link_to "All Products", products_path %></li>
+              <li class="style-dropdown-2">
+              <%= link_to "Categories", categories_path %></li>
+              <li>By Category</li>
               <% @categories.each do |category| %>
               <li>
                   <%= link_to category.name, category_path(category.id), class: "style-dropdown" %>
