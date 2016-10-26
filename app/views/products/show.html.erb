@@ -20,26 +20,37 @@
   <section class="small-6 columns">
     <ul class="line-height">
       <li><h2> Product Reviews </h2></li>
-    <% @product.reviews.each do |review| %>
-      <li><strong><%= review.subject %></strong></li>
-      <li><%= show_lemons(review) %></li>
-      <li><%= review.body %></li>
-      <!-- may want to add an option to edit reviews on this page (only available if user is logged in and it is their review) -->
-    <% end %>
+      <% if @product.reviews.empty? %>
+        <%= "No reviews yet." %>
+      <% else %>
+      <% @product.reviews.each do |review| %>
+          <li><strong><%= review.subject %></strong></li>
+          <li><%= show_lemons(review) %></li>
+          <li><%= review.body %></li>
+          <% end %>
+        <% end %>
     </ul>
-    <ul id="admin-button-location">
-      <!-- need to add if statement here later - only see these options if they are admin. -->
-      <%= render partial: 'shared/flash_notice' %>
-      <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
-    <!-- what if product is inactive already - we should add if statement here so that button changes to be "Mark As Active" Button not working now that I took this out of products controller. archive method currently in product.rb -->
-      <!-- <li><%= button_to 'Mark as Inactive', product_path(params[:id]), :class => "button", method: :delete, data: {confirm: 'Are you sure you want to make this product inactive?'} %>
-      </li> -->
-    </ul>
+
+    <% if !session[:user_id].nil? %>
+      <% if @user.admin %>
+        <ul id="admin-button-location">
+
+          <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
+          <li><%= button_to("Mark #{active_for_button(@product)}", toggle_product_path(@product.id), method: :patch, data: {confirm: 'Are you sure you want to make this product inactive?'}) %></li>
+
+        </ul>
+      <% end  %>
+    <% end  %>
   </section>
+
+
+
   <section class="small-6 columns">
+    <% if session[:user_id] != nil %>
     <ul>
       <li><h3>Leave your Review for <%= @product.name %></h3></li>
     </ul>
       <%= render partial: "reviews/reviewform", locals: {  action_name: product_reviews_path(@product.id)} %>
+    <% end %>
   </section>
 </div>

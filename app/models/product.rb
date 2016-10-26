@@ -30,4 +30,9 @@ class Product < ActiveRecord::Base
     update_attribute(:active, false)
   end
 
+  def toggle_active
+    # toggles active between true and false
+    self.active = !self.active
+  end
+
 end
