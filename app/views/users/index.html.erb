@@ -1,12 +1,20 @@
 <h3 class="padding-top">All Users</h3>
 
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= "#{user.first_name} #{user.last_name} - id: #{user.id}"  %>
-      <%= link_to("edit this user", edit_user_path(user.id)) %>
-      <%= link_to("mark this user #{active_for_button(user)}", toggle_path(user.id), method: :patch) %>
-      <%= link_to("delete this user", user_path(user.id), method: :delete, data: {confirm: "Are you sure? Deleting a user is permanent."}) %>
-    </li>
-  <% end %>
-</ul>
+<table class="style-user-table">
+  <tr>
+    <th>Name</th>
+    <th>ID</th>
+    <th>Edit User</th>
+    <th>Current Status (click to change)</th>
+    <th>Delete User</th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%="#{user.first_name} #{user.last_name}" %></td>
+    <td><%="#{user.id}" %></td>
+    <td><%= link_to("Edit", edit_user_path(user.id)) %></td>
+    <td><%= link_to("#{active_for_button(user)}", toggle_path(user.id), method: :patch) %></td>
+    <td><%= link_to("Delete", user_path(user.id), method: :delete, data: {confirm: "Are you sure? Deleting a user is permanent."}) %></td>
+  </tr>
+<% end %>
+</table>
