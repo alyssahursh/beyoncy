@@ -1,2 +1,24 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>Details for Order No. <%= @order.id %></h1>
+
+
+<table>
+  <tr>
+    <h3>
+      <th>Product Name:</th>
+      <th>Category:</th>
+      <th>Qty:</th>
+      <th>Price:</th>
+    </h3>
+  </tr>
+
+  <% @order.order_products.each do |order_product| %>
+  <tr>
+    <td><%= Product.find(order_product.product_id).name %></td>
+    <td><%= Product.find(order_product.product_id).category.name %></td>
+    <td><%= order_product.qty %></td>
+    <td><%= number_to_currency(order_product.price_per/100) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= button_to "Return to All Orders", {controller: 'orders', action: 'index', params: {order: {user_id: @user.id}}}, method: :get%>

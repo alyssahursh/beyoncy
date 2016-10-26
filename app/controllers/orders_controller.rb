@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :find_order, except: [:index, :new, :create]
 
   def index
-    @orders = @user.orders
+    @orders = Order.where(user_id: @user.id, order_status: 'ordered')
   end
 
   def show
@@ -37,6 +37,12 @@ class OrdersController < ApplicationController
     else
       render # UNKNOWN
     end
+
+    if Order.find_by(user_id: @user.id, order_status: 'cart') == nil
+      @order = Order.new(user_id: @user.id, order_status: 'cart')
+      @order.save
+    end
+
   end
 
   def destroy
