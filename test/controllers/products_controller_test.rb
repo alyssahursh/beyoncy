@@ -5,7 +5,8 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
   end
-
+  # the review controller is in prodcuts
+  
   # test 'should load a specific product on show' do
   #   test_product = products(:normal_product)
   #   get :show, id: test_product.id

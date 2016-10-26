@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
-
+  # why is review in products controller, do we have a review controller?
   def show
     @review = Review.new
   end

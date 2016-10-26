@@ -17,29 +17,24 @@ class AddressesControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
     
-  # test "should create a new address on post request" do
-  #   assert_difference('Address.count', 1) do
-  #     post :create,   
-  #     { address: 
-  #       {kind: 'home', 
-  #         first_name: 'James', 
-  #         last_name: 'Howlet', 
-  #         street1: '1215 Harry Hines Blvd', 
-  #         city: 'Port Manteau', 
-  #         state: 'WA',
-  #         zip: '66666',
-  #         country: 'USA',
-  #         phone: '2146826000',
-  #         user_id: 12
-  #         } 
-  #       }
-  #   end
-  # end
-
-  # test "should get edit" do
-  #   get :edit
-  #   assert_response :success
-  # end
+  test "should create a new address on post request" do
+    assert_difference('Address.count', 1) do
+      post :create,   
+      { address: 
+        {kind: 'home', 
+          first_name: 'James', 
+          last_name: 'Howlet', 
+          street1: '1215 Harry Hines Blvd', 
+          city: 'Port Manteau', 
+          state: 'WA',
+          zip: '66666',
+          country: 'USA',
+          phone: '2146826000',
+          user_id: 12
+          } 
+        }
+    end
+  end
 
   test "should update address on patch request" do
     # get it from yml
