@@ -106,7 +106,7 @@ nav {
 nav ul li{
   display: inline-block;
   list-style: none;
-  padding: 0 2vw;
+  padding: 0 .5vw;
   text-transform: uppercase;
 }
 
@@ -130,6 +130,10 @@ nav a:visited {
 }
 .style-dropdown li a:hover {
   color: #E7AD3F
+}
+
+.style-dropdown-2 {
+  padding-left: 0
 }
 
 /************************************/
