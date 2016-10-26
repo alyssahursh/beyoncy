@@ -27,15 +27,28 @@
       <!-- may want to add an option to edit reviews on this page (only available if user is logged in and it is their review) -->
     <% end %>
     </ul>
-    <ul id="admin-button-location">
-      <!-- need to add if statement here later - only see these options if they are admin. -->
+
+<!-- need to add if statement here later - only see these options if they are admin. -->
+    <% if @user.admin %>
       <%= render partial: 'shared/flash_notice' %>
+
+
+    <ul id="admin-button-location">
+
       <li><%= button_to 'Edit Product', edit_product_path(params[:id]), :class => "button", method: :get %></li>
-    <!-- what if product is inactive already - we should add if statement here so that button changes to be "Mark As Active" Button not working now that I took this out of products controller. archive method currently in product.rb -->
-      <!-- <li><%= button_to 'Mark as Inactive', product_path(params[:id]), :class => "button", method: :delete, data: {confirm: 'Are you sure you want to make this product inactive?'} %>
-      </li> -->
+
+
+      <!-- this button does not currently work, but it will display the correct "mark as inactive" or "mark as active" status, so at least there's that. just need to make the methods for users accessible to products, should be quick. -->
+      <li>
+        <%= button_to("mark this product #{active_for_button(@product)}", toggle_path(@product.id), method: :patch, data: {confirm: 'Are you sure you want to make this product inactive?'}) %>
+      </li>
+
     </ul>
+    <% end  %>
   </section>
+
+
+
   <section class="small-6 columns">
     <ul>
       <li><h3>Leave your Review for <%= @product.name %></h3></li>
