@@ -9,7 +9,7 @@
       <li><h1><%= @product.name %></h1></li>
       <li><h3>Details</h3></li>
       <%=@product.description%></li>
-      <li><%= number_to_currency((@product.price/100))%></li>
+      <li><%= number_to_currency((@product.price/100.0))%></li>
       <li><%= @product.inventory_qty %> in stock</li>
       <li><%= button_to 'Add to Cart', { controller: 'order_products', id: @product.id} , :class => "button", method: :post %></li>
     </ul>

@@ -14,11 +14,36 @@ class OrderProductsController < ApplicationController
 
   def create
     find_cart
-    @order_product = OrderProduct.new
-    @order_product.product_id = params[:id]
-    @order_product.order_id = @order.id
-    @order_product.qty = 1
-    @order_product.price_per = Product.find(params[:id]).price * @order_product.qty
+
+    already_in = false
+
+    @order.order_products.each do |order_product|
+      puts "(((((((((((((((())))))))))))))))"
+      puts order_product.product_id
+      puts params[:id]
+      puts "((((((((((((((((()))))))))))))))))"
+      if order_product.product_id.to_i == params[:id].to_i
+        already_in = true
+        @order_product = OrderProduct.find(order_product.id)
+        @order_product.save
+      end
+    end
+    puts "((((((((((((((((((((()))))))))))))))))))))"
+    puts already_in
+    puts "(((((((((((((((((((())))))))))))))))))))"
+
+    if already_in
+      @order_product.qty += 1
+    else
+      @order_product = OrderProduct.new
+      @order_product.product_id = params[:id]
+      @order_product.order_id = @order.id
+      @order_product.qty = 1
+      @order_product.price_per = Product.find(params[:id]).price
+    end
+
+    calc_line_price
+
     if @order_product.save!
       redirect_to '/cart'
     else
@@ -30,11 +55,17 @@ class OrderProductsController < ApplicationController
   end
 
   def update
-    if @order_product.update!(order_product_params)
-      redirect_to '/cart'
-    else
-      render # UNKNOWN
+    @order_product.qty += params[:delta].to_i
+    @order_product.save
+
+    calc_line_price
+
+
+    if @order_product.qty == 0
+      @order_product.delete
     end
+
+    redirect_to '/cart'
   end
 
   def destroy
@@ -46,6 +77,12 @@ class OrderProductsController < ApplicationController
 
 
   private
+
+  def calc_line_price
+    @order_product.line_item_price = @order_product.qty * @order_product.price_per
+    @order_product.save
+  end
+
   def find_order_product
     @order_product = OrderProduct.find(params[:id])
     if @order_product.nil?
@@ -59,7 +96,7 @@ class OrderProductsController < ApplicationController
   end
 
   def order_product_params
-  #  params.require(:order_product).permit(:qty, :price_per)
+    # params.require(:order_product).permit(:qty, :price_per)
   end
 
 end

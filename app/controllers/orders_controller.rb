@@ -3,7 +3,11 @@ class OrdersController < ApplicationController
   before_action :find_order, except: [:index, :new, :create]
 
   def index
-    @orders = Order.where(user_id: @user.id, order_status: 'ordered')
+    if @user.admin
+      @orders = Order.all
+    else
+      @orders = Order.where(user_id: @user.id, order_status: 'ordered')
+    end
   end
 
   def show
