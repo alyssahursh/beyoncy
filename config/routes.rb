@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # omniauth route
-  get "/auth/:provider/callback" =>  "sessions#create"
+  get "/auth/:provider/callback" =>  "sessions#create", as: 'create'
 
   get "logout" => "sessions#destroy", as: "logout"
 
