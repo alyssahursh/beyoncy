@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :find_category, except: [:index, :new, :create]
+  before_action :find_user
 
   def index
     @categories = Category.all
@@ -54,6 +55,10 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :image)
+  end
+
+  def find_user
+    @user = User.find_by(id: session[:user_id])
   end
 
 end

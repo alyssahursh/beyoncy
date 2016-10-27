@@ -1,10 +1,11 @@
 class AddressesController < ApplicationController
+  before_action :find_user
   before_action :find_address, except: [:index, :new, :create]
 
-  
+
   def index
     @addresses = Address.all
-    
+
   end
 
   def show
@@ -16,14 +17,6 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-
-    # puts @address.valid?
-    # if ! @address.valid?
-    #   @address.errors.each  do |attr, msg|
-    #     puts "#{attr}: #{msg}"
-    #   end
-    # end
-
     @address.user_id = session[:user_id]
     if @address.save!
       flash[:notice] = "Address successfully saved."
@@ -57,6 +50,11 @@ class AddressesController < ApplicationController
 
 
   private
+  
+  def find_user
+    @user = User.find_by(id: session[:user_id])
+  end
+
   def find_address
     @address = Address.find(params[:id])
     if @address.nil?
