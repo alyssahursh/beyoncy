@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   #TODO this line breaks the orders controller destroy test.
   #has_and_belongs_to_many :products
-  
+
   validates :user_id, presence: true
   validates_associated :user
 
@@ -17,6 +17,7 @@ class Order < ActiveRecord::Base
         @subtotal += order_product.qty * order_product.price_per
       end
     end
+    return @subtotal
   end
 
 
