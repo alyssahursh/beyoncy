@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20161027043944) do
 
+
   create_table "addresses", force: :cascade do |t|
     t.string   "kind"
     t.string   "first_name"
@@ -52,8 +53,9 @@ ActiveRecord::Schema.define(version: 20161027043944) do
     t.integer  "product_id"
     t.integer  "qty"
     t.integer  "price_per"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "line_item_price"
   end
 
   add_index "order_products", ["order_id"], name: "index_order_products_on_order_id"

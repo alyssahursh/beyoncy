@@ -9,9 +9,20 @@
       <li><h1><%= @product.name %></h1></li>
       <li><h3>Details</h3></li>
       <%=@product.description%></li>
-      <li><%= number_to_currency((@product.price/100))%></li>
-      <li><%= @product.inventory_qty %> in stock</li>
-      <li><%= button_to 'Add to Cart', { controller: 'order_products', id: @product.id} , :class => "button", method: :post %></li>
+      <li><%= number_to_currency((@product.price/100.0))%></li>
+
+      <% if @product.inventory_qty <= 0 %>
+        <li>OUT OF STOCK</li>
+      <% else %>
+        <li><%= @product.inventory_qty %> in stock</li>
+        <%= form_for :order_products, url: order_products_path do |f| %>
+          <%= f.hidden_field :id, value: @product.id %>
+          <%= f.label :delta, "Quantity to add to cart" %>
+          <%= f.number_field :delta, value: 1%>
+          <%= f.submit "Add to Cart" %>
+        <% end %>
+      <% end %>
+
     </ul>
   </section>
 </div>
