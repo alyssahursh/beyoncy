@@ -42,7 +42,7 @@
         <% end %>
     </ul>
 
-    <% if !session[:user_id].nil? %>
+    <% if !@user.nil? %>
       <% if @user.admin %>
         <ul id="admin-button-location">
 
