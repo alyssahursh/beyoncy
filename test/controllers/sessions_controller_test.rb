@@ -20,15 +20,14 @@ class SessionsControllerTest < ActionController::TestCase
     assert_no_difference('User.count') do
       login_a_user
       assert_response :success
-     
     end
   end
 
-  # user data uniqueness 
+  # user data uniqueness (testing individual data elements)
 
   # test "user addresses should be unique" do
-  #   duplicate_adresses = @address.dup
-  #   @address.save
+  #   login_a_user
+  #   duplicate_address = login_a_user.address
   #   assert_not duplicate_address.valid?
   # end
 
@@ -43,12 +42,13 @@ class SessionsControllerTest < ActionController::TestCase
   #   @uid.save
   #   assert_not duplicate_uid.valid?
   # end
-
-  # test 'user can log out successfully' do 
-  #   @session = Session.find(session[:user_id])
-  #   assert_nil set user session to nil [:user] == nilsession[:user_id]
-  #   assert_redirected_to login_fail_path
-  # end
+  
+  # this one was too straight forward, am I testing what I think I'm testing.
+  test 'user can log out successfully' do 
+    login_a_user
+    session.destroy
+    assert_nil session[:user_id]
+  end
 
 end
 
