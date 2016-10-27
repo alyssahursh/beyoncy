@@ -44,7 +44,8 @@ class OrdersController < ApplicationController
         product.inventory_qty -= order_product.qty
         product.save
       end
-      redirect_to orders_path
+      redirect_to order_path(@order.id)
+      flash[:notice] = "Thank you for your order!"
     else
       render # UNKNOWN
     end
