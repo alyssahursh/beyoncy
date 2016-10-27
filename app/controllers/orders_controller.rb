@@ -35,9 +35,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  # Currently only used for checking out. Be careful!
   def update
     if @order.update!(order_params)
-      redirect_to # UNKNOWN
+      @order.order_products.each do |order_product|
+        product = Product.find(order_product.product_id)
+        product.inventory_qty -= order_product.qty
+        product.save
+      end
+      redirect_to orders_path
     else
       render # UNKNOWN
     end
