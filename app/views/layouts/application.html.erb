@@ -35,14 +35,15 @@
               <% end %>
             </ul>
           </li>
-          <% if session[:user_id].nil? %>
+          <% if @user.nil? %>
             <li><a href='/auth/github'>Login</a></li>
           <% else %>
             <% if !@user.admin  %>
               <li>Manage Account
                 <ul class="menu vertical style-dropdown">
                   <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
-                  <li class="style-dropdown-2">><%= link_to "Log Out", logout_path %></li>
+                  <li class="style-dropdown-2"><%= link_to "View My Orders", orders_path %></li>
+                  <li class="style-dropdown-2"><%= link_to "Log Out", logout_path %></li>
                 </ul>
               </li>
             <% elsif @user.admin %>
@@ -66,7 +67,3 @@
 
   </body>
 </html>
-
-<%= javascript_include_tag "application" %>
-<script type="text/javascript">$(function(){ $(document).foundation(); });</script>
-</div>

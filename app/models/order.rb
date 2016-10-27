@@ -11,13 +11,13 @@ class Order < ActiveRecord::Base
   has_many :order_products
 
   def subtotal
-    @subtotal = 0
+    subtotal = 0
     order_products.each do |order_product|
       if order_product.valid?
-        @subtotal += order_product.qty * order_product.price_per
+        subtotal += order_product.qty * order_product.price_per
       end
     end
-    return @subtotal
+    return subtotal
   end
 
 

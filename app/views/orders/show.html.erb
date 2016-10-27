@@ -1,24 +1,35 @@
-<br /><br /><br /><br /><br /><br /><br /><br /><h1>Details for Order No. <%= @order.id %></h1>
+<%= flash[:checkout] %>
+
+<h1>Details for Order No. <%= @order.id %></h1>
+
+  <table>
+    <tr>
+      <h3>
+        <th>Product Name:</th>
+        <th>Category:</th>
+        <th>Qty:</th>
+        <th>Price Per:</th>
+        <th>Total Price:</th>
+        <th></th>
+        <!-- <th>Edit:</th> -->
+      </h3>
+    </tr>
 
 
-<table>
-  <tr>
-    <h3>
-      <th>Product Name:</th>
-      <th>Category:</th>
-      <th>Qty:</th>
-      <th>Price:</th>
-    </h3>
-  </tr>
-
-  <% @order.order_products.each do |order_product| %>
+<% @order.order_products.each do |order_product| %>
   <tr>
     <td><%= Product.find(order_product.product_id).name %></td>
     <td><%= Product.find(order_product.product_id).category.name %></td>
-    <td><%= order_product.qty %></td>
+    <td><%= button_to "-", { controller: 'order_products', action: 'update', id: order_product.id, delta: -1}, method: :patch %>
+        <%= order_product.qty %>
+        <%= button_to "+", { controller: 'order_products', action: 'update', id: order_product.id, delta: 1}, method: :patch  %>
+    </td>
     <td><%= number_to_currency(order_product.price_per/100) %></td>
+    <td><%= number_to_currency(order_product.line_item_price/100) %></td>
   </tr>
-  <% end %>
+<% end %>
 </table>
+
+<h3>Order Total: </h3><%=number_to_currency(@order.subtotal/100) %>
 
 <%= button_to "All Your Orders", {controller: 'orders', action: 'index', params: {order: {user_id: @user.id}}}, method: :get%>
