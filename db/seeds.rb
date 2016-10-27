@@ -44,7 +44,7 @@ puts "In Read in Addresses"
 
 # seed Categories
 CSV.foreach('seed_csvs/categories.csv') do |line|
-  category = Category.create(name: line[0])
+  category = Category.create(name: line[0], picture: line[1])
   if category.valid?
     puts "Category #{category.name} created sucessfully."
   else
@@ -55,7 +55,7 @@ end
 puts "In Read in categories"
 # seed Products
 CSV.foreach('seed_csvs/products.csv') do |line|
-  product = Product.create(name: line[0], description: line[1], price: line[2].to_i, inventory_qty: line[3].to_i, active: to_bool(line[4]), category_id: line[5].to_i)
+  product = Product.create(name: line[0], description: line[1], price: line[2].to_i, inventory_qty: line[3].to_i, active: to_bool(line[4]), category_id: line[5].to_i, picture: line[6])
 
   if product.valid?
     puts "Product #{product.name} created sucessfully."
