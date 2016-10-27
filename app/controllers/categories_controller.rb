@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name, :picture)
+    params.require(:category).permit(:name,:picture)
   end
 
   def find_user
