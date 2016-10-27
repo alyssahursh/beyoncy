@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027043944) do
+ActiveRecord::Schema.define(version: 20161027222351) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "kind"
@@ -38,12 +38,8 @@ ActiveRecord::Schema.define(version: 20161027043944) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "picture"
   end
 
@@ -64,8 +60,10 @@ ActiveRecord::Schema.define(version: 20161027043944) do
     t.string   "order_status"
     t.integer  "shipping_cost"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "shipping_address_id"
+    t.integer  "billing_address_id"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
@@ -77,12 +75,8 @@ ActiveRecord::Schema.define(version: 20161027043944) do
     t.integer  "inventory_qty"
     t.boolean  "active"
     t.integer  "category_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "picture"
   end
 
