@@ -98,7 +98,7 @@ class ProductTest < ActiveSupport::TestCase
     # assert_not(product.valid?)
   end
 
-############# testing products relationship with categories
+############# testing products relationship with categories ##########
 
   test 'products must have a category' do
     assert(products(:normal_product).valid?)
@@ -110,6 +110,52 @@ class ProductTest < ActiveSupport::TestCase
     category = categories(:normal_category)
 
     assert_equal(product.category_id, category.id)
+  end
+
+############# test self.search ##########
+
+test 'Product.search should return nil if there is nothing that matches the product' do
+  searched = Product.search("cat")
+  assert_empty(searched)
+end
+
+test 'Product.search should a product if its name is searched' do
+  searched = Product.search("negative price")
+  assert(searched.include?(products(:product_with_negative_price)))
+end
+
+test 'Product.search should a product if a piece of its description is searched' do
+  searched = Product.search("cool")
+  assert(searched.include?(products(:normal_product)))
+end
+
+############## test archive ##########
+
+test 'when passed an active product, the archive method should switch it to inactive' do
+  product = products(:normal_product)
+  product.archive
+  assert_not(product.active)
+end
+
+test 'when passed an inactive product, the archive method should not change the inactive product to active' do
+  product = products(:inactive_product)
+  product.archive
+  assert_not(product.active)
+end
+
+
+############# test toggle_active ##########
+
+  test 'when passed an active product, the toggle_active method should switch it to inactive' do
+    product = products(:normal_product)
+    product.toggle_active
+    assert_not(product.active)
+  end
+
+  test 'when passed an inactive product, the toggle_active method should switch it to active' do
+    product = products(:inactive_product)
+    product.toggle_active
+    assert(product.active)
   end
 
 end
