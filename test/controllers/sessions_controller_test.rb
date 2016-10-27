@@ -14,17 +14,15 @@ class SessionsControllerTest < ActionController::TestCase
     assert_response :success 
   end 
 
- 
+  test 'it does NOT create a 2nd user if their is a second login in attempt from the same user' do
+    login_a_user
 
-  # test 'it does NOT create a 2nd user if their is a second login in attempt from the same user' do
-  #   login_a_user
-
-  #   assert_no_difference('User.count') do
-  #     login_a_user
-  #     assert_response :redirect
-  #     assert_redirected_to root_path
-  #   end
-  # end
+    assert_no_difference('User.count') do
+      login_a_user
+      assert_response :success
+     
+    end
+  end
 
   # user data uniqueness 
 
