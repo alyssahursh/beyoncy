@@ -3,7 +3,7 @@
 normal_product:
   id: 1
   name: "everything about this product is good"
-  description: "blah blah"
+  description: "cool normal products"
   price: 50000
   inventory_qty: 10
   active: true
@@ -52,3 +52,11 @@ product_with_no_category:
   price: 100
   inventory_qty: 10
   active: true
+
+inactive_product:
+  name: "hello"
+  description: "blah blah"
+  price: 10000
+  inventory_qty: 10
+  category_id: 1
+  active: false
