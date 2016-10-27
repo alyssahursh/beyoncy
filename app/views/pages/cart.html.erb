@@ -1,7 +1,8 @@
 <section class="padding-top">
 
   <h1>THIS IS YOUR SHOPPING CART, YO!</h1>
-
+  <!-- This should get flash notice class -->
+  <%= flash[:alert] %>
   <h2>User name:</h2>
   <%= @user.first_name %>
   <h2>Order ID:</h2>
@@ -13,7 +14,8 @@
           <th>Product Name:</th>
           <th>Category:</th>
           <th>Qty:</th>
-          <th>Price:</th>
+          <th>Price Per:</th>
+          <th>Total Price:</th>
           <th></th>
           <!-- <th>Edit:</th> -->
         </h3>
@@ -24,13 +26,53 @@
     <tr>
       <td><%= Product.find(order_product.product_id).name %></td>
       <td><%= Product.find(order_product.product_id).category.name %></td>
-      <td><%= button_to "-" %><%= order_product.qty %><%= button_to "+" %></td>
-      <td><%= number_to_currency(order_product.price_per/100) %></td>
+      <td><%= button_to "-", { controller: 'order_products', action: 'update', id: order_product.id, delta: -1}, method: :patch %>
+          <%= order_product.qty %>
+          <%= button_to "+", { controller: 'order_products', action: 'update', id: order_product.id, delta: 1}, method: :patch  %>
+      </td>
+      <td><%= number_to_currency(order_product.price_per/100.0) %></td>
+      <td><%= number_to_currency(order_product.line_item_price/100.0) %></td>
 
       <td><%= button_to "Remove", {controller: :order_products, action: :destroy, id: order_product.id}, method: :delete %></td>
     </tr>
   <% end %>
   </table>
+
+  <h3>Order Total: </h3><%=number_to_currency(@order.subtotal/100.0) %>
+
+  <h5>Shipping Address</h5>
+  <%= form_for :addresses do |f| %>
+    <%= f.hidden_field :kind, value: 'shipping' %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.text_field :first_name, placeholder: "First Name" %>
+    <%= f.text_field :last_name, placeholder: "Last Name" %>
+    <%= f.text_field :street1, placeholder: "Street Address" %>
+    <%= f.text_field :street2, placeholder: "Street Address" %>
+    <%= f.text_field :city, placeholder: "City" %>
+    <%= f.text_field :state, placeholder: "State" %>
+    <%= f.text_field :zip, placeholder: "Zip" %>
+    <%= f.text_field :country, placeholder: "Country" %>
+    <%= f.text_field :phone, placeholder: "Phone" %>
+    <%= f.submit "Save Address" %>
+  <% end %>
+
+
+  <h5>Billing Address</h5>
+  <%= form_for :addresses do |f| %>
+    <%= f.hidden_field :kind, value: 'billing' %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.text_field :first_name, placeholder: "First Name" %>
+    <%= f.text_field :last_name, placeholder: "Last Name" %>
+    <%= f.text_field :street1, placeholder: "Street Address" %>
+    <%= f.text_field :street2, placeholder: "Street Address" %>
+    <%= f.text_field :city, placeholder: "City" %>
+    <%= f.text_field :state, placeholder: "State" %>
+    <%= f.text_field :zip, placeholder: "Zip" %>
+    <%= f.text_field :country, placeholder: "Country" %>
+    <%= f.text_field :phone, placeholder: "Phone" %>
+    <%= f.submit "Save Address" %>
+  <% end %>
+
 
   <%= button_to "Checkout", { controller: 'orders', action: 'update', id: @order, order: {order_status: 'ordered'} }, method: :patch%>
 </section>
