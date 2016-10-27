@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
   before_action :find_user
-  before_action :find_order, except: [:index, :new, :create]
+  before_action :find_uiq, only: [:index, :all]
+  before_action :find_order, except: [:index, :new, :create, :all]
 
   def index
     if @user.admin
       @orders = Order.all
     else
-      @orders = Order.where(user_id: @user.id, order_status: 'ordered')
+      redirect_to user_orders_path(@user.id)
     end
   end
 
@@ -60,6 +61,9 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
+  def all
+    @orders = Order.where(user_id: @user_in_question.id, order_status: 'ordered')
+  end
 
   private
   def find_order
@@ -77,5 +81,14 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:order_status, :shipping_cost, :user_id) #changed from user to match model
   end
+
+  def find_uiq
+    if params[:id]
+      @user_in_question = User.find_by(id: params[:id])
+    else
+      @user_in_question = @user
+    end
+  end
+
 
 end

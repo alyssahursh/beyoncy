@@ -70,7 +70,7 @@ user_without_active:
 one:
   first_name: 'Becky'
   last_name: 'beckyGoodHair'
-  email: beckygoodhair@lockskey.com 
+  email: beckygoodhair@lockskey.com
   birthdate: 1997-10-18 13:28:07
   phone: '555-867-5309'
   admin: false
@@ -89,17 +89,16 @@ two:
   uid: '12345678'
   provider: 'github'
 
-three:
+inactive_user:
   first_name: 'Ganga'
   last_name: 'Mai'
   email: meetmeattheriver@takemetothewater.com
   birthdate: 1900-10-09 13:28:07
   phone: '214-867-5309'
-  admin: true
-  active: true
+  admin: false
+  active: false
   uid: '87654321'
   provider: 'github'
-
 
 four:
   first_name: 'Orunmila'
@@ -111,4 +110,3 @@ four:
   active: true
   uid: '09876543'
   provider: 'github'
-

@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   patch 'toggle/:id' => 'users#switch_active', as: 'toggle'
 
   patch 'toggle_product/:id' => 'products#switch_active', as: 'toggle_product'
+
+  get 'users/orders/:id' => 'orders#all', as: 'user_orders'
 end
