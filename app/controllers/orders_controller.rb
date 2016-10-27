@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     if @user.admin
       @orders = Order.all
     else
-      @orders = Order.where(user_id: @user_in_question.id, order_status: 'ordered')
+      redirect_to user_orders_path(@user.id)
     end
   end
 

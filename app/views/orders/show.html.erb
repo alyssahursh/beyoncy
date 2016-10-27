@@ -21,4 +21,4 @@
   <% end %>
 </table>
 
-<%= button_to "Return to All Orders", {controller: 'orders', action: 'index', params: {order: {user_id: @user.id}}}, method: :get%>
+<%= button_to "All Your Orders", {controller: 'orders', action: 'index', params: {order: {user_id: @user.id}}}, method: :get%>
