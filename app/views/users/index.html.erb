@@ -15,6 +15,8 @@
     <td><%= link_to("Edit", edit_user_path(user.id)) %></td>
     <td><%= link_to("Make #{active_for_button(user)}", toggle_path(user.id), method: :patch) %></td>
     <td><%= link_to("Delete", user_path(user.id), method: :delete, data: {confirm: "Are you sure? Deleting a user is permanent."}) %></td>
+
+    <td><%= link_to("See orders", user_orders_path(user.id)) %></td>
   </tr>
 <% end %>
 </table>
