@@ -48,6 +48,17 @@ table{
     width: 100%;
 }
 
+table.order tr {
+  border: 1px solid transparent;
+  background-color: transparent !important;
+}
+
+table.order td {
+  height: 5vw;
+  text-align: top;
+}
+
+
 th,
 td {
   text-align: left;
@@ -294,6 +305,12 @@ article.column {
   background-color: #000;
 }
 
+.hollow.button.min-pad {
+  padding: .5vw;
+  width: 2vw;
+  height: 2vw;
+}
+
 #admin-button-location {
   display: inline-block;
 }
@@ -366,7 +383,7 @@ textarea {
 }
 
 p {
-  font: normal normal 1.5vw/1.25 'Josefin Sans', sans-serif;
+  font: normal normal 1.5vw/1 'Josefin Sans', sans-serif;
   color: #525252;
 }
 
@@ -385,4 +402,11 @@ h1.overlay a{
 
 h1.overlay a:hover {
   background-color: rgba(255, 255, 255, .2);
+}
+
+.qty {
+  display: inline-block;
+  width: 2vw;
+  text-align: left;
+  font-size: 2vw;
 }

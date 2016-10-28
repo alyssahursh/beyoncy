@@ -1,69 +1,87 @@
 <%= flash[:notice] %>
 
 
-<section class="row">
-  <div class="small-12 columns">
-    <h1>Details for Order No. <%= @order.id %></h1>
-    <table>
+<div class="row">
+  <h1 class="center-text">Shopping Cart</h1>
+
+  <h4 class="alert"><%= flash[:alert] %></h4>
+
+    <table class="order">
       <tr>
         <h3>
-          <th>Product Name:</th>
-          <th>Category:</th>
-          <th>Qty:</th>
-          <th>Price Per:</th>
-          <th>Total Price:</th>
+          <th>Product</th>
           <th></th>
+          <th>Qty</th>
+          <th>Price Per</th>
+          <th>Total Price</th>
+          <th></th>
+          <!-- <th>Edit:</th> -->
         </h3>
       </tr>
 
+
   <% @order.order_products.each do |order_product| %>
     <tr>
-      <td><%= Product.find(order_product.product_id).name %></td>
-      <td><%= Product.find(order_product.product_id).category.name %></td>
-      <td><%= button_to "-", { controller: 'order_products', action: 'update', id: order_product.id, delta: -1}, method: :patch %>
-          <%= order_product.qty %>
-          <%= button_to "+", { controller: 'order_products', action: 'update', id: order_product.id, delta: 1}, method: :patch  %>
-      </td>
-      <td><%= number_to_currency(order_product.price_per/100) %></td>
-      <td><%= number_to_currency(order_product.line_item_price/100) %></td>
+      <td><%=image_tag(Product.find(order_product.product_id).picture, :alt => "product photo")  %></td>
+      <td><strong><%=Product.find(order_product.product_id).name%></strong> <%=Product.find(order_product.product_id).category.name%></td>
+      <td><div class="qty"><%= "#{order_product.qty}"%></div></td>
+      <td><%= number_to_currency(order_product.price_per/100.0) %></td>
+      <td><%= number_to_currency(order_product.line_item_price/100.0) %></td>
     </tr>
   <% end %>
+
   </table>
+</div>
 
-  <h3>Order Total: </h3><%=number_to_currency(@order.subtotal/100) %>
+<div class="mid-page-space"></div>
 
-  <%= button_to "All Your Orders", {controller: 'orders', action: 'index', params: {order: {user_id: @user.id}}}, method: :get%>
-  </div>
-</section>
 <section class="row">
-  <div class="small-3 columns">
-    <ul>
-      <li><strong>Shipping Address:</strong></li>
-      <li><%= @shipping.first_name %>
-      <%= @shipping.last_name %></li>
-      <li><%= @shipping.street1 %></li>
-      <li><%= @shipping.street2 %></li>
-      <li><%= @shipping.city %>,
-      <%= @shipping.state %>
-      <%= @shipping.zip %>
-      <%= @shipping.country %></li>
-      <li><%= @shipping.phone %></li>
-    </ul>
+  <%= form_for @order,
+    url: { controller: 'orders', action: 'update', id: @order }, method: :patch do |f| %>
+    <%= f.hidden_field :order_status, {:value => 'ordered'} %>
+  <div class="small-4 columns">
+    <h3>Shipping Address</h3>
+    <% @user.addresses.each do |address|  %>
+      <% if address.kind == "Shipping" %>
+      <%= f.radio_button(:shipping_address_id, address.id) %>
+      <ul>
+        <p><%= address.first_name %>
+        <%= address.last_name %></p>
+        <p><%= address.street1 %></p>
+        <p><%= address.street2 %></p>
+        <p><%= address.city %>,
+        <%= address.state %>
+        <%= address.zip %>
+        <%= address.country %></p>
+        <p><%= address.phone %></p>
+        <br>
+      </ul>
+      <% end %>
+    <% end %>
   </div>
-  <div class="small-3 columns">
-    <ul>
-      <li><strong>Billing Address:</strong></li>
-      <li><%= @billing.first_name %>
-      <%= @billing.last_name %></li>
-      <li><%= @billing.street1 %></li>
-      <li><%= @billing.street2 %></li>
-      <li><%= @billing.city %>,
-      <%= @billing.state %>
-      <%= @billing.zip %>
-      <%= @billing.country %></li>
-      <li><%= @billing.phone %></li>
-    </ul>
+
+  <div class="small-4 columns">
+    <h3>Billing Address</h3>
+
+      <% @user.addresses.each do |address|  %>
+        <% if address.kind == "Billing" %>
+        <%= f.radio_button(:billing_address_id, address.id) %>
+        <ul>
+          <p><%= address.first_name %>
+          <%= address.last_name %></p>
+          <p><%= address.street1 %></p>
+          <p><%= address.street2 %></p>
+          <p><%= address.city %>,
+          <%= address.state %>
+          <%= address.zip %>
+          <%= address.country %></p>
+          <p><%= address.phone %></p>
+          <br>
+        </ul>
+        <% end %>
+      <% end %>
   </div>
-  <div class="small-3 columns"></div>
-  <div class="small-3 columns"></div>
+  <div class="small-4 columns">
+    </div>
+
 </section>
