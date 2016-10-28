@@ -36,4 +36,17 @@ class Product < ActiveRecord::Base
     self.active = !self.active
   end
 
+  def average_rating
+    if !self.reviews.nil?
+      count = self.reviews.length
+      total = 0
+
+      self.reviews.each do |review|
+        total += review.rating
+      end
+
+      return total / count
+    end
+  end
+
 end
