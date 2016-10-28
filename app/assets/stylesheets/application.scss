@@ -1,9 +1,35 @@
 @import url('foundation.css');
-@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Oswald|Pontano+Sans');
+@import url('foundation-icons.css');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Oswald|Pontano+Sans|Lato|Josefin+Sans');
 
 /************************************/
 /* OVERALL STYLING - BODY           */
 /************************************/
+
+
+input.magglass {
+  // padding: 2vw 0 0 .75vw;
+  // position: relative;
+}
+
+input#search {
+  width: 30vw;
+  border: 1px solid transparent;
+  background-color: #141414;
+  height: 2.75vw;
+  color: #2d2d2d;
+  font: normal normal 1.5vw/2 'Oswald', sans-serif;
+  margin: 0 0 .75vw 10vw;
+}
+
+li.navlinks {
+  width: 12vw;
+  padding-left: 1vw
+}
+
+li.navlinks.name {
+  width: 15vw;
+}
 
 ul {
   list-style: none;
@@ -107,11 +133,12 @@ nav {
 }
 
 .top-spacing {
-  height: 10vw;
+  height: 15vw;
 }
 
 form#search-form {
   display: inline-block;
+  width: 45vw;
 }
 
 nav ul {
@@ -127,10 +154,6 @@ nav ul li{
 
 nav ul li li {
   padding: 0;
-}
-
-form#search-form {
-  width: 48vw;
 }
 
 h1 {
@@ -195,8 +218,8 @@ article.column {
 /*  FORMAT FORMS */
 /*******************/
 .format-forms {
-  padding: 8% 8% 0 8%;
-  margin: 0 9% 0 9%;
+  padding: 0 8% 0 8%;
+  margin: 0 20vw;
 
 }
 .format-forms h1  {
@@ -234,4 +257,91 @@ article.column {
 
 .style-user-table a:hover {
   color: #E7AD3F
+}
+
+
+/********************/
+/*  BUTTONS        */
+/*******************/
+
+.hollow.button {
+  text-transform: uppercase;
+  border-radius: 0;
+  border: 1px solid black;
+  font: normal 400 1vw/1 'Lato', sans-serif;
+  letter-spacing: .15em;
+  padding: .9vw 1.75vw;
+  display: inline-block;
+}
+
+.admin-button .hollow.button {
+  margin: -2vw 0 0 0;
+  float: right;
+}
+
+.hollow.button:hover {
+  color: #FFF;
+  background-color: #000;
+}
+
+#admin-button-location {
+  display: inline-block;
+}
+
+#order_products_delta {
+  width: 5vw;
+}
+
+
+label,
+h6 {
+  font: normal 400 1vw/1 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  padding: .15vw;
+}
+
+
+
+form.button_to {
+  display: inline-block;
+  padding: 0 1vw 0 0;
+}
+
+h2 {
+  text-align: top;
+  text-transform: uppercase;
+  font: normal 400 3vw/1 'Oswald', sans-serif;
+  padding: 0 2vw 0 0;
+  display: inline-block;
+  margin: 0 0 2vw 0;
+}
+
+h3 {
+  font: normal normal 2vw/1 'Pontano Sans', sans-serif;
+}
+
+h4 {
+  padding: .5vw 0;
+}
+
+h4.alert {
+  font-weight: bold;
+  color: #df0d4e;
+}
+
+h5 {
+  // text-align: top;
+  // text-transform: uppercase;
+  font: normal 400 1.5vw/1 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
+
+}
+
+
+textarea {
+  height: 8vw;
+}
+
+.end-page-space {
+  height: 10vw;
 }
