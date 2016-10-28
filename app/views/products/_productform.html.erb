@@ -10,18 +10,18 @@
   <li><%= f.label :price %></li>
   <li><%= f.text_field :price %></li>
 
-  <li><%= f.label :inventory_qty %></li>
+  <li><%= f.label "Quantity on Hand" %></li>
   <li><%= f.text_field :inventory_qty%></li>
 <!-- move Category.all to controller once we get form working - right now I have it here for debugging purposes. For edit dropdown would be great if it prefilled with current category  -->
   <li><%= f.label :category_id %></li>
   <li><%= select_tag(:category_id, options_for_select(Category.all.map{|c| [ c.name, c.id ] }, @product.category_id), :prompt => "Select one!") %></li>
 
-  <li><%= f.label :active %></li>
+  <li><%= f.label "Active Status" %></li>
   <li><%= f.select :active, [['Active', true], ['Inactive', false]] %></li>
 
   <li><%= f.file_field :picture%></li>
+  <li><%= f.submit class:"hollow button" %> </li>
 
-  <li><%= f.submit %> </li>
 </ul>
 
 <% end %>

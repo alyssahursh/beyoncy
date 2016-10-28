@@ -9,10 +9,5 @@ class ApplicationController < ActionController::Base
     @categories = Category.all
   end
 
-  def user_data
-    @user = User.find(session[:user_id])
-    @order = Order.find_by user_id: @user.id, order_status: 'cart'
-    @cart_count = @order.order_products.length
-  end
 
 end

@@ -10,7 +10,7 @@
   <li><%= f.label :rating %></li>
   <li><%= select_tag(:rating, options_for_select([1, 2, 3, 4, 5], @review.rating), :prompt => "Select one!") %></li>
 
-  <li><%= f.submit %> </li>
+  <li><%= f.submit "Leave Review", class:"hollow button" %> </li>
 </ul>
 
 <% end %>

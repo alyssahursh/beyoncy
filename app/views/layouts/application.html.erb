@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel='shortcut icon' href='assets/favicon.ico' type='image/x-icon'/ >
     <title><%= content_for?(:title) ? yield(:title) : "Beyoncy" %></title>
 
     <%= stylesheet_link_tag    "application" %>
@@ -18,11 +18,11 @@
           <li><h1><%= link_to "BEYONCY", root_path %></h1></li>
 
           <li><%= form_tag(products_path, :method => "get", id: "search-form") do %>
-          <li><%= text_field_tag :search, params[:search], placeholder: "Search Products" %></li>
-          <li><%= submit_tag "Search", :name => nil %></li>
+            <li><%= text_field_tag :search, params[:search], placeholder: "Search Products" %></li>
+            <li><%= image_submit_tag("fi-magnifying-glass.svg", class:"magglass") %></li>
           <% end %></li>
 
-          <li><a href='/products'>Shop</a>
+          <li class="navlinks"><a href='/products'>Shop</a>
             <ul class="menu vertical style-dropdown">
               <li class="style-dropdown-2"><%= link_to "All Products", products_path %></li>
               <li class="style-dropdown-2">
@@ -36,10 +36,10 @@
             </ul>
           </li>
           <% if @user.nil? %>
-            <li><a href='/auth/github'>Login</a></li>
+            <li class="navlinks"><a href='/auth/github'>Login</a></li>
           <% else %>
             <% if !@user.admin  %>
-              <li>Hi, <%= @user.first_name %>
+              <li class="navlinks name"><a href='/account_path'>Hi, <%= @user.first_name %></a>
                 <ul class="menu vertical style-dropdown">
                   <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
                   <li class="style-dropdown-2"><%= link_to "View My Orders", orders_path %></li>
@@ -47,7 +47,7 @@
                 </ul>
               </li>
             <% elsif @user.admin %>
-              <li>Hi, <%= @user.first_name %>
+              <li class="navlinks name"><a href='/account_path'>Hi, <%= @user.first_name %></a>
                   <ul class ="menu vertical style-dropdown">
                     <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
                     <li class="style-dropdown-2"><%= link_to "View All Orders", orders_path %></li>
@@ -59,7 +59,7 @@
                 </li>
             <% end %>
           <% end %>
-          <li><%= link_to "Cart #{@cart_count}", cart_path %></li>
+          <li class="navlinks"><a href='/cart'>Cart  [<%= @user.cart_count %>]</a>
         </ul>
       </nav>
       <div class="top-spacing"></div>

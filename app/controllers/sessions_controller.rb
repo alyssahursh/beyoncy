@@ -25,10 +25,6 @@ class SessionsController < ApplicationController
       redirect_to root_path
     end
 
-    def index
-      @user= User.find(session[:user_id])
-    end
-
     def destroy
       session[:user_id] = nil
       redirect_to root_path

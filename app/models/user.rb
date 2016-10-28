@@ -27,16 +27,22 @@ class User < ActiveRecord::Base
     unless name == nil
       array = name.split(' ')
       last_name = array.pop
-      first_name = array.join(' ')
+      array.length == 0 ? first_name = "there" : first_name = array.join(' ')
       return first_name, last_name
     else
-      return nil, "last name"
+      return "there", "last name"
     end
   end
 
   def toggle_active
     # toggles active between true and false
     self.active = !self.active
+  end
+
+  def cart_count
+    @order = Order.find_by user_id: self.id, order_status: 'cart'
+    @cart_count = @order.order_products.length
+    return @cart_count
   end
 
 
