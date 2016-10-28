@@ -3,7 +3,7 @@
 <ul>
     <li><%= f.select :kind, ['Shipping','Billing'] %></li>
     <li><%= f.hidden_field :user_id, value: @user.id %></li>
-    <li><%= f.hidden_field :redirect_to, value: "0" %></li>
+    <li><%= f.hidden_field :redirect_to, value: params["redirect_to"] %></li>
     <li><%= f.text_field :first_name, placeholder: "First Name" %></li>
     <li><%= f.text_field :last_name, placeholder: "Last Name" %></li>
     <li><%= f.text_field :street1, placeholder: "Street Address" %></li>

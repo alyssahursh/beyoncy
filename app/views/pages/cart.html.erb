@@ -94,7 +94,9 @@
 
   <%= f.submit "Checkout", class:"hollow button"%>
   <% end %>
-      <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "hollow button"%>
+
+      <%= button_to 'Add a New Address', address_new_path("0"), :method => :get, :class => "hollow button"%>
+
     </div>
 
 </section>
