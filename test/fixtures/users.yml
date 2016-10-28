@@ -110,3 +110,14 @@ four:
   active: true
   uid: '09876543'
   provider: 'github'
+
+user_that_has_those_orderproducts:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  email: bob@twitter.com
+  uid: 12
+  id: 8
