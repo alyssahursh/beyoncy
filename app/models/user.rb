@@ -39,11 +39,4 @@ class User < ActiveRecord::Base
     self.active = !self.active
   end
 
-  def cart_count
-    @order = Order.find_by user_id: self.id, order_status: 'cart'
-    @cart_count = @order.order_products.length
-    return @cart_count
-  end
-
-
 end

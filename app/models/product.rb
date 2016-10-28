@@ -1,7 +1,11 @@
 class Product < ActiveRecord::Base
   belongs_to :category
-  has_and_belongs_to_many :orders
+  # has_and_belongs_to_many :orders
   has_many :reviews
+
+  # order_products association
+  has_many :order_products
+  has_many :orders, through: :order_products
 
   # product must have a name
   validates :name, presence: true
@@ -30,6 +34,19 @@ class Product < ActiveRecord::Base
   def toggle_active
     # toggles active between true and false
     self.active = !self.active
+  end
+
+  def average_rating
+    if !self.reviews.nil?
+      count = self.reviews.length
+      total = 0
+
+      self.reviews.each do |review|
+        total += review.rating
+      end
+
+      return total / count
+    end
   end
 
 end

@@ -133,7 +133,7 @@ nav {
 }
 
 .top-spacing {
-  height: 15vw;
+  height: 12vw;
 }
 
 form#search-form {
@@ -232,7 +232,7 @@ article.column {
 /*******************/
 
 .reviews-show {
-  padding-top: 10%;
+  padding-top: 5vw;
 }
 
 .line-height {
@@ -317,11 +317,15 @@ h2 {
 }
 
 h3 {
-  font: normal normal 2vw/1 'Pontano Sans', sans-serif;
+  font: normal normal 1.75vw/1 'Josefin Sans', sans-serif;
+  padding: 1vw 0;
+  text-transform: uppercase;
 }
 
 h4 {
   padding: .5vw 0;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 h4.alert {
