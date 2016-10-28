@@ -45,12 +45,25 @@ ul {
 table{
     color: #000;
     table-layout: fixed;
-    width: 70%;
+    width: 100%;
 }
 
-th, td {
-    overflow: hidden;
-    width: 10%;
+th,
+td {
+  text-align: left;
+  overflow: hidden;
+  text-transform: uppercase;
+  // width: 10%;
+}
+
+td {
+  font: normal normal 1.1vw/1.25 'Josefin Sans', sans-serif;
+  color: #000;
+  text-transform: uppercase;
+}
+
+th {
+  font: normal bold 1.2vw 'Lato', sans-serif;
 }
 
 
@@ -353,6 +366,6 @@ textarea {
 }
 
 p {
-  font: normal normal 1.5vw/1 'Josefin Sans', sans-serif;
+  font: normal normal 1.5vw/1.25 'Josefin Sans', sans-serif;
   color: #525252;
 }
