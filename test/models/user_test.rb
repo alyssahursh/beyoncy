@@ -131,18 +131,19 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(b, "Hair")
   end
 
-  test 'when given nil, split_name should return a blank first name and a last name "last name"' do
+  test 'when given nil, split_name should return "there" for the first name and a last name "last name"' do
     name = nil
     a,b = User.split_name(name)
-    assert_nil(a)
+    assert_not_nil(a)
+    assert_equal(a, "there")
     assert_not_nil(b)
     assert_equal(b, "last name")
   end
 
-  test 'when given a single name, split_name should return an empty string for a first name and the single name for the last name' do
+  test 'when given a single name, split_name should return "there" for a first name and the single name for the last name' do
     name = "cat"
     a,b = User.split_name(name)
-    assert_equal(a,'')
+    assert_equal(a,'there')
     assert_equal(b, "cat")
   end
 end
