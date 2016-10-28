@@ -1,8 +1,8 @@
-<%= flash[:notice] %>
+<h4 class="alert"><%= flash[:notice] %></h4>
 
 
 <div class="row">
-  <h1 class="center-text">Shopping Cart</h1>
+  <h1 class="center-text">Order No. <%= @order.id %></h1>
 
   <h4 class="alert"><%= flash[:alert] %></h4>
 
@@ -35,53 +35,5 @@
 
 <div class="mid-page-space"></div>
 
-<section class="row">
-  <%= form_for @order,
-    url: { controller: 'orders', action: 'update', id: @order }, method: :patch do |f| %>
-    <%= f.hidden_field :order_status, {:value => 'ordered'} %>
-  <div class="small-4 columns">
-    <h3>Shipping Address</h3>
-    <% @user.addresses.each do |address|  %>
-      <% if address.kind == "Shipping" %>
-      <%= f.radio_button(:shipping_address_id, address.id) %>
-      <ul>
-        <p><%= address.first_name %>
-        <%= address.last_name %></p>
-        <p><%= address.street1 %></p>
-        <p><%= address.street2 %></p>
-        <p><%= address.city %>,
-        <%= address.state %>
-        <%= address.zip %>
-        <%= address.country %></p>
-        <p><%= address.phone %></p>
-        <br>
-      </ul>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="small-4 columns">
-    <h3>Billing Address</h3>
-
-      <% @user.addresses.each do |address|  %>
-        <% if address.kind == "Billing" %>
-        <%= f.radio_button(:billing_address_id, address.id) %>
-        <ul>
-          <p><%= address.first_name %>
-          <%= address.last_name %></p>
-          <p><%= address.street1 %></p>
-          <p><%= address.street2 %></p>
-          <p><%= address.city %>,
-          <%= address.state %>
-          <%= address.zip %>
-          <%= address.country %></p>
-          <p><%= address.phone %></p>
-          <br>
-        </ul>
-        <% end %>
-      <% end %>
-  </div>
-  <div class="small-4 columns">
-    </div>
 
 </section>
