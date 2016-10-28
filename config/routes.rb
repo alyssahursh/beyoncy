@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :users, :categories, :orders, :addresses, :order_products
 
+  get 'addresses/new/:redirect_to' => 'addresses#new', as: 'address_new'
+
   get 'cart' => 'pages#cart', as: 'cart'
 
   get 'account' => 'users#show', as: 'account'

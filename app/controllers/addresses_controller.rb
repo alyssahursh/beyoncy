@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.user_id = session[:user_id]
     if @address.save
-      if params[:redirect_to] == "1"
+      if params["redirect_to"] == "1"
         redirect_to account_path
       else
         redirect_to cart_path
