@@ -53,9 +53,6 @@ th, td {
     width: 10%;
 }
 
-.flash-notice {
-  color: #E7AD3F;
-}
 
 /************************************/
 /* NAVIGATION BAR AND HEADER SECTION */
@@ -328,7 +325,8 @@ h4 {
   text-transform: uppercase;
 }
 
-h4.alert {
+h4.alert,
+.flash-notice {
   font-weight: bold;
   color: #df0d4e;
 }
@@ -346,6 +344,15 @@ textarea {
   height: 8vw;
 }
 
+.mid-page-space {
+  height: 5.1vw;
+}
+
 .end-page-space {
   height: 10vw;
+}
+
+p {
+  font: normal normal 1.5vw/1 'Josefin Sans', sans-serif;
+  color: #525252;
 }
