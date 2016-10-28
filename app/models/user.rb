@@ -27,10 +27,10 @@ class User < ActiveRecord::Base
     unless name == nil
       array = name.split(' ')
       last_name = array.pop
-      first_name = array.join(' ')
+      array.length == 0 ? first_name = "there" : first_name = array.join(' ')
       return first_name, last_name
     else
-      return nil, "last name"
+      return "there", "last name"
     end
   end
 

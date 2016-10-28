@@ -7,26 +7,19 @@
   <li><%= f.label :last_name %></li>
   <li><%= f.text_field :last_name %></li>
 
-  <li><%= f.label :birth_year %></li>
-  <li><%= f.text_field :birthdate %></li>
-
-  <li><%= f.label :birth_month %></li>
-  <li><%= f.text_field :birthdate %></li>
-
-  <li><%= f.label :birth_day %></li>
-  <li><%= f.text_field :birthdate %></li>
-
   <li><%= f.label :email %></li>
   <li><%= f.text_field :email %></li>
 
   <li><%= f.label :phone_number %></li>
   <li><%= f.text_field :phone %></li>
 
+<% if @user.admin %>
   <li><%= f.label :active? %></li>
   <li><%= f.check_box :active %></li>
 
   <li><%= f.label :admin? %></li>
   <li><%= f.check_box :admin %></li>
+<% end %>
 
   <li><%= f.submit %> </li>
 </ul>
