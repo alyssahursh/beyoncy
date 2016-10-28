@@ -45,12 +45,25 @@ ul {
 table{
     color: #000;
     table-layout: fixed;
-    width: 70%;
+    width: 100%;
 }
 
-th, td {
-    overflow: hidden;
-    width: 10%;
+th,
+td {
+  text-align: left;
+  overflow: hidden;
+  text-transform: uppercase;
+  // width: 10%;
+}
+
+td {
+  font: normal normal 1.1vw/1.25 'Josefin Sans', sans-serif;
+  color: #000;
+  text-transform: uppercase;
+}
+
+th {
+  font: normal bold 1.2vw 'Lato', sans-serif;
 }
 
 
@@ -353,6 +366,23 @@ textarea {
 }
 
 p {
-  font: normal normal 1.5vw/1 'Josefin Sans', sans-serif;
+  font: normal normal 1.5vw/1.25 'Josefin Sans', sans-serif;
   color: #525252;
+}
+
+
+h1.overlay a{
+  position: fixed;
+  margin: auto;
+  color: #FFF;
+  z-index: 1;
+  padding: 3vw;
+  text-transform: uppercase;
+  border: 2px solid #FFF;
+  width: 40vw;
+  margin: 20vw 0 0 30vw;
+}
+
+h1.overlay a:hover {
+  background-color: rgba(255, 255, 255, .2);
 }
