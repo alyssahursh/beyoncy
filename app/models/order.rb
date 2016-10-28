@@ -12,8 +12,8 @@ class Order < ActiveRecord::Base
   has_many :order_products
   has_many :products, through: :order_products
 
-  belongs_to :address, :class_name => "address", :foreign_key => "billing_address_id"
-  belongs_to :address, :class_name => "address", :foreign_key => "billing_address_id"
+  belongs_to :billing_address, :class_name => "Address"
+  belongs_to :shipping_address, :class_name => "Address"
 
   def subtotal
     subtotal = 0
