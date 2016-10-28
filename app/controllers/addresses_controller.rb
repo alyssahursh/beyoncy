@@ -18,12 +18,12 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.user_id = session[:user_id]
-    if @address.save!
+    if @address.save
       flash[:notice] = "Address successfully saved."
       redirect_to account_path
     else
-      flash[:notice] = "Address could not be saved."
-      redirect_to edit_address_path(@address.id)
+      flash[:notice] = "Address could not be saved. Please try again."
+      redirect_to new_address_path
     end
   end
 
