@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
     @review.product_id = params[:product_id]
     if @review.save!
       redirect_to product_path(@review.product_id)
-
     else
       flash[:notice] = "Please be sure you have completed all fields."
       render :action => :new
@@ -31,7 +30,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review.rating = params[:rating]
-    if @review.update!(review_params)
+    if @review.update(review_params)
       flash[:notice] = "Review successfully saved!"
       redirect_to product_path(@review.product_id)
     else
@@ -41,7 +40,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review.destroy!
+    @review.destroy
     redirect_to root_path
   end
 

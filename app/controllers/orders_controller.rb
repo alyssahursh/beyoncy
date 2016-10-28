@@ -18,15 +18,15 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-
-  def create
-    @order = Order.new(order_params)
-    if @order.save!
-      redirect_to # UNKNOWN
-    else
-      render # UNKNOWN
-    end
-  end
+  #
+  # def create
+  #   @order = Order.new(order_params)
+  #   if @order.save!
+  #     redirect_to # UNKNOWN
+  #   else
+  #     render # UNKNOWN
+  #   end
+  # end
 
   def edit
     if @user.nil?
@@ -48,7 +48,8 @@ class OrdersController < ApplicationController
       redirect_to order_path(@order.id)
       flash[:notice] = "Thank you for your order!"
     else
-      render # UNKNOWN
+      flash[:notice] = "Please double-check the fields & try again."
+      redirect_to cart_path
     end
 
     if Order.find_by(user_id: @user.id, order_status: 'cart') == nil
@@ -59,7 +60,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy!
+    @order.destroy
     redirect_to root_path
   end
 
