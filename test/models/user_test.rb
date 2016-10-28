@@ -143,7 +143,7 @@ class UserTest < ActiveSupport::TestCase
   test 'when given a single name, split_name should return "there" for a first name and the single name for the last name' do
     name = "cat"
     a,b = User.split_name(name)
-    assert_equal(a,'there')
+    assert_equal(a,"there")
     assert_equal(b, "cat")
   end
 end
