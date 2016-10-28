@@ -8,4 +8,14 @@ module ApplicationHelper
       return "active"
     end
   end
+
+  def cart_count
+    if !@user.nil?
+      @order = Order.find_by user_id: @user.id, order_status: 'cart'
+      @cart_count = @order.order_products.length
+      return @cart_count
+    else
+      return "0"
+    end
+  end
 end

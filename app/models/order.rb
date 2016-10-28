@@ -7,8 +7,11 @@ class Order < ActiveRecord::Base
 
 
   belongs_to :user
-  has_and_belongs_to_many :products
+
+  # order_products association
   has_many :order_products
+  has_many :products, through: :order_products
+
   belongs_to :address, :class_name => "address", :foreign_key => "billing_address_id"
   belongs_to :address, :class_name => "address", :foreign_key => "billing_address_id"
 

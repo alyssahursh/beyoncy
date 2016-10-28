@@ -47,11 +47,11 @@ class ProductsController < ApplicationController
       render :action => :edit
     end
   end
-
-  def destroy!
-    @product.destroy
-    redirect_to root_path
-  end
+  # 
+  # def destroy
+  #   @product.destroy
+  #   redirect_to root_path
+  # end
 
   def switch_active
     product = Product.find_by(id: params[:id])
