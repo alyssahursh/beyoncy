@@ -11,8 +11,8 @@
     <table>
       <tr>
         <h3>
-          <th>Product Name:</th>
-          <th>Category:</th>
+          <th></th>
+          <th>Product:</th>
           <th>Qty:</th>
           <th>Price Per:</th>
           <th>Total Price:</th>
@@ -24,8 +24,8 @@
 
   <% @order.order_products.each do |order_product| %>
     <tr>
-      <td><%= Product.find(order_product.product_id).name %></td>
-      <td><%= Product.find(order_product.product_id).category.name %></td>
+      <td><%=image_tag(Product.find(order_product.product_id).picture, :alt => "product photo")  %></td>
+      <td><%=Product.find(order_product.product_id).name%> <%=Product.find(order_product.product_id).category.name%></td>
       <td><%= button_to "-", { controller: 'order_products', action: 'update', id: order_product.id, delta: -1}, method: :patch %>
           <%= order_product.qty %>
           <%= button_to "+", { controller: 'order_products', action: 'update', id: order_product.id, delta: 1}, method: :patch  %>
@@ -64,6 +64,7 @@
       </ul>
       <% end %>
     <% end %>
+    <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%>
   </div>
 
   <div class="small-6 columns">
@@ -87,6 +88,7 @@
         </ul>
         <% end %>
       <% end %>
+      <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%>
   </div>
   <%= f.submit "Checkout", class: :button%>
   <% end %>

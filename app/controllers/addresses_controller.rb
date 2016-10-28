@@ -34,7 +34,11 @@ class AddressesController < ApplicationController
   def update
     if @address.update!(address_params)
       flash[:notice] = "Address updated."
-      redirect_to account_path
+      if params[:redirect_to] == "1"
+        redirect_to account_path
+      else
+        redirect_to cart_path
+      end
     else
       flash[:notice] = "Address could not be updated."
       redirect_to edit_address_path(@address.id)
