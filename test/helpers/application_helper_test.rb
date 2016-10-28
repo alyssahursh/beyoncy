@@ -29,4 +29,18 @@ class ApplicationHelperTest < ActionView::TestCase
     result = active_for_button(user)
     assert_equal(result, "active")
   end
+
+
+  test 'cart_count should total up the number of items in a given user\'s cart' do
+    @user = users(:normal_user)
+    output = cart_count
+    assert_equal(output,3)
+  end
+
+  test 'cart_count should return 0 if @user is nil' do
+    @user = nil
+    output = cart_count
+    assert_equal(output, "0")
+  end
+
 end

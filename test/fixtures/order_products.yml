@@ -22,3 +22,18 @@ three:
 four:
   id: 10001
   order_id: 141
+
+five:
+  id: 10002
+  order_id: 103
+  product_id: 5
+
+six:
+  id: 10003
+  order_id: 103
+  product_id: 6
+
+seven:
+  id: 10004
+  order_id: 103
+  product_id: 7
