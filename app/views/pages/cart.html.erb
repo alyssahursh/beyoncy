@@ -64,7 +64,6 @@
       </ul>
       <% end %>
     <% end %>
-    <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%>
   </div>
 
   <div class="small-6 columns">
@@ -88,8 +87,8 @@
         </ul>
         <% end %>
       <% end %>
-      <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%>
   </div>
   <%= f.submit "Checkout", class: :button%>
   <% end %>
+      <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%>
 </section>

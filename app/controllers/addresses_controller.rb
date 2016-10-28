@@ -34,16 +34,23 @@ class AddressesController < ApplicationController
   def update
     if @address.update!(address_params)
       flash[:notice] = "Address updated."
-      if params[:redirect_to] == "1"
-        redirect_to account_path
-      else
-        redirect_to cart_path
-      end
+      redirect_to account_path
     else
       flash[:notice] = "Address could not be updated."
       redirect_to edit_address_path(@address.id)
     end
+  end
 
+  def addressInCart
+    @address = Address.new(address_params)
+    @address.user_id = session[:user_id]
+    if @address.save
+      flash[:notice] = "Address successfully saved."
+      redirect_to cart_path
+    else
+      flash[:notice] = "Address could not be saved. Please try again."
+      redirect_to new_address_path
+    end
   end
 
   def destroy
