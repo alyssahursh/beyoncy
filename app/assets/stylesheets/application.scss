@@ -369,3 +369,20 @@ p {
   font: normal normal 1.5vw/1.25 'Josefin Sans', sans-serif;
   color: #525252;
 }
+
+
+h1.overlay a{
+  position: fixed;
+  margin: auto;
+  color: #FFF;
+  z-index: 1;
+  padding: 3vw;
+  text-transform: uppercase;
+  border: 2px solid #FFF;
+  width: 40vw;
+  margin: 20vw 0 0 30vw;
+}
+
+h1.overlay a:hover {
+  background-color: rgba(255, 255, 255, .2);
+}
