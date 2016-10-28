@@ -39,40 +39,54 @@
   </table>
 
   <h3>Order Total: </h3><%=number_to_currency(@order.subtotal/100.0) %>
-
-  <h5>Shipping Address</h5>
-  <%= form_for :addresses do |f| %>
-    <%= f.hidden_field :kind, value: 'shipping' %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.text_field :first_name, placeholder: "First Name" %>
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
-    <%= f.text_field :street1, placeholder: "Street Address" %>
-    <%= f.text_field :street2, placeholder: "Street Address" %>
-    <%= f.text_field :city, placeholder: "City" %>
-    <%= f.text_field :state, placeholder: "State" %>
-    <%= f.text_field :zip, placeholder: "Zip" %>
-    <%= f.text_field :country, placeholder: "Country" %>
-    <%= f.text_field :phone, placeholder: "Phone" %>
-    <%= f.submit "Save Address" %>
-  <% end %>
-
-
-  <h5>Billing Address</h5>
-  <%= form_for :addresses do |f| %>
-    <%= f.hidden_field :kind, value: 'billing' %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.text_field :first_name, placeholder: "First Name" %>
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
-    <%= f.text_field :street1, placeholder: "Street Address" %>
-    <%= f.text_field :street2, placeholder: "Street Address" %>
-    <%= f.text_field :city, placeholder: "City" %>
-    <%= f.text_field :state, placeholder: "State" %>
-    <%= f.text_field :zip, placeholder: "Zip" %>
-    <%= f.text_field :country, placeholder: "Country" %>
-    <%= f.text_field :phone, placeholder: "Phone" %>
-    <%= f.submit "Save Address" %>
-  <% end %>
-
-
-  <%= button_to "Checkout", { controller: 'orders', action: 'update', id: @order, order: {order_status: 'ordered'} }, method: :patch%>
 </section>
+<section class="row">
+  <div class="small-6 columns">
+    <h5><strong>Shipping Address</strong></h5>
+    <% @user.addresses.each do |address|  %>
+      <% if address.kind == "Shipping" %>
+      <ul>
+        <li><%= address.first_name %>
+        <%= address.last_name %></li>
+        <li><%= address.street1 %></li>
+        <li><%= address.street2 %></li>
+        <li><%= address.city %>,
+        <%= address.state %>
+        <%= address.zip %>
+        <%= address.country %></li>
+        <li><%= address.phone %></li>
+        <%= link_to("Edit", edit_address_path(address.id)) %>
+        <%= button_to "Select Address", { controller: 'orders', action: 'update', id: @order, order: {order_status: 'ordered'} }, method: :patch, class: :button%>
+        <br>
+      </ul>
+      <% end %>
+    <% end %>
+
+    <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%>
+  </div>
+
+  <div class="small-6 columns">
+    <h5><strong>Billing Address</strong></h5>
+
+      <% @user.addresses.each do |address|  %>
+        <% if address.kind == "Billing" %>
+        <ul>
+          <li><%= address.first_name %>
+          <%= address.last_name %></li>
+          <li><%= address.street1 %></li>
+          <li><%= address.street2 %></li>
+          <li><%= address.city %>,
+          <%= address.state %>
+          <%= address.zip %>
+          <%= address.country %></li>
+          <li><%= address.phone %></li>
+          <%= link_to("Edit", edit_address_path(address.id)) %>
+          <br>
+        </ul>
+        <% end %>
+      <% end %>
+      <%= button_to 'Add a New Address', new_address_path, :method => :get, :class => "button"%>
+  </div>
+
+</section>
+  <%= button_to "Checkout", { controller: 'orders', action: 'update', id: @order, order: {order_status: 'ordered'} }, method: :patch, class: :button%>

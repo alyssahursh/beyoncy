@@ -18,10 +18,10 @@
 
   <li><%= f.label "Active Status" %></li>
   <li><%= f.select :active, [['Active', true], ['Inactive', false]] %></li>
-<!-- will need to add gem and figure out how to upload photos -->
-  <li><%= f.file_field :image%></li>
 
+  <li><%= f.file_field :picture%></li>
   <li><%= f.submit class:"hollow button" %> </li>
+
 </ul>
 
 <% end %>
