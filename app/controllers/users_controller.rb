@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     # this should never happen since we are only creating users from github?
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       flash[:notice] = "User successfully added."
       redirect_to users_path
     else
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def edit ;  end
 
   def update
-    if @user_in_question.update!(user_params)
+    if @user_in_question.update(user_params)
       flash[:notice] = "Information updated successfully."
       if @user != @user_in_question
         redirect_to users_path
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user_in_question.destroy!
+    @user_in_question.destroy
     redirect_to users_path
   end
 

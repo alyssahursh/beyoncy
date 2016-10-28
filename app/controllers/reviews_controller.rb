@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @review.rating = params[:rating]
     @review.user_id = session[:user_id]
     @review.product_id = params[:product_id]
-    if @review.save!
+    if @review.save
       flash[:notice] = "Review created successfully!"
       redirect_to product_path(@review.product_id)
 
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review.rating = params[:rating]
-    if @review.update!(review_params)
+    if @review.update(review_params)
       flash[:notice] = "Review successfully saved!"
       redirect_to product_path(@review.product_id)
     else
@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review.destroy!
+    @review.destroy
     redirect_to root_path
   end
 
