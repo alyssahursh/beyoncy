@@ -37,7 +37,7 @@ class OrderProductsController < ApplicationController
 
     calc_line_price
 
-    if @order_product.save!
+    if @order_product.save
       redirect_to '/cart'
     else
       render # UNKNOWN
@@ -61,7 +61,7 @@ class OrderProductsController < ApplicationController
   end
 
   def destroy
-    @order_product.destroy!
+    @order_product.destroy
     redirect_to '/cart'
   end
 

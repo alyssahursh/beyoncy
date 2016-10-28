@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 normal_order:
-  order_status: "cat"
+  order_status: "cart"
   shipping_cost: 1000
   user_id: 1
 
@@ -26,3 +26,9 @@ order_with_invalid_ops:
   order_status: "ordered"
   shipping_cost: 10
   user_id: 90
+
+user_1_order_products:
+  id: 103
+  order_status: "cart"
+  shipping_cost: 1000
+  user_id: 1

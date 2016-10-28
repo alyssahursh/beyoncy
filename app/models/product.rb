@@ -23,7 +23,7 @@ class Product < ActiveRecord::Base
 
   # search bar
   def self.search(search)
-    where('description ILIKE ? OR name ILIKE ?', "%#{search}%", "%#{search}%")
+    where('description LIKE ? OR name LIKE ?', "%#{search}%", "%#{search}%")
   end
 
   # archive method changes active to false
