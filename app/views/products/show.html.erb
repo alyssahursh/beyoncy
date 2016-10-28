@@ -50,12 +50,13 @@
         <%= "No reviews yet." %>
       <% else %>
       <% @product.reviews.each do |review| %>
-          <li><strong><%= review.subject %></strong></li>
-          <li>Reviewer: <%= review.user.first_name %></li>
-          <li><%= show_lemons(review) %></li>
-          <li><%= review.body %></li>
-          <% end %>
+          <p><strong><%= review.subject %></strong></p>
+          <p>Reviewer: <%= review.user.first_name %></p>
+          <p><%= show_lemons(review) %></p>
+          <p><%= review.body %></p>
+        </br>
         <% end %>
+      <% end %>
     </ul>
   </section>
 
