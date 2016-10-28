@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :find_user
   before_action :find_uiq, only: [:index, :all]
   before_action :find_order, except: [:index, :new, :create, :all]
+  before_action :findAddress, only: [:show]
 
   def index
     if @user.admin
@@ -76,6 +77,11 @@ class OrdersController < ApplicationController
     # if @user.nil?
     #   @user = nil
     # end
+  end
+
+  def findAddress
+    @shipping = Address.find_by(id: @order[:shipping_address_id])
+    @billing = Address.find_by(id: @order[:billing_address_id])
   end
 
   # added
