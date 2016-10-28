@@ -80,7 +80,7 @@ class OrdersController < ApplicationController
 
   # added
   def order_params
-    params.require(:order).permit(:order_status, :shipping_cost, :user_id) #changed from user to match model
+    params.require(:order).permit(:order_status, :shipping_cost, :user_id, :shipping_address_id, :billing_address_id) #changed from user to match model
   end
 
   def find_uiq

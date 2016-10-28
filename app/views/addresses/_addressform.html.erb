@@ -1,37 +1,18 @@
 <%= form_for @address,
   url: action_name do |f| %>
 <ul>
-  <li><%= f.label :type_of_address %></li>
-  <li><%= f.text_field :kind, placeholder: "Home, Work, etc." %></li>
-
-  <li><%= f.label :first_name %></li>
-  <li><%= f.text_field :first_name %></li>
-
-  <li><%= f.label :last_name %></li>
-  <li><%= f.text_field :last_name %></li>
-
-  <li><%= f.label :street1 %></li>
-  <li><%= f.text_field :street1 %></li>
-
-  <li><%= f.label :street2 %></li>
-  <li><%= f.text_field :street2 %></li>
-
-  <li><%= f.label :city %></li>
-  <li><%= f.text_field :city %></li>
-
-  <li><%= f.label :state %></li>
-  <li><%= f.text_field :state %></li>
-
-  <li><%= f.label :zip %></li>
-  <li><%= f.text_field :zip %></li>
-
-  <li><%= f.label :country %></li>
-  <li><%= f.text_field :country %></li>
-
-  <li><%= f.label :phone %></li>
-  <li><%= f.text_field :phone %></li>
-
-  <li><%= f.submit %> </li>
+    <li><%= f.select :kind, ['Shipping','Billing'] %></li>
+    <li><%= f.hidden_field :user_id, value: @user.id %></li>
+    <li><%= f.text_field :first_name, placeholder: "First Name" %></li>
+    <li><%= f.text_field :last_name, placeholder: "Last Name" %></li>
+    <li><%= f.text_field :street1, placeholder: "Street Address" %></li>
+    <li><%= f.text_field :street2, placeholder: "Street Address" %></li>
+    <li><%= f.text_field :city, placeholder: "City" %></li>
+    <li><%= f.text_field :state, placeholder: "State" %></li>
+    <li><%= f.text_field :zip, placeholder: "Zip" %></li>
+    <li><%= f.text_field :country, placeholder: "Country" %></li>
+    <li><%= f.text_field :phone, placeholder: "Phone" %></li>
+    <li><%= f.submit "Save Address" %></li>
 </ul>
 
 <% end %>

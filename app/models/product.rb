@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   belongs_to :category
   has_and_belongs_to_many :orders
   has_many :reviews
-  
+
   # product must have a name
   validates :name, presence: true
 
@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
 
   # search bar
   def self.search(search)
-    where('description LIKE ? OR name LIKE ?', "%#{search}%", "%#{search}%")
+    where('description ILIKE ? OR name ILIKE ?', "%#{search}%", "%#{search}%")
   end
 
   # archive method changes active to false
