@@ -37,7 +37,7 @@ class Product < ActiveRecord::Base
   end
 
   def average_rating
-    if !self.reviews.nil?
+    if self.reviews.length != 0
       count = self.reviews.length
       total = 0
 
