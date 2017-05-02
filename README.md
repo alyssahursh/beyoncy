@@ -1,4 +1,4 @@
-# Beyoncy
+# Beyoncy 
 An e-commerce platform for Beyoncé to sell her wares. Ruby on Rails web application built by a four-person team. Go shopping [here](http://beyoncy.herokuapp.com/). (Beyoncy is deployed on Heroku, so you may need to give the page a minute to wake up the server the first time you load it.)
 
 ![Beyoncy Screenshots](/beyoncy.png?raw=true "Beyoncy screenshots")
