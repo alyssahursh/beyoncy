@@ -12,7 +12,9 @@ class PagesController < ApplicationController
 
   def cart
     @user = User.find_by(id: session[:user_id])
-    @order = Order.find_by user_id: @user.id, order_status: 'cart'
+    if @user
+      @order = Order.find_by user_id: @user.id, order_status: 'cart'
+    end
   end
 
 end

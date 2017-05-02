@@ -43,7 +43,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user_in_question.destroy
+    @user_in_question.active = false
+    @user_in_question.save
     redirect_to users_path
   end
 

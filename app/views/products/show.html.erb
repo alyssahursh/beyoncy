@@ -27,6 +27,8 @@
 
       <% if @product.inventory_qty <= 0 %>
         <li><h4 class=alert>OUT OF STOCK</h4></li>
+      <% elsif @user.nil? %>
+        <li><h4 class='hollow button'><a href='/auth/github'>Login to Add to Cart</a></h4></li>
       <% else %>
         <li><h6><%= @product.inventory_qty %> in stock</h6></li>
         <%= form_for :order_products, url: order_products_path do |f| %>
