@@ -23,10 +23,10 @@ An e-commerce platform for Beyoncé to sell her wares. Ruby on Rails web applica
 * Login with Github OAuth for the full shopping experience.
 * Please don't actually buy anything! ;)
 
-## Why did we build this?
-* This project was the final Rails project for the classroom portiion of Ada Developers Academy.
-* The assignment involved building an e-commerce website with inventory and order tracking and a custom-built shopping cart.
-* We were assigned a group of four people and used agile best practices to write user stories, hold daily stand-ups, monitor our velocity, avoid scope-creep, and ensure on-time delivery to our client.
+## What is this project about?
+* This project was the final Rails project for the classroom portion of Ada Developers Academy.
+* The assignment involved building an e-commerce website with inventory and order tracking, and a custom-built shopping cart.
+* We were assigned a team of four people. Together, we used agile best practices to write user stories, hold daily stand-ups, monitor our velocity, avoid scope-creep, and ensure on-time delivery to our client.
 
 ## If we had more time
 * We'd make better use of Foundation to make the site mobile-responsive
